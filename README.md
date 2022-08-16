@@ -2,4 +2,4 @@
 
 # Proyecto Final - Henry E-commerce
 
-Santiago
+Santiago - Axel
