@@ -50,6 +50,14 @@ module.exports = (sequelize) => {
     stock :{ 
       type: DataTypes.BOOLEAN,
       allowNull: false,
+    },
+    rating:{
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    review:{
+      type:DataTypes.STRING,
+      allowNull:false
     }
   });
 };
