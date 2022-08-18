@@ -6,6 +6,8 @@ const getInfo = () => {
   const jsonInfo = info.map((cellphone) => {
     return {
       id: cellphone.id,
+      name: cellphone.name,
+      brand: cellphone.brand,
       image: cellphone.image,
       rating: cellphone.rating,
       stock: cellphone.stock,

@@ -17,15 +17,18 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
+const addBrands = require("./src/controllers/brands");
 
-const { DB_NAME } = process.env;
-const PORT = 3001;
+const { DB_NAME, PORT } = process.env;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
+  addBrands();
   server.listen(PORT, () => {
-    console.log(`INICIO EXITOSO. Conectado a base de datos: ${DB_NAME}. Escuchando en el puerto: ${PORT}`); // eslint-disable-line no-console
+    console.log(
+      `INICIO EXITOSO. Conectado a base de datos: ${DB_NAME}. Escuchando en el puerto: ${PORT}`
+    ); // eslint-disable-line no-console
   });
 });
