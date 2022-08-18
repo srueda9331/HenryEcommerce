@@ -9,7 +9,14 @@ const getInfo = () => {
       image: cellphone.image,
       rating: cellphone.rating,
       stock: cellphone.stock,
-      //rest of properties
+      sku: cellphone.sku,
+      price: cellphone.price,
+      weight: cellphone.weight,
+      height: cellphone.height,
+      description: cellphone.description,
+      quantity: cellphone.quantity,
+      stock: cellphone.stock,
+      review: cellphone.review,
     };
   });
   return jsonInfo;
