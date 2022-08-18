@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
         if (phone) {
             let phoneName = await allPhones.find(e => e.phone.toLowerCase() === phone.toLowerCase())
             if ( phoneName === undefined){
-                return res.status(404).send('No hay phone')
+                return res.status(404).send('No phone')
             } else {
                 return res.status(200).json(phoneName)
             }
