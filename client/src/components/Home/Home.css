@@ -43,3 +43,10 @@
     color: white;
   }
 }
+
+.container-home{
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+}
