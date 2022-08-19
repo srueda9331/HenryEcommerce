@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FILTER_BRAND, GET_PHONES } from "./actionTypes";
+import { FILTER_BRAND, GET_PHONES, ORDER_PRICE } from "./actionTypes";
 
 
 export function getPhones(){
@@ -11,6 +11,13 @@ export function getPhones(){
     } catch (error) {
       console.log(error);
     }
+  }
+}
+
+export function orderPrice(payload){
+  return {
+    type: ORDER_PRICE,
+    payload
   }
 }
 

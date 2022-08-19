@@ -8,6 +8,7 @@ function Home() {
   
 
   return (
+    <div className="container-home">
     <div className="intro-logo">
       <h3>Your Place to buy</h3>
       <Filters />
@@ -15,6 +16,7 @@ function Home() {
       <div className="intro-button"></div>
       {/* <span> change your phone Now!</span> */}
      
+    </div>
     </div>
   );
 }
