@@ -1,7 +1,8 @@
 const { Product } = require("../db");
+const cellphones = require("../../celus.json");
 
 const getInfo = () => {
-  const info = JSON;
+  const info = cellphones.results;
 
   const jsonInfo = info.map((cellphone) => {
     return {
@@ -24,19 +25,19 @@ const getInfo = () => {
   return jsonInfo;
 };
 
-const addInfoDb = async () => {
-  if (!(await Product.findAll()).length) {
-    const products = jsonInfo;
+// const addInfoDb = async () => {
+//   if (!(await Product.findAll()).length) {
+//     const products = jsonInfo;
 
-    const addDB = await Product.bulkCreate(products, { returning: true });
-    return addDB;
-  } else {
-    console.log("Products already added");
-  }
-};
+//     const addDB = await Product.bulkCreate(products, { returning: true });
+//     return addDB;
+//   } else {
+//     console.log("Products already added");
+//   }
+// };
 
 const getDataDb = async () => {
-  return await Recipe.findAll({
+  return await Product.findAll({
     include: {
       model: Product,
       attributes: ["name"],
@@ -49,6 +50,6 @@ const getDataDb = async () => {
 
 module.exports = {
   getInfo,
-  addInfoDb,
+  //addInfoDb,
   getDataDb,
 };
