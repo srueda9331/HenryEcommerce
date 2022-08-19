@@ -81,4 +81,22 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/put/:name", async (req, res) => {
+  try {
+    let nombre = req.params.name;
+    let { description } = req.body;
+    await Product.update(
+      { description },
+      {
+        where: {
+          name: nombre,
+        },
+      }
+    );
+    res.status(201).send(nombre);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;
