@@ -11,4 +11,3 @@ router.use("/phones", getInfo);
 router.use("/brands", getBrands);
 
 module.exports = router;
-
