@@ -18,7 +18,7 @@ function App() {
           duration={5}
           transition={2}
         />
-        <Routes></Routes>
+        {/* <Routes></Routes> */}
       </header>
       <main></main>
     </Router>

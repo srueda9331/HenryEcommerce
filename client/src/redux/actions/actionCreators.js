@@ -1,16 +1,15 @@
 import axios from 'axios';
-import { GET_ALL_PHONES } from "./actionTypes";
+import { GET_PHONES } from "./actionTypes";
 
-export function getAllPhones(){
+
+export function getPhones(){
   return async function(dispatch){
     try {
-      let getAll = axios.get('http://localhost:3001/phones')
-      return dispatch({
-        type: GET_ALL_PHONES,
-        payload: getAll.data
-      })
+     let all = await axios.get('http://localhost:3001/phones/')
+     return dispatch({type: GET_PHONES, payload: all.data})
     } catch (error) {
       console.log(error);
     }
-  }  
-}
+       
+      
+}}
