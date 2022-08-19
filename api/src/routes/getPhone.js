@@ -12,7 +12,8 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   let name = req.query.name;
-  const allPhones = getInfo();
+  const allPhones = await getInfo();
+
   try {
     if (name) {
       let phonesName = allPhones.filter((el) =>
@@ -53,7 +54,7 @@ router.post("/", async (req, res) => {
       height,
       description,
       image,
-      brand,
+      brands,
       quantity,
       stock,
       rating,
@@ -67,7 +68,7 @@ router.post("/", async (req, res) => {
       weight,
       height,
       description,
-      brand,
+      brands,
       quantity,
       stock,
       rating,
