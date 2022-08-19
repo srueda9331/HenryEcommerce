@@ -8,6 +8,7 @@ export default function Cards(){
   const dispatch = useDispatch();
   const allPhones = useSelector(state => state.phones)
   
+  
   useEffect(() => {
     dispatch(getPhones())
   }, [dispatch])
