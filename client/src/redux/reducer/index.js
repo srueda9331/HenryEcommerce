@@ -1,4 +1,6 @@
+
 import { FILTER_BRAND, GET_PHONES, ORDER_PRICE } from "../actions/actionTypes";
+
 
 const initialState = {
   phones: [],
@@ -40,6 +42,5 @@ function rootReducer(state = initialState, action){
     default:
       return state
    }
-}
 
 export default rootReducer;
