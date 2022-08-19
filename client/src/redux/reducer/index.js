@@ -1,8 +1,8 @@
 import { FILTER_BRAND, GET_PHONES } from "../actions/actionTypes";
 
-
 const initialState = {
   phones: [],
+
   phonesOne: []
 }
 
@@ -27,7 +27,5 @@ function rootReducer(state = initialState, action){
    }
   
 
-
-}
 
 export default rootReducer;
