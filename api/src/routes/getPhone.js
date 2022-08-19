@@ -1,12 +1,9 @@
-
 const { Router } = require("express");
 const { getInfo } = require("../controllers/index");
-const { Product, Brands } = require("../db");
-
+const { Product } = require("../db");
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-
 
 const router = Router();
 
@@ -14,20 +11,18 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get("/", async (req, res) => {
-  const { phone } = req.query;
-  const allPhones = await getInfo();
+  let name = req.query.name;
+  const allPhones = getInfo();
   try {
-    if (phone) {
-      let phoneName = await allPhones.find(
-        (e) => e.phone.toLowerCase() === phone.toLowerCase()
+    if (name) {
+      let phonesName = allPhones.filter((el) =>
+        el.name.toLowerCase().includes(name.toLowerCase())
       );
-      if (phoneName === undefined) {
-        return res.status(404).send("No phone");
-      } else {
-        return res.status(200).json(phoneName);
-      }
+      phonesName.length
+        ? res.status(200).send(phonesName)
+        : res.status(404).send("phone doenst exist");
     } else {
-      res.status(200).json(allPhones);
+      res.status(200).send(allPhones);
     }
   } catch (e) {
     console.log(e);
@@ -50,42 +45,36 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const {
-    name,
-    sku,
-    price,
-    weight,
-    height,
-    description,
-    image,
-    brand,
-    quantity,
-    stock,
-    rating,
-    review,
-  } = req.body;
   try {
-    const createProduct = await Product.create({
+    let {
       name,
-      sku,
       price,
       weight,
       height,
       description,
       image,
+      brand,
+      quantity,
+      stock,
+      rating,
+      review,
+    } = req.body;
+
+    const createProduct = await Product.create({
+      name,
+      image,
+      price,
+      weight,
+      height,
+      description,
+      brand,
       quantity,
       stock,
       rating,
       review,
     });
 
-    let brandsDb = await Brands.findAll({
-      where: { name: brand },
-    });
-    createProduct.addBrands(brandsDb);
-
-    res.status(200).send(createProduct);
-    res.send("Product created successfully!");
+    return res.status(200).send(createProduct);
   } catch (error) {
     console.log(error);
   }
