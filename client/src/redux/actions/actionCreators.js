@@ -5,6 +5,7 @@ import {
   ORDER_PRICE,
   GET_PHONE_DETAIL,
   GET_BRANDS
+  GET_PHONE_BY_NAME,
 } from "./actionTypes";
 
 export function getPhones() {
@@ -60,4 +61,20 @@ export function getBrands () {
     })
     return dispatch({type : GET_BRANDS , payload: info.data})
   }
+
+export function getPhoneName(name) {
+  return async function (dispatch) {
+    try {
+      let phoneByName = await axios.get(
+        "http://localhost:3001/phones?name=" + name
+      );
+      return dispatch({
+        type: GET_PHONE_BY_NAME,
+        payload: phoneByName.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }
+

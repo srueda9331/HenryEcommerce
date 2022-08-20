@@ -1,5 +1,6 @@
 import "./Home.css";
 import React from "react";
+import { Link } from "react-router-dom";
 // import Cards from "../Cards/Cards";
 // import Filters from "../Filters/Filters";
 
@@ -10,8 +11,8 @@ function Home() {
         <h3>Your Place to buy</h3>
         {/* <Filters /> */}
         {/* <Cards /> */}
-        <div className="intro-button"></div>
-        {/* <span> change your phone Now!</span> */}
+
+        <span className="small-description"> change your phone Now!</span>
       </div>
     </div>
   );

@@ -4,3 +4,5 @@ export const ORDER_PRICE = "FILTER_PRICE";
 export const GET_PHONE_DETAIL = "GET_PHONE_DETAIL";
 export const POST_PHONE = "POST_PHONE";
 export const GET_BRANDS = "GET_BRANDS";
+export const GET_PHONE_BY_NAME = "GET_PHONE_BY_NAME";
+
