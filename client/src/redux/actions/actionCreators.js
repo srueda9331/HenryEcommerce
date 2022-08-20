@@ -4,6 +4,7 @@ import {
   GET_PHONES,
   ORDER_PRICE,
   GET_PHONE_DETAIL,
+  GET_BRANDS
 } from "./actionTypes";
 
 export function getPhones() {
@@ -43,4 +44,20 @@ export function getPhoneDetail(id) {
       console.log(error);
     }
   };
+}
+
+export function postPhone (payload){
+  return async function (dispatch) {
+    const response = await axios.post("http://localhost:3001/phones", payload)
+    return response
+  }
+}
+
+export function getBrands () {
+  return async function (dispatch) {
+    var info = await axios('http://localhost:3001/brands/', {
+
+    })
+    return dispatch({type : GET_BRANDS , payload: info.data})
+  }
 }
