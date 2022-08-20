@@ -4,6 +4,7 @@ import {
   GET_PHONES,
   ORDER_PRICE,
   GET_PHONE_DETAIL,
+  CLEAN_DETAIL,
 } from "./actionTypes";
 
 export function getPhones() {
@@ -35,6 +36,7 @@ export function getPhoneDetail(id) {
   return async function (dispatch) {
     try {
       let detail = await axios.get(`http://localhost:3001/phones/${id}`);
+      console.log(detail.data);
       return dispatch({
         type: GET_PHONE_DETAIL,
         payload: detail.data,
@@ -43,4 +45,10 @@ export function getPhoneDetail(id) {
       console.log(error);
     }
   };
+}
+export function cleanDetail(){
+  return {
+    type: CLEAN_DETAIL,
+    payload: []
+  }
 }

@@ -3,6 +3,7 @@ import {
   GET_PHONE_DETAIL,
   GET_PHONES,
   ORDER_PRICE,
+  CLEAN_DETAIL,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -51,7 +52,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
-
+    case CLEAN_DETAIL:
+      return {
+        ...state,
+        detail: action.payload
+      }
     default:
       return state;
   }
