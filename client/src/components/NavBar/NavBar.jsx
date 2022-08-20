@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MenuItems } from "./Menuitems";
-import CartWidget from "../CartWidget";
+import CartWidget from "../CartWidget.jsx";
+import SearchBar from "../SearchBar/SearchBar.jsx";
 import "./NavBar.css";
 
 function NavBar() {
@@ -21,6 +22,7 @@ function NavBar() {
       <div className="menu-icon" onClick={handleClick}>
         <i className={!clicked ? "fas fa-times" : "fas fa-bars"}></i>
       </div>
+      <SearchBar className="SearchBar" />
       <ul className={!clicked ? "nav-menu active" : "nav-menu"}>
         {MenuItems.map((item, index) => {
           return (

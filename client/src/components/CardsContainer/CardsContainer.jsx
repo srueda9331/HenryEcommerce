@@ -5,8 +5,8 @@ import "./CardsContainer.css";
 
 function CardsContainer() {
   return (
-    <div>
-      <div className="cardscontainer">
+    <div className="cards-container">
+      <div className="filters-container">
         <Filters />
       </div>
       <Cards />;

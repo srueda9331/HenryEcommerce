@@ -2,7 +2,8 @@
   background: transparent;
   height: 80px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  text-align: center;
   align-items: center;
   font-size: 1.2rem;
   left: 0;
@@ -24,9 +25,12 @@ li a.active {
   text-decoration: none;
 }
 
+.searchBar {
+  margin-left: 50px;
+}
+
 .navbar-logo {
   color: #fff;
-  justify-self: start;
   margin-left: 0.5rem;
   cursor: pointer;
   font-size: 35px;
@@ -43,7 +47,6 @@ li a.active {
   grid-gap: 0px;
   list-style: none;
   text-align: center;
-  width: 55vw;
   justify-content: end;
 }
 

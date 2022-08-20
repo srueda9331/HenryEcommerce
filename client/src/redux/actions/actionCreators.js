@@ -4,6 +4,7 @@ import {
   GET_PHONES,
   ORDER_PRICE,
   GET_PHONE_DETAIL,
+  GET_PHONE_BY_NAME,
 } from "./actionTypes";
 
 export function getPhones() {
@@ -41,6 +42,22 @@ export function getPhoneDetail(id) {
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+}
+
+export function getPhoneName(name) {
+  return async function (dispatch) {
+    try {
+      let phoneByName = await axios.get(
+        "http://localhost:3001/phones?name=" + name
+      );
+      return dispatch({
+        type: GET_PHONE_BY_NAME,
+        payload: phoneByName.data,
+      });
+    } catch (err) {
+      console.log(err);
     }
   };
 }
