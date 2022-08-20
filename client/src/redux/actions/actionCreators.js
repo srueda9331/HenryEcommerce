@@ -5,6 +5,8 @@ import {
   ORDER_PRICE,
   GET_PHONE_DETAIL,
   CLEAN_DETAIL,
+  GET_BRANDS
+  GET_PHONE_BY_NAME,
 } from "./actionTypes";
 
 export function getPhones() {
@@ -46,9 +48,41 @@ export function getPhoneDetail(id) {
     }
   };
 }
+
 export function cleanDetail(){
   return {
     type: CLEAN_DETAIL,
     payload: []
   }
+}
+
+export function postPhone (payload){
+  return async function (dispatch) {
+    const response = await axios.post("http://localhost:3001/phones", payload)
+    return response
+  }
+}
+
+export function getBrands () {
+  return async function (dispatch) {
+    var info = await axios('http://localhost:3001/brands/', {
+
+    })
+    return dispatch({type : GET_BRANDS , payload: info.data})
+  }
+
+export function getPhoneName(name) {
+  return async function (dispatch) {
+    try {
+      let phoneByName = await axios.get(
+        "http://localhost:3001/phones?name=" + name
+      );
+      return dispatch({
+        type: GET_PHONE_BY_NAME,
+        payload: phoneByName.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 }

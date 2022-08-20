@@ -1,0 +1,27 @@
+.divSearchBar {
+  display: flex;
+}
+
+.inputSearchBar {
+  width: 95%;
+  height: 95%;
+  background: transparent;
+  border-style: none;
+  font-family: "Quicksand", sans-serif;
+  background-color: rgb(255, 255, 255);
+  border: 2px solid gvar(--color-naranja-dorado);
+  border-radius: 10px;
+  height: 22px;
+  padding: 15px 15px;
+}
+
+.btnSearchBar {
+  cursor: pointer;
+  margin-left: 5px;
+
+  border-radius: 10px;
+}
+
+.btnSearchBar:hover {
+  opacity: 0.95;
+}

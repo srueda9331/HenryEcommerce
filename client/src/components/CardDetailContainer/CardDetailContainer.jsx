@@ -17,8 +17,8 @@ function CardDetailContainer(props) {
 
   return (
     <div>
-      {/* <div className="next-logo"> */}
-        <CardDetail  />
+      <div className="next-logo">
+        <CardDetail name={phone.name} />
       </div>
    
   );

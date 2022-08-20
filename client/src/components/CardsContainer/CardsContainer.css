@@ -1,5 +1,10 @@
-.cardscontainer {
+.filters-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 20px;
+}
+
+.cards-container {
+  background-color: rgb(218, 217, 216);
 }
