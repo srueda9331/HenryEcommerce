@@ -42,10 +42,16 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      // brand :{
-      //   type: DataTypes.ENUM(['Samsung', 'Apple', 'Huawei', 'Xiaomi', 'Motorola']),
-      //   allowNull: false,
-      // },
+      brands: {
+        type: DataTypes.ENUM([
+          "Samsung",
+          "Apple",
+          "Huawei",
+          "Xiaomi",
+          "Motorola",
+        ]),
+        allowNull: false,
+      },
       quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,

@@ -7,6 +7,9 @@ import NavBar from "./components/NavBar/NavBar.jsx";
 import Home from "./components/Home/Home.jsx";
 import BackgroundSlider from "react-background-slider";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
+import CardsContainer from "./components/CardsContainer/CardsContainer";
+import CardDetail from "./components/CardDetail/CardDetail";
+import CardDetailContainer from "./components/CardDetailContainer/CardDetailContainer";
 
 function App() {
   return (
@@ -22,7 +25,9 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/contact" element={<ContactUs />} />
+          <Route exact path="/phone/:id" element={<CardDetailContainer />} />
+          <Route exact path="/contact" element={<ContactUs />} />
+          <Route path="/" element={<CardsContainer />} />
         </Routes>
       </main>
     </Router>

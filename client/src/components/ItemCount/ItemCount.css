@@ -1,0 +1,63 @@
+.number-input {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  height: 120px;
+  width: 250px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+}
+
+input {
+  height: 25px;
+  width: 150px;
+  text-align: center;
+  font-size: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.fa-minus,
+.fa-plus {
+  width: 25px;
+  height: 25px;
+  background: #f2f2f2;
+  border-radius: 4px;
+  padding: 8px 5px 8px 5px;
+  border: 1px solid #ddd;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.addTo {
+  margin-top: 20px;
+  width: 150px;
+  box-shadow: inset 0px 1px 0px 0px #cf866c;
+  background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+  background-color: #d0451b;
+  border-radius: 3px;
+  border: 1px solid #942911;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 13px;
+  padding: 9px 26px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #854629;
+}
+
+.addTo:hover {
+  background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
+  background-color: #bc3315;
+}
+.addTo:active {
+  position: relative;
+  top: 1px;
+}

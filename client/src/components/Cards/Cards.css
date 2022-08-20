@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 230px);
+  gap: 35px;
+  padding: 35px;
+  justify-content: center;
+}
