@@ -20,7 +20,7 @@ function CardDetailContainer(props) {
       <div className="next-logo">
         <CardDetail name={phone.name} />
       </div>
-    </div>
+   
   );
 }
 

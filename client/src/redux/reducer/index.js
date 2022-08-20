@@ -3,10 +3,10 @@ import {
   GET_PHONE_DETAIL,
   GET_PHONES,
   ORDER_PRICE,
+  CLEAN_DETAIL,
   POST_PHONE,
   GET_BRANDS
   GET_PHONE_BY_NAME,
-
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -56,7 +56,12 @@ function rootReducer(state = initialState, action) {
         ...state,
         detail: action.payload,
       };
-      case POST_PHONE:
+    case CLEAN_DETAIL:
+      return {
+        ...state,
+        detail: action.payload
+      }
+     case POST_PHONE:
         return {
           ...state
         }
@@ -70,7 +75,6 @@ function rootReducer(state = initialState, action) {
         ...state,
         phones: action.payload,
       };
-
     default:
       return state;
   }
