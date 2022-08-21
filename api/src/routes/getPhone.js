@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { getInfo } = require("../controllers/index");
 const { Product } = require("../db");
+const auth = require("../middlewares/auth");
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -45,7 +46,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   try {
     let {
       name,
@@ -81,7 +82,9 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/put/:name", async (req, res) => {
+
+router.put("/put/:name", auth, async (req, res) => {
+
   try {
     let nombre = req.params.name;
     let { description } = req.body;
@@ -98,5 +101,22 @@ router.put("/put/:name", async (req, res) => {
     console.log(error);
   }
 });
+
+
+router.delete("/:id", auth, async (req, res) => {
+  try {
+    let deletePhone = await Product.findOneAndDelete({ id: req.params.id });
+    if (!deletePhone) {
+      res.status(404).send({ error: "Phone not found" });
+    }
+    res.send(deletePhone);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+// We find and delete the item using the id provided in the request.
+// If the item exists, it will be returned and we can check if any item is returned.
+// If yes, we send back the item but if no item was found, we send back an error.
 
 module.exports = router;
