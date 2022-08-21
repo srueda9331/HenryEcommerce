@@ -1,9 +1,9 @@
 const { Product } = require("../db");
 const cellphones = require("../../celus.json");
 
-const getInfo = () => {
+const getInfo = async () => {
   const info = cellphones.results;
-
+  const phonesDb = await Product.findAll();
   const jsonInfo = info.map((cellphone) => {
     return {
       id: cellphone.id,
@@ -22,7 +22,8 @@ const getInfo = () => {
       review: cellphone.review,
     };
   });
-  return jsonInfo;
+  const dbyjson = phonesDb.concat(jsonInfo);
+  return dbyjson;
 };
 
 // const addInfoDb = async () => {

@@ -13,7 +13,8 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   let name = req.query.name;
-  const allPhones = getInfo();
+  const allPhones = await getInfo();
+
   try {
     if (name) {
       let phonesName = allPhones.filter((el) =>
@@ -54,7 +55,7 @@ router.post("/", auth, async (req, res) => {
       height,
       description,
       image,
-      brand,
+      brands,
       quantity,
       stock,
       rating,
@@ -68,7 +69,7 @@ router.post("/", auth, async (req, res) => {
       weight,
       height,
       description,
-      brand,
+      brands,
       quantity,
       stock,
       rating,
@@ -81,9 +82,9 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-<<<<<<< Updated upstream
-=======
+
 router.put("/put/:name", auth, async (req, res) => {
+
   try {
     let nombre = req.params.name;
     let { description } = req.body;
@@ -101,6 +102,7 @@ router.put("/put/:name", auth, async (req, res) => {
   }
 });
 
+
 router.delete("/:id", auth, async (req, res) => {
   try {
     let deletePhone = await Product.findOneAndDelete({ id: req.params.id });
@@ -117,5 +119,4 @@ router.delete("/:id", auth, async (req, res) => {
 // If the item exists, it will be returned and we can check if any item is returned.
 // If yes, we send back the item but if no item was found, we send back an error.
 
->>>>>>> Stashed changes
 module.exports = router;
