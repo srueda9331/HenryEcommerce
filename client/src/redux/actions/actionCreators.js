@@ -5,7 +5,7 @@ import {
   ORDER_PRICE,
   GET_PHONE_DETAIL,
   CLEAN_DETAIL,
-  GET_BRANDS
+  GET_BRANDS,
   GET_PHONE_BY_NAME,
 } from "./actionTypes";
 
@@ -49,27 +49,26 @@ export function getPhoneDetail(id) {
   };
 }
 
-export function cleanDetail(){
+export function cleanDetail() {
   return {
     type: CLEAN_DETAIL,
-    payload: []
-  }
+    payload: [],
+  };
 }
 
-export function postPhone (payload){
+export function postPhone(payload) {
   return async function (dispatch) {
-    const response = await axios.post("http://localhost:3001/phones", payload)
-    return response
-  }
+    const response = await axios.post("http://localhost:3001/phones", payload);
+    return response;
+  };
 }
 
-export function getBrands () {
+export function getBrands() {
   return async function (dispatch) {
-    var info = await axios('http://localhost:3001/brands/', {
-
-    })
-    return dispatch({type : GET_BRANDS , payload: info.data})
-  }
+    var info = await axios("http://localhost:3001/brands/", {});
+    return dispatch({ type: GET_BRANDS, payload: info.data });
+  };
+}
 
 export function getPhoneName(name) {
   return async function (dispatch) {
