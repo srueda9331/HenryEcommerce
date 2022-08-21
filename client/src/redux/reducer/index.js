@@ -64,17 +64,17 @@ function rootReducer(state = initialState, action) {
     case CLEAN_DETAIL:
       return {
         ...state,
-        detail: action.payload
-      }
-     case POST_PHONE:
-        return {
-          ...state
-        }
-        case GET_BRANDS:
-          return {
-            ...state,
-            brands: action.payload
-          }
+        detail: action.payload,
+      };
+    case POST_PHONE:
+      return {
+        ...state,
+      };
+    case GET_BRANDS:
+      return {
+        ...state,
+        brands: action.payload,
+      };
     case GET_PHONE_BY_NAME:
       return {
         ...state,

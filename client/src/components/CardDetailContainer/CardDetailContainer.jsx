@@ -3,24 +3,13 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getPhoneDetail } from "../../redux/actions/actionCreators";
 import CardDetail from "../CardDetail/CardDetail";
+import "./CardDetailContainer.css";
 
-function CardDetailContainer(props) {
-  const { id } = useParams();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPhoneDetail(id));
-  }, [id, dispatch]);
-
-  const phone = useSelector((state) => state.detail);
-  console.log(phone);
-
+function CardDetailContainer() {
   return (
-    <div>
-      <div className="next-logo">
-        <CardDetail name={phone.name} />
-      </div>
-   
+    <div className="next-logo">
+      <CardDetail />
+    </div>
   );
 }
 
