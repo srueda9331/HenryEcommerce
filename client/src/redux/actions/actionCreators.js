@@ -65,9 +65,11 @@ export function postPhone(payload) {
 
 export function getBrands() {
   return async function (dispatch) {
-    var info = await axios("http://localhost:3001/brands/", {});
-    return dispatch({ type: GET_BRANDS, payload: info.data });
-  };
+    var info = await axios('http://localhost:3001/brands/', {
+
+    })
+    return dispatch({type : GET_BRANDS , payload: info.data})
+  }
 }
 
 export function getPhoneName(name) {
