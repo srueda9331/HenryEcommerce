@@ -5,7 +5,7 @@ import {
   ORDER_PRICE,
   GET_PHONE_DETAIL,
   CLEAN_DETAIL,
-  GET_BRANDS
+  GET_BRANDS,
   GET_PHONE_BY_NAME,
 } from "./actionTypes";
 
@@ -70,7 +70,7 @@ export function getBrands () {
     })
     return dispatch({type : GET_BRANDS , payload: info.data})
   }
-
+}
 export function getPhoneName(name) {
   return async function (dispatch) {
     try {
