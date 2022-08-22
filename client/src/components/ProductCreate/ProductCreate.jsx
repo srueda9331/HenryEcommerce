@@ -13,7 +13,7 @@ function validate (input) {
     if (!input.price) {
         errors.price = 'Se debe incluir un precio'
     }
-    if(!/^[a-zA-z]+$/.test(input.name)) errors.name = 'Usa solo letras para escribir el nombre del modelo'
+    if(!/^[a-zA-z]+$/.test(input.name)) errors.name = 'Use solo letras para escribir el nombre del modelo'
     if (input.price < 0) {
         errors.price = 'No puedes añadirle un valor menor a cero!'
     }
