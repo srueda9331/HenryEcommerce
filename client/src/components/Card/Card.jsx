@@ -24,7 +24,7 @@ function Card({ id, name, image, brand, price }) {
                   <div className="img-info">
                     <div className="info-inner">
                       <span className="p-name">
-                        {name.length > 8 ? name.slice(8) : name}{" "}
+                      {name.length > 10? name[0].toUpperCase() + name.slice(2,30) : name }
                       </span>
                     </div>
                     <div className="a-size">
@@ -39,7 +39,13 @@ function Card({ id, name, image, brand, price }) {
                   </div>
 
                   <p className="cart" href="#">
-                    <span className="price">{price}</span>
+                    <span className="price">
+                      {
+                        //  price < 100000? '$ ' + price.toString().slice(0,3) + '.' +  price.toString().slice(3,7): 
+                        // '$ ' + price.toString().slice(0,3) + '.'+ price.toString().slice(3, 6)
+                        price
+                      }
+                      </span>
                     <span className="add-to-cart">
                       <span className="txt">Add in cart</span>
                     </span>

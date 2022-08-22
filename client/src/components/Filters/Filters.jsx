@@ -44,6 +44,10 @@ export default function Filters() {
             <option value="All">All</option>
             <option value="Samsung">Samsung</option>
             <option value="Huawei">Huawei</option>
+            <option value="Apple">Apple</option>
+            <option value="Xiaomi">Xiaomi</option>
+            <option value="Asus">Asus</option>
+
             {/* <option value={brandNames[0].brand}>{brandNames[0].brand}</option> */}
           </select>
         </label>
