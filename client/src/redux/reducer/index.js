@@ -7,13 +7,18 @@ import {
   POST_PHONE,
   GET_BRANDS,
   GET_PHONE_BY_NAME,
+  ADD_TO_CART,
+  REMOVE_ONE_FROM_CART,
+  REMOVE_ALL_FROM_CART,
+  CLEAR_CART
 } from "../actions/actionTypes";
 
-const initialState = {
+export const initialState = {
   phones: [],
   phonesOne: [],
   detail: [],
   brands: [],
+  cart: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -75,7 +80,33 @@ function rootReducer(state = initialState, action) {
         ...state,
         phones: action.payload,
       };
-
+      case ADD_TO_CART: {
+        let newPhone = state.phones.find((phone) => phone.id === action.payload)
+        let phoneInCart = state.cart.find((phone) => phone.id === newPhone.id)
+        return phoneInCart ? {
+          ...state,
+          cart: state.cart.map((phone) => phone.id === newPhone.id ? {...phone, quantity: phone.quantity+1} : phone)
+        } : { ...state, cart: [...state.cart, {...newPhone, quantity: 1}] }
+      }
+      case REMOVE_ONE_FROM_CART:{
+        let phoneToDelete = state.cart.find((phone) => phone.id === action.payload)
+        return phoneToDelete.quantity > 1 ? {
+          ...state,
+          cart: state.cart.map((phone) => phone.id === action.payload ? {...phone, quantity: phone.quantity - 1} : phone )
+        } : {
+          ...state,
+          cart: state.cart.filter((phone) => phone.id !== action.payload)
+        }
+      }
+      case REMOVE_ALL_FROM_CART: {
+        return{
+        ...state,
+          cart: state.cart.filter((phone) => phone.id !== action.payload)
+        }
+      }
+      case CLEAR_CART: {
+        return state 
+      }
     default:
       return state;
   }
