@@ -55,6 +55,7 @@ function NavBar() {
         })}
       </ul>
       <CartWidget />
+      
       <Button>
         <Link to="/login">Sign Up</Link>
       </Button>
