@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react' 
-import { Link, useHistory } from 'react-router-dom'
+// import { Link, useHistory } from 'react-router-dom'
 import { postPhone, getBrands } from '../../redux/actions/actionCreators'
 import { useDispatch, useSelector } from 'react-redux'
 
 
 export function PhoneCreate ( ) {
     const dispatch = useDispatch()
-    const history = useHistory()
+    // const history = useHistory()
     const [input, setInput] = useState({
       name : '',
       price: '',
@@ -49,14 +49,14 @@ export function PhoneCreate ( ) {
             rating: '',
             review: '',
         })
-        history.push('/home')
+        // history.push('/home')
     }
 
     return (
         <div>
-            <Link to = '/home'>
+            {/* <Link to = '/home'>
                 <button>Volver</button>
-            </Link>
+            </Link> */}
 
             <h1>Postea tu telefono</h1>
             <form onSubmit={(e) => handleSubmit(e)}> 

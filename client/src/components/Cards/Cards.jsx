@@ -5,7 +5,7 @@ import { getPhones } from "../../redux/actions/actionCreators";
 import Card from "../Card/Card.jsx";
 import "./Cards.css";
 
-export default function Cards() {
+export default function Cards({currentPhones}) {
   const dispatch = useDispatch();
   const allPhones = useSelector((state) => state.phones);
 
@@ -24,7 +24,7 @@ export default function Cards() {
     // className="container"
     >
       <div className="card-container">
-        {allPhones.map((product) => {
+        {currentPhones.map((product) => {
           return (
             // <div>
             //   {/* <Card name={p.name} image={p.image} /> */}
