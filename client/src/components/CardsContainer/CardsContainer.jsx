@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPhones } from "../../redux/actions/actionCreators";
 import { useState } from "react";
 import Pagination from "../Paginate/Paginate";
+import SearchBar from "../SearchBar/SearchBar";
 import "./CardsContainer.css";
 import "../Paginate/Paginate.css";
 
@@ -30,6 +31,7 @@ function CardsContainer() {
     <div className="cards-container">
       <div className="filters-container">
         <Filters />
+        <SearchBar className="SearchBar" setCurrentPage={setCurrentPage} />
       </div>
       <div className="pag-container">
         <Pagination
