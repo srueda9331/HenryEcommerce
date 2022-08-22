@@ -3,9 +3,63 @@ import { Link, useHistory } from 'react-router-dom'
 import { postPhone, getBrands } from '../../redux/actions/actionCreators'
 import { useDispatch, useSelector } from 'react-redux'
 
+function validate (input) {
+
+    let errors = {}
+
+    if (!input.name) {
+        errors.name = 'Se requiere un modelo'
+    }
+    if (!input.price) {
+        errors.price = 'Se debe incluir un precio'
+    }
+    if (input.price < 0) {
+        errors.price = 'No puedes añadirle un valor menor a cero!'
+    }
+    if (!input.weight) {
+        errors.weight = 'Se requiere el peso del producto'
+    }
+    if (input.weight < 0) {
+        errors.weight = 'No puedes definirle un valor menor a cero!'
+    }
+    if (!input.height) {
+        errors.height = 'Se requiere el alto del producto'
+    }
+    if (input.height < 0) {
+        errors.height = 'No puedes definirle un valor menor a cero!'
+    }
+    if (!input.description) {
+        errors.description = 'Se requiere una descripción del producto'
+    }
+    if (input.description.length > 300) {
+        errors.description = 'La descripcion unicamente consta de 300 caracteres'
+    }
+    if (!input.image) {
+        errors.image = 'Se requiere una imagen del producto'
+    }
+    if (!input.brands) {
+        errors.brands = 'Se requiere la marca del product'
+    }
+    if (input.brands !== 'Samsung' || input.brands !== 'Huawei' || input.brands !=='Asus' || input.brands !== 'Apple' || input.brands !== 'Xiaomi'){
+        errors.brands = 'Debe colocar alguna de las siguientes marcas permitidas: Samsung - Huawei - Asus - Apple - Xiaomi'
+    }
+    if (!input.quantity) {
+        errors.quantity = 'Se requiere la cantidad disponible del producto'
+    }
+    if (input.quantity < 0 || input.quantity > 10000){
+        errors.quantity = 'La cantidad a ofrecer no debe superar las 10000 unidades'
+    }
+    if (!input.stock) {
+        errors.stock = 'Se requiere que indique si hay disponibilidad del producto (Solo responda Si o No)'
+    }
+    return errors
+}
+
+
 
 export function PhoneCreate ( ) {
     const dispatch = useDispatch()
+    const [errors, setErrors] = useState({})
     const history = useHistory()
     const [input, setInput] = useState({
       name : '',
@@ -17,8 +71,6 @@ export function PhoneCreate ( ) {
       brands: '',
       quantity: '',
       stock: '',
-      rating: '',
-      review: '',
     })
 
     useEffect(() => {
@@ -30,6 +82,10 @@ export function PhoneCreate ( ) {
             ...input,
             [e.target.name] : e.target.value
         } )
+        setErrors(validate({
+            ...input,
+            [e.target.name] : e.target.value
+        }))
     }
 
     function handleSubmit (e) {
@@ -68,6 +124,11 @@ export function PhoneCreate ( ) {
                     name = 'name'
                     onChange={handleChange}
                     />
+                    {
+                        errors.name && (
+                            <p>{errors.name}</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label>Precio:</label>
@@ -77,6 +138,11 @@ export function PhoneCreate ( ) {
                     name = 'price'
                     onChange={handleChange}
                     />
+                    {
+                        errors.price && (
+                            <p>{errors.price}</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label>Alto:</label>
@@ -86,6 +152,11 @@ export function PhoneCreate ( ) {
                     name = 'height'
                     onChange={handleChange}
                     />
+                    {
+                        errors.height && (
+                            <p>{errors.height}</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label>Peso:</label>
@@ -95,6 +166,11 @@ export function PhoneCreate ( ) {
                     name = 'weight'
                     onChange={handleChange}
                     />
+                    {
+                        errors.weight && (
+                            <p>{errors.weight}</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label>Descripcion:</label>
@@ -104,6 +180,11 @@ export function PhoneCreate ( ) {
                     name = 'description'
                     onChange={handleChange}
                     />
+                    {
+                        errors.description && (
+                            <p>{errors.description}</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label>Imagen:</label>
@@ -113,6 +194,11 @@ export function PhoneCreate ( ) {
                     name = 'image'
                     onChange={handleChange}
                     />
+                    {
+                        errors.image && (
+                            <p>{errors.image}</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label>Marca:</label>
@@ -122,6 +208,11 @@ export function PhoneCreate ( ) {
                     name = 'brands'
                     onChange={handleChange}
                     />
+                    {
+                        errors.brands && (
+                            <p>{errors.brands}</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label>Disponibles:</label>
@@ -131,33 +222,25 @@ export function PhoneCreate ( ) {
                     name = 'quantity'
                     onChange={handleChange}
                     />
+                    {
+                        errors.quantity && (
+                            <p>{errors.quantity}</p>
+                        )
+                    }
                 </div>
                 <div>
                     <label>Stock:</label>
                     <input
                     type = 'text'
-                    value= {input.quantity}
+                    value= {input.stock}
                     name = 'quantity'
                     onChange={handleChange}
                     />
-                </div>
-                <div>
-                <label>Puntuación:</label>
-                    <input
-                    type = 'number'
-                    value= {input.rating}
-                    name = 'rating'
-                    onChange={handleChange}
-                    />
-                </div>
-                <div>
-                <label>Reseña:</label>
-                    <input
-                    type = 'text'
-                    value= {input.review}
-                    name = 'review'
-                    onChange={handleChange}
-                    />
+                    {
+                        errors.stock && (
+                            <p>{errors.stock}</p>
+                        )
+                    }
                 </div>
                 <button type='submit'>Postear Telefono</button>
             </form>
