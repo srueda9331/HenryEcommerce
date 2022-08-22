@@ -28,9 +28,9 @@ function NavBar() {
         setInit(false);
       }
     });
-
     return userListener;
   }, [init]);
+
   return (
     <nav className="NavbarItems">
       <Link to="/">
@@ -55,7 +55,6 @@ function NavBar() {
         })}
       </ul>
       <CartWidget />
-      
       <Button>
         <Link to="/login">Sign Up</Link>
       </Button>

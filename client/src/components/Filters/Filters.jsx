@@ -32,8 +32,8 @@ export default function Filters() {
           Ordenar por precio:
           <select onClick={(e) => handleOrder(e)}>
             <option value="All">Todos</option>
-            <option value="Max">Mayor a menor</option>
-            <option value="Min">Menor a mayor</option>
+            <option value="Max">Menor a Mayor</option>
+            <option value="Min">Mayor a Menor</option>
           </select>
         </label>
       </div>
