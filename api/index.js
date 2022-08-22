@@ -20,11 +20,13 @@
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
 const addBrands = require("./src/controllers/brands");
+const addAdmin = require("./src/controllers/admin");
 
 const { DB_NAME, PORT } = process.env;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
+  addAdmin();
   addBrands();
   server.listen(PORT, () => {
     console.log(

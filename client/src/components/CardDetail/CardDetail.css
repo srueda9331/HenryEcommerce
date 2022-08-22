@@ -33,6 +33,7 @@
   }
 }
 .container .card_left {
+  max-width: 35%;
   padding: 0px;
   position: relative;
   height: auto;
@@ -116,7 +117,7 @@
 }
 
 div .card_left img {
-  width: 500px;
+  min-width: 250px;
   height: 550px;
   margin-top: 20px;
 }

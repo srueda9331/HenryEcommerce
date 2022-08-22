@@ -39,6 +39,11 @@ body {
   padding: 15px;
   margin: 15px auto;
   background-color: #f7f7f7;
+  border-radius: 20px;
+}
+
+.img-card {
+  height: 200px;
 }
 
 @media (max-width: 991px) {
@@ -71,7 +76,7 @@ body {
   left: 50%;
 }
 
-.el-wrapper:hover .img {
+.el-wrapper:hover .img-card {
   -o-filter: blur(7px);
   -ms-filter: blur(7px);
   filter: blur(7px);
@@ -106,7 +111,7 @@ body {
   text-align: center;
 }
 
-.el-wrapper .img {
+.el-wrapper .img-card {
   -webkit-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
   -moz-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
   -o-transition: all 800ms cubic-bezier(0, 0, 0.18, 1);
