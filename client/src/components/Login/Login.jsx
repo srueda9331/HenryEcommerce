@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { auth, googleProvider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
-import UserLoggedIn from "../UserLoggedIn/UserLoggedIn";
-
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
-  const [clicked, setClicked] = useState(true);
   const [user, setUser] = useState(() => auth.currentUser);
   const [init, setInit] = useState(true);
 
@@ -17,13 +15,11 @@ function Login() {
         console.log(user);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
       });
   };
 
-  const handleClick = () => {
-    setClicked(!clicked);
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userListener = auth.onAuthStateChanged((user) => {
@@ -40,16 +36,11 @@ function Login() {
     return userListener;
   }, [init]);
 
-  console.log(user);
-
   return (
     <div className="lgn-container">
       <div className="lg-container">
         {user ? (
-          <div className="logout-container">
-            <UserLoggedIn />
-            <button className="button-logout">LogOut</button>
-          </div>
+          navigate("/")
         ) : (
           <div class="main">
             <input

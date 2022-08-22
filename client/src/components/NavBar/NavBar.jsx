@@ -1,19 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MenuItems } from "./Menuitems";
-import { useSelector } from "react-redux";
+import { Button } from "../Button";
 import CartWidget from "../CartWidget.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import "./NavBar.css";
-import UserLoggedIn from "../UserLoggedIn/UserLoggedIn";
 import { auth } from "../../firebase";
+import UserLoggedIn from "../UserLoggedIn/UserLoggedIn";
 
 function NavBar() {
   const [clicked, setClicked] = useState(true);
+  const [user, setUser] = useState(() => auth.currentUser);
+  const [init, setInit] = useState(true);
+
   const handleClick = () => {
     setClicked(!clicked);
   };
 
+  useEffect(() => {
+    const userListener = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(false);
+      }
+      if (init) {
+        setInit(false);
+      }
+    });
+
+    return userListener;
+  }, [init]);
   return (
     <nav className="NavbarItems">
       <Link to="/">
@@ -38,16 +55,10 @@ function NavBar() {
         })}
       </ul>
       <CartWidget />
-      {/* {user.photoURL ? (
-        <div>
-          <img src={photoURL} alt="" />
-          <h3>{displayName}</h3>
-        </div>
-      ) : (
-        <Link to="/login">
-          <button className="btn-login">Log In</button>
-        </Link>
-      )} */}
+      <Button>
+        <Link to="/login">Sign Up</Link>
+      </Button>
+      {user ? <UserLoggedIn /> : null}
     </nav>
   );
 }
