@@ -1,16 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MenuItems } from "./Menuitems";
+import { Button } from "../Button";
 import CartWidget from "../CartWidget.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import "./NavBar.css";
+import { auth } from "../../firebase";
+import UserLoggedIn from "../UserLoggedIn/UserLoggedIn";
 
 function NavBar() {
   const [clicked, setClicked] = useState(true);
+  const [user, setUser] = useState(() => auth.currentUser);
+  const [init, setInit] = useState(true);
+
   const handleClick = () => {
     setClicked(!clicked);
   };
 
+  useEffect(() => {
+    const userListener = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(false);
+      }
+      if (init) {
+        setInit(false);
+      }
+    });
+
+    return userListener;
+  }, [init]);
   return (
     <nav className="NavbarItems">
       <Link to="/">
@@ -35,7 +55,10 @@ function NavBar() {
         })}
       </ul>
       <CartWidget />
-      <button>Sign Up</button>
+      <Button>
+        <Link to="/login">Sign Up</Link>
+      </Button>
+      {user ? <UserLoggedIn /> : null}
     </nav>
   );
 }

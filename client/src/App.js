@@ -8,8 +8,9 @@ import Home from "./components/Home/Home.jsx";
 import BackgroundSlider from "react-background-slider";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import CardsContainer from "./components/CardsContainer/CardsContainer";
-import CardDetail from "./components/CardDetail/CardDetail";
 import CardDetailContainer from "./components/CardDetailContainer/CardDetailContainer";
+import Login from "./components/Login/Login";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route exact path="/phone/:id" element={<CardDetailContainer />} />
           <Route exact path="/contact" element={<ContactUs />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/" element={<CardsContainer />} />
         </Routes>
       </main>
