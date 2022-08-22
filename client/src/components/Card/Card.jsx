@@ -20,7 +20,7 @@ function Card({ id, name, image, brand, price }) {
             <div className="row">
               <div className="el-wrapper">
                 <div className="box-up">
-                  <img className="img" src={image} alt="" />
+                  <img className="img-card" src={image} alt="" />
                   <div className="img-info">
                     <div className="info-inner">
                       <span className="p-name">
