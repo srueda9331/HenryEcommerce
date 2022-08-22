@@ -13,7 +13,9 @@ function validate (input) {
     if (!input.price) {
         errors.price = 'Se debe incluir un precio'
     }
+
     if(!/^[a-zA-z]+$/.test(input.name)) errors.name = 'Use solo letras para escribir el nombre del modelo'
+
     if (input.price < 0) {
         errors.price = 'No puedes añadirle un valor menor a cero!'
     }
@@ -38,7 +40,7 @@ function validate (input) {
     if (!input.image) {
         errors.image = 'Se requiere una imagen del producto'
     }
-    if(!/(http(s?):)([/|.|\w|\s|-])*\.(jpg|gif|png|jpeg)/.test(input.image)) {
+     if(!/(http(s?):)([/|.|\w|\s|-])*\.(jpg|gif|png|jpeg)/.test(input.image)) {
         errors.image = 'La URL no es vaida , la imagen debe ser de tipo .png, .jpeg, .jpg o .gif en su extensión'
       }
     if (!input.brands) {

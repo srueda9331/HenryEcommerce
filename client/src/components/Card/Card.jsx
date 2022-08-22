@@ -20,11 +20,11 @@ function Card({ id, name, image, brand, price }) {
             <div className="row">
               <div className="el-wrapper">
                 <div className="box-up">
-                  <img className="img" src={image} alt="" />
+                  <img className="img-card" src={image} alt="" />
                   <div className="img-info">
                     <div className="info-inner">
                       <span className="p-name">
-                        {name.length > 8 ? name.slice(8) : name}{" "}
+                      {name.length > 10? name[0].toUpperCase() + name.slice(2,30) : name }
                       </span>
                     </div>
                     <div className="a-size">
