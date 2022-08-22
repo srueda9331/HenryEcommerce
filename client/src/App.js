@@ -10,6 +10,7 @@ import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import CardsContainer from "./components/CardsContainer/CardsContainer";
 import CardDetailContainer from "./components/CardDetailContainer/CardDetailContainer";
 import Login from "./components/Login/Login";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 function App() {
   return (
