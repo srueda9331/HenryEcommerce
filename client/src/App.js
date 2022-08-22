@@ -11,6 +11,7 @@ import CardsContainer from "./components/CardsContainer/CardsContainer";
 import CardDetailContainer from "./components/CardDetailContainer/CardDetailContainer";
 import Login from "./components/Login/Login";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import { PhoneCreate } from "./components/ProductCreate/ProductCreate";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<CardsContainer />} />
+          <Route path="/create" element={<PhoneCreate />} />
         </Routes>
       </main>
     </Router>
