@@ -75,6 +75,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         phones: action.payload,
       };
+
     default:
       return state;
   }

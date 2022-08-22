@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MenuItems } from "./Menuitems";
+import { useSelector } from "react-redux";
 import CartWidget from "../CartWidget.jsx";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import "./NavBar.css";
+import UserLoggedIn from "../UserLoggedIn/UserLoggedIn";
+import { auth } from "../../firebase";
 
 function NavBar() {
   const [clicked, setClicked] = useState(true);
@@ -35,7 +38,16 @@ function NavBar() {
         })}
       </ul>
       <CartWidget />
-      <button>Sign Up</button>
+      {/* {user.photoURL ? (
+        <div>
+          <img src={photoURL} alt="" />
+          <h3>{displayName}</h3>
+        </div>
+      ) : (
+        <Link to="/login">
+          <button className="btn-login">Log In</button>
+        </Link>
+      )} */}
     </nav>
   );
 }
