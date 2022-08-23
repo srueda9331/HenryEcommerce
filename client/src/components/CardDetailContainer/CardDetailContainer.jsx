@@ -8,6 +8,7 @@ import "./CardDetailContainer.css";
 function CardDetailContainer() {
   return (
     <div className="next-logo">
+      {/* CardDetail */}
       <CardDetail />
     </div>
   );
