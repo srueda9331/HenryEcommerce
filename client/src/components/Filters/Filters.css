@@ -1,0 +1,24 @@
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  width: 50vh;
+}
+
+.filter {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+select {
+  margin-top: 5px;
+  width: max-content;
+  height: max-content;
+  flex-shrink: 1;
+  cursor: pointer;
+  padding: 7px 10px;
+  background: #f0f0f0;
+  color: #7b7b7b;
+  border: 2px solid;
+  border-color: rgb(104, 104, 226);
+  border-radius: 5px;
+}
