@@ -10,9 +10,9 @@ import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import CardsContainer from "./components/CardsContainer/CardsContainer";
 import CardDetailContainer from "./components/CardDetailContainer/CardDetailContainer";
 import Login from "./components/Login/Login";
-import UserPersonalInfo from "./components/UserPersonalInfo/UserPersonalInfo.jsx";
+import UserPersonalInfo from "./components/UserPersonalInfo/UserPersonalInfo";
 // import UserProfileDashboard from "./components/UserProfileDashboard/UserProfileDashboard.jsx";
-import ProfileDashboard from "./components/UserProfileDashboard/ProfileDashboard.jsx";
+import ProfileDashboard from "./components/UserProfileDashboard/ProfileDashboard";
 
 // import { setAuthToken } from "./components/setAuthToken";
 // import RouteGuard from "./components/RouteGuard";
