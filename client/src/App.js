@@ -10,6 +10,10 @@ import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import CardsContainer from "./components/CardsContainer/CardsContainer";
 import CardDetailContainer from "./components/CardDetailContainer/CardDetailContainer";
 import Login from "./components/Login/Login";
+import UserPersonalInfo from "./components/UserPersonalInfo/UserPersonalInfo.jsx";
+// import UserProfileDashboard from "./components/UserProfileDashboard/UserProfileDashboard.jsx";
+import ProfileDashboard from "./components/UserProfileDashboard/ProfileDashboard.jsx";
+
 // import { setAuthToken } from "./components/setAuthToken";
 // import RouteGuard from "./components/RouteGuard";
 // import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
@@ -33,6 +37,17 @@ function App() {
       <main>
         <Routes>
           {/* <Route exact path="/user" component={RouteGuard} /> */}
+
+          <Route
+            exact
+            path="/userpersonalinfo"
+            element={<UserPersonalInfo />}
+          />
+          <Route
+            exact
+            path="/profiledashboard"
+            element={<ProfileDashboard />}
+          />
           <Route exact path="/phone/:id" element={<CardDetailContainer />} />
           <Route exact path="/contact" element={<ContactUs />} />
           <Route path="/login" element={<Login />} />

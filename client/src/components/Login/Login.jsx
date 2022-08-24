@@ -66,6 +66,7 @@ function Login() {
           const user = response.user;
           localStorage.setItem("token", token);
           localStorage.setItem("user", user);
+
           setAuthToken(token);
           navigate("/");
         });
@@ -76,9 +77,6 @@ function Login() {
     }
   };
 
-  // useEffect(() => {
-  //   console.log(input.email);
-  // }, [input]);
   return (
     <div className="lgn-container">
       <div className="lg-container">
