@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getPhoneName } from "../../redux/actions/actionCreators";
 import "./SearchBar.css";
 
-function SearchBar() {
+function SearchBar({ setCurrentPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
@@ -15,6 +15,7 @@ function SearchBar() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(getPhoneName(name));
+    setCurrentPage(1);
   }
 
   return (

@@ -3,6 +3,9 @@ import { auth, googleProvider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
+// import { loginUser } from "../../redux/actions/actionCreators";
+import axios from "axios";
+import { setAuthToken } from "../setAuthToken";
 
 function Login() {
   const [user, setUser] = useState(() => auth.currentUser);
@@ -35,7 +38,47 @@ function Login() {
 
     return userListener;
   }, [init]);
+  const [input, setInput] = useState({
+    email: "",
+    password: "",
+  });
+  const handleChange = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  };
 
+  const [isSubmitedLogin, setSubmitedLogin] = useState(false);
+  // const isSession = useSelector((state) => state.loginState);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      setSubmitedLogin(true);
+      await axios
+        .post(`http://localhost:3001/users/login`, {
+          ...input,
+        })
+
+        .then((response) => {
+          const token = response.data.token;
+          const user = response.user;
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", user);
+          setAuthToken(token);
+          navigate("/");
+        });
+    } catch (error) {
+      console.log("hubo un error: " + error);
+    } finally {
+      setSubmitedLogin(false);
+    }
+  };
+
+  // useEffect(() => {
+  //   console.log(input.email);
+  // }, [input]);
   return (
     <div className="lgn-container">
       <div className="lg-container">
@@ -95,7 +138,7 @@ function Login() {
             </div>
 
             <div class="login">
-              <form>
+              <form onSubmit={(e) => handleSubmit(e)}>
                 <label className="label" for="chk" aria-hidden="true">
                   Login
                 </label>
@@ -105,15 +148,21 @@ function Login() {
                   name="email"
                   placeholder="Email"
                   required=""
+                  value={input.email}
+                  onChange={(e) => handleChange(e)}
                 />
                 <input
                   className="input"
                   type="password"
-                  name="pswd"
+                  name="password"
                   placeholder="Password"
                   required=""
+                  value={input.password}
+                  onChange={(e) => handleChange(e)}
                 />
-                <button className="button">Login</button>
+                <button className="button" type="submit">
+                  Login
+                </button>
                 <div className="google-btn button-g" onClick={signInWithGoogle}>
                   <div className="google-icon-wrapper">
                     <img
