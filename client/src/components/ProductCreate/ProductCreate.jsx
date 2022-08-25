@@ -7,54 +7,59 @@
 
 //     let errors = {}
 
-//     if (!input.name) {
-//         errors.name = 'Se requiere un modelo'
-//     }
-//     if (!input.price) {
-//         errors.price = 'Se debe incluir un precio'
-//     }
-//     if (input.price < 0) {
-//         errors.price = 'No puedes añadirle un valor menor a cero!'
-//     }
-//     if (!input.weight) {
-//         errors.weight = 'Se requiere el peso del producto'
-//     }
-//     if (input.weight < 0) {
-//         errors.weight = 'No puedes definirle un valor menor a cero!'
-//     }
-//     if (!input.height) {
-//         errors.height = 'Se requiere el alto del producto'
-//     }
-//     if (input.height < 0) {
-//         errors.height = 'No puedes definirle un valor menor a cero!'
-//     }
-//     if (!input.description) {
-//         errors.description = 'Se requiere una descripción del producto'
-//     }
-//     if (input.description.length > 300) {
-//         errors.description = 'La descripcion unicamente consta de 300 caracteres'
-//     }
-//     if (!input.image) {
-//         errors.image = 'Se requiere una imagen del producto'
-//     }
-//     if (!input.brands) {
-//         errors.brands = 'Se requiere la marca del product'
-//     }
-//     if (input.brands !== 'Samsung' || input.brands !== 'Huawei' || input.brands !=='Asus' || input.brands !== 'Apple' || input.brands !== 'Xiaomi'){
-//         errors.brands = 'Debe colocar alguna de las siguientes marcas permitidas: Samsung - Huawei - Asus - Apple - Xiaomi'
-//     }
-//     if (!input.quantity) {
-//         errors.quantity = 'Se requiere la cantidad disponible del producto'
-//     }
-//     if (input.quantity < 0 || input.quantity > 10000){
-//         errors.quantity = 'La cantidad a ofrecer no debe superar las 10000 unidades'
-//     }
-//     if (!input.stock) {
-//         errors.stock = 'Se requiere que indique si hay disponibilidad del producto (Solo responda Si o No)'
-//     }
-//     return errors
-// }
+    if (!input.name) {
+        errors.name = 'Se requiere un modelo'
+    }
+    if (!input.price) {
+        errors.price = 'Se debe incluir un precio'
+    }
 
+    if(!/^[a-zA-z]+$/.test(input.name)) errors.name = 'Use solo letras para escribir el nombre del modelo'
+
+    if (input.price < 0) {
+        errors.price = 'No puedes añadirle un valor menor a cero!'
+    }
+    if (!input.weight) {
+        errors.weight = 'Se requiere el peso del producto'
+    }
+    if (input.weight < 0) {
+        errors.weight = 'No puedes definirle un valor menor a cero!'
+    }
+    if (!input.height) {
+        errors.height = 'Se requiere el alto del producto'
+    }
+    if (input.height < 0) {
+        errors.height = 'No puedes definirle un valor menor a cero!'
+    }
+    if (!input.description) {
+        errors.description = 'Se requiere una descripción del producto'
+    }
+    if (input.description.length > 300) {
+        errors.description = 'La descripcion unicamente consta de 300 caracteres'
+    }
+    if (!input.image) {
+        errors.image = 'Se requiere una imagen del producto'
+    }
+     if(!/(http(s?):)([/|.|\w|\s|-])*\.(jpg|gif|png|jpeg)/.test(input.image)) {
+        errors.image = 'La URL no es vaida , la imagen debe ser de tipo .png, .jpeg, .jpg o .gif en su extensión'
+      }
+    if (!input.brands) {
+        errors.brands = 'Se requiere la marca del product'
+    }
+    if (input.brands !== 'Samsung' || input.brands !== 'Huawei' || input.brands !=='Asus' || input.brands !== 'Apple' || input.brands !== 'Xiaomi'){
+        errors.brands = 'Debe colocar alguna de las siguientes marcas permitidas: Samsung - Huawei - Asus - Apple - Xiaomi'
+    }
+    if (!input.quantity) {
+        errors.quantity = 'Se requiere la cantidad disponible del producto'
+    }
+    if (input.quantity < 0 || input.quantity > 10000){
+        errors.quantity = 'La cantidad a ofrecer no debe superar las 10000 unidades'
+    }
+    if (!input.stock) {
+        errors.stock = 'Se requiere que indique si hay disponibilidad del producto (Solo responda Si o No)'
+    }
+    return errors
+}
 // export function PhoneCreate ( ) {
 //     const dispatch = useDispatch()
 //     const [errors, setErrors] = useState({})
