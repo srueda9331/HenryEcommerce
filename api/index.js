@@ -1,31 +1,26 @@
-//                       _oo0oo_
-//                      o8888888o
-//                      88" . "88
-//                      (| -_- |)
-//                      0\  =  /0
-//                    ___/`---'\___
-//                  .' \\|     |// '.
-//                 / \\|||  :  |||// \
-//                / _||||| -:- |||||- \
-//               |   | \\\  -  /// |   |
-//               | \_|  ''\---/''  |_/ |
-//               \  .-\__  '-'  ___/-. /
-//             ___'. .'  /--.--\  `. .'___
-//          ."" '<  `.___\_<|>_/___.' >' "".
-//         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
-//         \  \ `_.   \_ __\ /__ _/   .-` /  /
-//     =====`-.____`.___ \_____/___.-`___.-'=====
-//                       `=---='
-//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+require("dotenv").config();
+const server = require("./src/server/express");
+const { sequelize } = require("./src/models");
+const { precharge } = require("./src/repositories/precharge.repositories");
 
-const { DB_NAME } = process.env;
-const PORT = 3001;
+const port = process.env.PORT || "3001";
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(PORT, () => {
-    console.log(`INICIO EXITOSO. Conectado a base de datos: ${DB_NAME}. Escuchando en el puerto: ${PORT}`); // eslint-disable-line no-console
-  });
+// sequelize.sync({ force: false }).then(() => {
+//     server.listen(port, async () => {
+//         console.log(`Listening on ${port}`); // eslint-disable-line no-console
+//     });
+// });
+
+server.listen(port, async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully."); // eslint-disable-line no-console
+    await sequelize.sync({ force: false });
+    console.log("All models were synchronized successfully."); // eslint-disable-line no-console
+    await precharge();
+  } catch (error) {
+    console.error("Unable to connect to the database:", error); // eslint-disable-line no-console
+  }
+  console.log(`Listening on ${port}`); // eslint-disable-line no-console
 });
