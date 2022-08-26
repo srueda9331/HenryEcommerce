@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react' 
 import { Link,  } from 'react-router-dom'
 import { postPhone, getBrands } from '../../redux/actions/actionCreators'
@@ -5,7 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Style from './ProductCreate.module.css'
 function validate (input) {
 
-    let errors = {}
+
+//     let errors = {}
 
     if (!input.name ||!/^[a-zA-z]+$/.test(input.name) ) {
         errors.name = 'Se requiere un modelo, use solo letras para escribir su nombre'
@@ -60,8 +62,36 @@ function validate (input) {
     }
     return errors
 }
+// export function PhoneCreate ( ) {
+//     const dispatch = useDispatch()
+//     const [errors, setErrors] = useState({})
+//     const history = useHistory()
+//     const [input, setInput] = useState({
+//       name : '',
+//       price: '',
+//       weight: '',
+//       height: '',
+//       description: '',
+//       image: '',
+//       brands: '',
+//       quantity: '',
+//       stock: '',
+//     })
 
+//     useEffect(() => {
+//         dispatch(getBrands())
+//     },[])
 
+//     function handleChange (e) {
+//         setInput( {
+//             ...input,
+//             [e.target.name] : e.target.value
+//         } )
+//         setErrors(validate({
+//             ...input,
+//             [e.target.name] : e.target.value
+//         }))
+//     }
 
 export function PhoneCreate ( ) {
     const dispatch = useDispatch()
@@ -79,10 +109,6 @@ export function PhoneCreate ( ) {
       quantity: '',
       stock: '',
     })
-
-    useEffect(() => {
-        dispatch(getBrands())
-    },[])
 
     function handleChange (e) {
         setInput( {
@@ -254,6 +280,138 @@ export function PhoneCreate ( ) {
                 <button disabled = {errors.name || !input.price || errors.weight || errors.height || errors.brands || errors.description || errors.price || errors.quantity ? true : false} type = 'submit'>Postear telefono</button>
             </form>
 
-        </div>
-    )
-}
+//             <h1>Postea tu telefono</h1>
+//             <form onSubmit={(e) => handleSubmit(e)}>
+//                 <div>
+//                     <label>Nombre:</label>
+//                     <input
+//                     type = 'text'
+//                     value= {input.name}
+//                     name = 'name'
+//                     onChange={handleChange}
+//                     />
+//                     {
+//                         errors.name && (
+//                             <p>{errors.name}</p>
+//                         )
+//                     }
+//                 </div>
+//                 <div>
+//                     <label>Precio:</label>
+//                     <input
+//                     type = 'number'
+//                     value= {input.price}
+//                     name = 'price'
+//                     onChange={handleChange}
+//                     />
+//                     {
+//                         errors.price && (
+//                             <p>{errors.price}</p>
+//                         )
+//                     }
+//                 </div>
+//                 <div>
+//                     <label>Alto:</label>
+//                     <input
+//                     type = 'number'
+//                     value= {input.height}
+//                     name = 'height'
+//                     onChange={handleChange}
+//                     />
+//                     {
+//                         errors.height && (
+//                             <p>{errors.height}</p>
+//                         )
+//                     }
+//                 </div>
+//                 <div>
+//                     <label>Peso:</label>
+//                     <input
+//                     type = 'number'
+//                     value= {input.weight}
+//                     name = 'weight'
+//                     onChange={handleChange}
+//                     />
+//                     {
+//                         errors.weight && (
+//                             <p>{errors.weight}</p>
+//                         )
+//                     }
+//                 </div>
+//                 <div>
+//                     <label>Descripcion:</label>
+//                     <input
+//                     type = 'text'
+//                     value= {input.description}
+//                     name = 'description'
+//                     onChange={handleChange}
+//                     />
+//                     {
+//                         errors.description && (
+//                             <p>{errors.description}</p>
+//                         )
+//                     }
+//                 </div>
+//                 <div>
+//                     <label>Imagen:</label>
+//                     <input
+//                     type = 'url'
+//                     value= {input.image}
+//                     name = 'image'
+//                     onChange={handleChange}
+//                     />
+//                     {
+//                         errors.image && (
+//                             <p>{errors.image}</p>
+//                         )
+//                     }
+//                 </div>
+//                 <div>
+//                     <label>Marca:</label>
+//                     <input
+//                     type = 'text'
+//                     value= {input.brands}
+//                     name = 'brands'
+//                     onChange={handleChange}
+//                     />
+//                     {
+//                         errors.brands && (
+//                             <p>{errors.brands}</p>
+//                         )
+//                     }
+//                 </div>
+//                 <div>
+//                     <label>Disponibles:</label>
+//                     <input
+//                     type = 'number'
+//                     value= {input.quantity}
+//                     name = 'quantity'
+//                     onChange={handleChange}
+//                     />
+//                     {
+//                         errors.quantity && (
+//                             <p>{errors.quantity}</p>
+//                         )
+//                     }
+//                 </div>
+//                 <div>
+//                     <label>Stock:</label>
+//                     <input
+//                     type = 'text'
+//                     value= {input.stock}
+//                     name = 'quantity'
+//                     onChange={handleChange}
+//                     />
+//                     {
+//                         errors.stock && (
+//                             <p>{errors.stock}</p>
+//                         )
+//                     }
+//                 </div>
+//                 <button type='submit'>Postear Telefono</button>
+//             </form>
+
+
+//         </div>
+//     )
+// }

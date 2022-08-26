@@ -18,11 +18,15 @@ export const Button = ({
     : STYLES[0];
 
   const checkbuttonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
+  const isSession = window.localStorage.getItem("user");
 
-  return auth.currentUser ? (
+  return auth.currentUser || isSession ? (
     <button
       className={`btn ${checkbuttonStyle} ${checkbuttonSize}`}
-      onClick={() => auth.signOut()}
+      onClick={() => {
+        auth.signOut();
+        localStorage.clear();
+      }}
     >
       Sign Out
     </button>
