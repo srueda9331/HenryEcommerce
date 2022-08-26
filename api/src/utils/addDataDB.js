@@ -250,7 +250,7 @@ function addDataDB() {
     {
       id: "78b49182-965d-46f0-9fd4-8426732583b1",
       brands: "Samsung",
-      name: "CELULAR SAMSUNG SM-A528B NEGRO",
+      name: "SAMSUNG SM-A528B NEGRO",
       price: 118.999,
       weight: 189,
       height: 15.99,
