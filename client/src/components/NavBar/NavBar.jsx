@@ -39,6 +39,7 @@ function NavBar() {
           <i className="fa fa-heart"></i>
         </h1>
       </Link>
+      <Link to='/create'>Sube un celular</Link>
       <div className="menu-icon" onClick={handleClick}>
         <i className={!clicked ? "fas fa-times" : "fas fa-bars"}></i>
       </div>

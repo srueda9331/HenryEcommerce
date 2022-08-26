@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react' 
-import { Link, useHistory } from 'react-router-dom'
+import { Link,  } from 'react-router-dom'
 import { postPhone, getBrands } from '../../redux/actions/actionCreators'
 import { useDispatch, useSelector } from 'react-redux'
-
+import Style from './ProductCreate.module.css'
 function validate (input) {
 
     let errors = {}
 
-    if (!input.name) {
-        errors.name = 'Se requiere un modelo'
+    if (!input.name ||!/^[a-zA-z]+$/.test(input.name) ) {
+        errors.name = 'Se requiere un modelo, use solo letras para escribir su nombre'
     }
     if (!input.price) {
         errors.price = 'Se debe incluir un precio'
     }
 
-    if(!/^[a-zA-z]+$/.test(input.name)) errors.name = 'Use solo letras para escribir el nombre del modelo'
+    // if(!/^[a-zA-z]+$/.test(input.name)) errors.name = 'Use solo letras para escribir el nombre del modelo'
 
     if (input.price < 0) {
         errors.price = 'No puedes añadirle un valor menor a cero!'
@@ -46,8 +46,8 @@ function validate (input) {
     if (!input.brands) {
         errors.brands = 'Se requiere la marca del product'
     }
-    if (input.brands !== 'Samsung' || input.brands !== 'Huawei' || input.brands !=='Asus' || input.brands !== 'Apple' || input.brands !== 'Xiaomi'){
-        errors.brands = 'Debe colocar alguna de las siguientes marcas permitidas: Samsung - Huawei - Asus - Apple - Xiaomi'
+    if (input.brands.length > 1){
+        errors.brands = 'El producto solo puede constar de una sola marca'
     }
     if (!input.quantity) {
         errors.quantity = 'Se requiere la cantidad disponible del producto'
@@ -66,7 +66,8 @@ function validate (input) {
 export function PhoneCreate ( ) {
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({})
-    const history = useHistory()
+    // const history = useHistory()
+    const brands = useSelector((state) => state.brands)
     const [input, setInput] = useState({
       name : '',
       price: '',
@@ -94,6 +95,16 @@ export function PhoneCreate ( ) {
         }))
     }
 
+    function handleSelect (e) {
+        if (!input.brands > 1){
+            setInput({
+                ...input,
+                brands: [e.target.vale]
+            })
+        }
+        return
+    }
+
     function handleSubmit (e) {
         e.preventDefault()
         dispatch(postPhone(input))
@@ -111,144 +122,136 @@ export function PhoneCreate ( ) {
             rating: '',
             review: '',
         })
-        history.push('/home')
+        // history.push('/home')
     }
 
     return (
         <div>
             <Link to = '/home'>
-                <button>Volver</button>
+                <button className={Style.btn}>Volver</button>
             </Link>
 
             <h1>Postea tu telefono</h1>
             <form onSubmit={(e) => handleSubmit(e)}> 
                 <div>
-                    <label>Nombre:</label>
+                    <label className ={Style.text}>Modelo:</label>
                     <input
                     type = 'text'
                     value= {input.name}
                     name = 'name'
                     onChange={handleChange}
+                    className = {errors.name ? Style.inpE : Style.inp}
                     />
                     {
                         errors.name && (
-                            <p>{errors.name}</p>
+                            <p className= {Style.error}>{errors.name}</p>
                         )
                     }
                 </div>
                 <div>
-                    <label>Precio:</label>
+                    <label className ={Style.text}>Precio:</label>
                     <input
                     type = 'number'
                     value= {input.price}
                     name = 'price'
                     onChange={handleChange}
+                    className = {errors.price ? Style.inpE : Style.inp}
                     />
                     {
                         errors.price && (
-                            <p>{errors.price}</p>
+                            <p className= {Style.error}>{errors.price}</p>
                         )
                     }
                 </div>
-                <div>
+                <div className ={Style.text}>
                     <label>Alto:</label>
                     <input
                     type = 'number'
                     value= {input.height}
                     name = 'height'
                     onChange={handleChange}
+                    className = {errors.height ? Style.inpE : Style.inp}
                     />
                     {
                         errors.height && (
-                            <p>{errors.height}</p>
+                            <p className= {Style.error}>{errors.height}</p>
                         )
                     }
                 </div>
-                <div>
+                <div className ={Style.text}>
                     <label>Peso:</label>
                     <input
                     type = 'number'
                     value= {input.weight}
                     name = 'weight'
                     onChange={handleChange}
+                    className = {errors.weight ? Style.inpE : Style.inp}
                     />
                     {
                         errors.weight && (
-                            <p>{errors.weight}</p>
+                            <p className= {Style.error}>{errors.weight}</p>
                         )
                     }
                 </div>
                 <div>
-                    <label>Descripcion:</label>
+                    <label className ={Style.text}>Descripcion:</label>
                     <input
                     type = 'text'
                     value= {input.description}
                     name = 'description'
                     onChange={handleChange}
+                    className = {errors.description ? Style.inpE : Style.inp}
                     />
                     {
                         errors.description && (
-                            <p>{errors.description}</p>
+                            <p className= {Style.error}>{errors.description}</p>
                         )
                     }
                 </div>
-                <div>
+                <div className ={Style.text}>
                     <label>Imagen:</label>
                     <input
-                    type = 'url'
+                    type = 'file'
+                    accept="image/png, image/jpg"
                     value= {input.image}
                     name = 'image'
                     onChange={handleChange}
+                    className = {errors.description ? Style.inpE : Style.inp}
                     />
                     {
                         errors.image && (
-                            <p>{errors.image}</p>
+                            <p className= {Style.error}>{errors.image}</p>
                         )
                     }
                 </div>
                 <div>
-                    <label>Marca:</label>
-                    <input
-                    type = 'text'
-                    value= {input.brands}
-                    name = 'brands'
-                    onChange={handleChange}
-                    />
-                    {
-                        errors.brands && (
-                            <p>{errors.brands}</p>
+                    <select onChange={e => handleSelect(e)}>
+                   {
+                    brands && brands.map((el) => {
+                        return (
+                            <option value={el}>{el}</option>
                         )
-                    }
+                    })
+                   }
+                   </select>
                 </div>
+                <ul><li>{input.brands}</li></ul>
                 <div>
-                    <label>Disponibles:</label>
+                    <label className ={Style.text}>Disponibles:</label>
                     <input
                     type = 'number'
                     value= {input.quantity}
                     name = 'quantity'
                     onChange={handleChange}
+                    className = {errors.quantity ? Style.inpE : Style.inp}
                     />
                     {
                         errors.quantity && (
-                            <p>{errors.quantity}</p>
+                            <p className= {Style.error}>{errors.quantity}</p>
                         )
                     }
                 </div>
-                <div>
-                    <label>Stock:</label>
-                    <input
-                    type = 'text'
-                    value= {input.stock}
-                    name = 'quantity'
-                    onChange={handleChange}
-                    />
-                    {
-                        errors.stock && (
-                            <p>{errors.stock}</p>
-                        )
-                    }
-                </div>
-                <button type='submit'>Postear Telefono</button>
+                <button disabled = {errors.name || !input.price || errors.weight || errors.height || errors.brands || errors.description || errors.price || errors.quantity ? true : false} type = 'submit'>Postear telefono</button>
             </form>
 
         </div>

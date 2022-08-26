@@ -29,9 +29,10 @@ function App() {
         <Routes>
           <Route exact path="/phone/:id" element={<CardDetailContainer />} />
           <Route exact path="/contact" element={<ContactUs />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<CardsContainer />} />
-          <Route path="/create" element={<PhoneCreate />} />
+          <Route exact path="/create" element={<PhoneCreate />}/>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/" element={<CardsContainer />} />
+          
         </Routes>
       </main>
     </Router>
