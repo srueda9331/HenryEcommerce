@@ -14,14 +14,7 @@ const verifyToken = require("../middlewares/tokenValidation");
 
 const router = express.Router();
 
-router.post(
-  "/",
-  verifyToken,
-  roleValidator,
-  postValidator,
-  validationResultHandler,
-  create
-);
+router.post("/", validationResultHandler, create);
 router.delete("/:id", verifyToken, roleValidator, destroy);
 router.post("/:id", verifyToken, roleValidator, restore);
 router.put(
