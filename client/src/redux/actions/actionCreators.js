@@ -1,4 +1,5 @@
 import axios from "axios";
+import Card from "../../components/Card/Card";
 import {
   FILTER_BRAND,
   GET_PHONES,
@@ -7,6 +8,7 @@ import {
   CLEAN_DETAIL,
   GET_BRANDS,
   GET_PHONE_BY_NAME,
+  ADD_TO_CART,
 } from "./actionTypes";
 
 export function getPhones() {
@@ -87,3 +89,7 @@ export function getPhoneName(name) {
     }
   };
 }
+
+
+
+

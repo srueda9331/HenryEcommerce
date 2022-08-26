@@ -8,7 +8,7 @@ import {
   GET_BRANDS,
   GET_PHONE_BY_NAME,
   ADD_TO_CART,
-  REMOVE_ONE_FROM_CART,
+  REMOVE_ONE,
   REMOVE_ALL_FROM_CART,
   CLEAR_CART
 } from "../actions/actionTypes";
@@ -22,6 +22,8 @@ export const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
+  console.log(action);
+
   switch (action.type) {
     case GET_PHONES:
       return {
@@ -80,24 +82,37 @@ function rootReducer(state = initialState, action) {
         ...state,
         phones: action.payload,
       };
-      case ADD_TO_CART: {
-        let newPhone = state.phones.find((phone) => phone.id === action.payload)
-        let phoneInCart = state.cart.find((phone) => phone.id === newPhone.id)
-        return phoneInCart ? {
-          ...state,
-          cart: state.cart.map((phone) => phone.id === newPhone.id ? {...phone, quantity: phone.quantity+1} : phone)
-        } : { ...state, cart: [...state.cart, {...newPhone, quantity: 1}] }
+      case ADD_TO_CART: 
+      //{
+      //   let newPhone = state.phones.find((phone) => phone.id === action.payload)
+      //   let phoneInCart = state.cart.find((phone) => phone.id === newPhone.id)
+      //   return phoneInCart ? {
+      //     ...state,
+      //     cart: state.cart.map((phone) => phone.id === newPhone.id ? {...phone, quantity: phone.quantity+1} : phone)
+      //   } : { ...state, cart: [...state.cart, {...newPhone, quantity: 1}] }
+      // }
+      return {
+        ...state,
+        cart: [...state.cart, action.payload],
       }
-      case REMOVE_ONE_FROM_CART:{
-        let phoneToDelete = state.cart.find((phone) => phone.id === action.payload)
-        return phoneToDelete.quantity > 1 ? {
+      case REMOVE_ONE:
+        // let phoneToDelete = state.cart.find((phone) => phone.id === action.payload)
+        // return phoneToDelete.quantity > 1 ? {
+        //   ...state,
+        //   cart: state.cart.map((phone) => phone.id === action.payload ? {...phone, quantity: phone.quantity - 1} : phone )
+        // } : {
+        //   ...state,
+        //   cart: state.cart.filter((phone) => phone.id !== action.payload)
+        // }
+        const index = state.cart.findIndex(phoneId => phoneId.id === action.payload)
+        let cartCopy = [...state.cart];
+        if(index >= 0){
+          cartCopy.splice(index, 1)
+        } else console.log('No se puede eliminar el producto');
+        return {
           ...state,
-          cart: state.cart.map((phone) => phone.id === action.payload ? {...phone, quantity: phone.quantity - 1} : phone )
-        } : {
-          ...state,
-          cart: state.cart.filter((phone) => phone.id !== action.payload)
+          cart: cartCopy
         }
-      }
       case REMOVE_ALL_FROM_CART: {
         return{
         ...state,

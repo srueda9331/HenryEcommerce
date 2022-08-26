@@ -9,6 +9,8 @@ import BackgroundSlider from "react-background-slider";
 import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import CardsContainer from "./components/CardsContainer/CardsContainer";
 import CardDetailContainer from "./components/CardDetailContainer/CardDetailContainer";
+import PhoneCreate from "./components/ProductCreate/ProductCreate";
+import CheckoutPage from "./components/Checkout/CheckoutPage";
 import Login from "./components/Login/Login";
 // import { setAuthToken } from "./components/setAuthToken";
 // import RouteGuard from "./components/RouteGuard";
@@ -36,7 +38,8 @@ function App() {
           {/* <Route exact path="/user" component={RouteGuard} /> */}
           <Route exact path="/phone/:id" element={<CardDetailContainer />} />
           <Route exact path="/contact" element={<ContactUs />} />
-          {/* <Route exact path="/create" element={<PhoneCreate />}/> */}
+          <Route exact path="/create" element={<PhoneCreate />}/>
+          <Route exact path="/checkout" element={<CheckoutPage />}/>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/" element={<CardsContainer />} />
         </Routes>

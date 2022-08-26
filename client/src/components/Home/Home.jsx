@@ -11,7 +11,6 @@ function Home() {
         <h3>Your Place to buy</h3>
         {/* <Filters /> */}
         {/* <Cards /> */}
-
         <span className="small-description"> change your phone Now!</span>
       </div>
     </div>

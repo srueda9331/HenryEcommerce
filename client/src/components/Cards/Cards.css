@@ -13,3 +13,20 @@
   padding: 35px;
   justify-content: center;
 }
+
+
+/* AQUI ABAJO SE AGREGAN CLASES PARA EL COMPONENTE CHECKOUTPAGE Y CHECKOUTCARD */
+
+.checkout-volver-boton{
+  background-color: rgb(202, 154, 247);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: white;
+  font-size: 20px;
+  border: 1px solid black;
+  font-weight: bold;
+  padding: 15px;
+  margin-left: 585px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}

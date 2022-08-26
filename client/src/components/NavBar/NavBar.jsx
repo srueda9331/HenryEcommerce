@@ -7,11 +7,15 @@ import CartWidget from "../CartWidget.jsx";
 import "./NavBar.css";
 import { auth } from "../../firebase";
 import UserLoggedIn from "../UserLoggedIn/UserLoggedIn";
+import { ShoppingCart } from '@material-ui/icons'
+import { Badge, IconButton } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
 function NavBar() {
   const [clicked, setClicked] = useState(true);
   const [user, setUser] = useState(() => auth.currentUser);
   const [init, setInit] = useState(true);
+  const cartQuantity = useSelector(state => state.cart)
 
   const handleClick = () => {
     setClicked(!clicked);
@@ -56,6 +60,14 @@ function NavBar() {
         })}
       </ul>
       <CartWidget />
+      <Link to='/checkout'> 
+        <IconButton>
+          <Badge badgeContent={cartQuantity?.length} color='secondary'>
+            <ShoppingCart style={{color: 'blue', width:'36px'}} />
+          </Badge>
+        </IconButton>
+      </Link> 
+
       <Button>
         <Link to="/login">Sign Up</Link>
       </Button>

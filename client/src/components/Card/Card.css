@@ -271,11 +271,37 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.cart .add-to-cart .txt {
+.cart .add-to-cart {
   font-size: 12px;
   color: #fff;
   letter-spacing: 0.045em;
   text-transform: uppercase;
   white-space: nowrap;
   margin-left: 50%;
+}
+
+.txt {
+  font-size: 12px;
+  color: red;
+  margin-left: -145px;
+}
+
+/* DE ACÁ PARA ABAJO APARECEN CLASES CON ESTILOS QUE AGREGUÉ Y AJUSTE PARA LOS COMPONENTES DE
+CHECKOUTCARD Y CHECKOUTPAGE */
+
+.text-check{
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  text-decoration: none;
+  
+}
+
+.text-checkout{
+  font-family: "PT Sans", sans-serif;
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
 }
