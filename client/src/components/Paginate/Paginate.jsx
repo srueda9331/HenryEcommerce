@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 // import './Paginate.css'
 // import React from "react";
 
@@ -25,7 +24,6 @@
 //   )
 // }
 
->>>>>>> develop_front
 import './Paginate.css'
 import React from "react";
 
@@ -49,8 +47,4 @@ export default function Pagination({phonesPerPage, allPhones, paginate}){
       </ul>
     </nav>
   )
-<<<<<<< HEAD
-} 
-=======
-}
->>>>>>> develop_front
+      }

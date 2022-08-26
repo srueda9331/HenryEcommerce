@@ -14,6 +14,7 @@ import Login from "./components/Login/Login";
 // import RouteGuard from "./components/RouteGuard";
 // import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
+
 function App() {
   // const token = localStorage.getItem("token");
   // if (token) {
@@ -35,7 +36,7 @@ function App() {
           {/* <Route exact path="/user" component={RouteGuard} /> */}
           <Route exact path="/phone/:id" element={<CardDetailContainer />} />
           <Route exact path="/contact" element={<ContactUs />} />
-          <Route exact path="/create" element={<PhoneCreate />}/>
+          {/* <Route exact path="/create" element={<PhoneCreate />}/> */}
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/" element={<CardsContainer />} />
         </Routes>
