@@ -35,8 +35,9 @@ function App() {
           {/* <Route exact path="/user" component={RouteGuard} /> */}
           <Route exact path="/phone/:id" element={<CardDetailContainer />} />
           <Route exact path="/contact" element={<ContactUs />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<CardsContainer />} />
+          <Route exact path="/create" element={<PhoneCreate />}/>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/" element={<CardsContainer />} />
         </Routes>
       </main>
     </Router>
