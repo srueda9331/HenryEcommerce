@@ -103,15 +103,9 @@ router.put("/put/:name", auth, async (req, res) => {
 });
 
 
-router.delete("/:id", async (req, res) => {
-  try {
-    const deletePhone = await Product.findOneAndDelete({ id: req.params.id });
-
-
 router.delete("/:id", auth, async (req, res) => {
   try {
     let deletePhone = await Product.findOneAndDelete({ id: req.params.id });
-
     if (!deletePhone) {
       res.status(404).send({ error: "Phone not found" });
     }

@@ -10,10 +10,15 @@ import ContactUs from "./components/ContactUs/ContactUs.jsx";
 import CardsContainer from "./components/CardsContainer/CardsContainer";
 import CardDetailContainer from "./components/CardDetailContainer/CardDetailContainer";
 import Login from "./components/Login/Login";
-import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-import { PhoneCreate } from "./components/ProductCreate/ProductCreate";
+// import { setAuthToken } from "./components/setAuthToken";
+// import RouteGuard from "./components/RouteGuard";
+// import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
 function App() {
+  // const token = localStorage.getItem("token");
+  // if (token) {
+  //   setAuthToken(token);
+  // }
   return (
     <Router>
       <NavBar />
@@ -27,11 +32,12 @@ function App() {
       </header>
       <main>
         <Routes>
+          {/* <Route exact path="/user" component={RouteGuard} /> */}
           <Route exact path="/phone/:id" element={<CardDetailContainer />} />
           <Route exact path="/contact" element={<ContactUs />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<CardsContainer />} />
-          <Route path="/create" element={<PhoneCreate />} />
+          <Route exact path="/create" element={<PhoneCreate />}/>
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/" element={<CardsContainer />} />
         </Routes>
       </main>
     </Router>

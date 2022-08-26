@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { MenuItems } from "./Menuitems";
 import { Button } from "../Button";
 import CartWidget from "../CartWidget.jsx";
-import SearchBar from "../SearchBar/SearchBar.jsx";
+// import SearchBar from "../SearchBar/SearchBar.jsx";
 import "./NavBar.css";
 import { auth } from "../../firebase";
 import UserLoggedIn from "../UserLoggedIn/UserLoggedIn";
@@ -28,9 +28,9 @@ function NavBar() {
         setInit(false);
       }
     });
-
     return userListener;
   }, [init]);
+
   return (
     <nav className="NavbarItems">
       <Link to="/">
@@ -39,10 +39,11 @@ function NavBar() {
           <i className="fa fa-heart"></i>
         </h1>
       </Link>
+      <Link to='/create'>Sube un celular</Link>
       <div className="menu-icon" onClick={handleClick}>
         <i className={!clicked ? "fas fa-times" : "fas fa-bars"}></i>
       </div>
-      <SearchBar className="SearchBar" />
+      {/* <SearchBar className="SearchBar" /> */}
       <ul className={!clicked ? "nav-menu active" : "nav-menu"}>
         {MenuItems.map((item, index) => {
           return (
@@ -55,7 +56,6 @@ function NavBar() {
         })}
       </ul>
       <CartWidget />
-      
       <Button>
         <Link to="/login">Sign Up</Link>
       </Button>
