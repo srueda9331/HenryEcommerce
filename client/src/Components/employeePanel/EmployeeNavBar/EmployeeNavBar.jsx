@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import imgNavEmp from '../../../Assets/Images/logo-henrys300px.png';
+import imgNavEmp from '../../../Assets/Images/logofinalfinal.png';
 import { Link, useLocation } from 'react-router-dom';
 import { BiHome, BiLogOut, BiCheckCircle } from 'react-icons/bi';
 import { MdPendingActions } from 'react-icons/md';

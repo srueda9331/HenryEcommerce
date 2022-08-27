@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 import { BoxArrowLeft, Heart } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
-import imgUserDefault from '../../../Assets/Images/logo-henrys.png';
+import imgUserDefault from '../../../Assets/Images/userdefault.png';
 import { setImgError } from '../../methods';
 
 import './UserLoggedInDropdown.css';

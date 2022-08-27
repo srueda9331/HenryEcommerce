@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import purchaseImg from '../../../Assets/Images/transaction-confirm.png';
+import purchaseImg from '../../../Assets/Images/sucess.png';
 import { FcPaid, FcExpired } from 'react-icons/fc';
 
 import './UserPurchaseDetail.css';
@@ -83,7 +83,8 @@ function UserPurchaseDetail() {
                       </div>
                     )}
                     <p className="purchaseDetail__total">
-                      Total: ${transaction_details.total_paid_amount.toFixed(2) || ''}
+                      Total: $
+                      {transaction_details.total_paid_amount.toFixed(2) || ''}
                     </p>
                   </div>
 
@@ -97,7 +98,14 @@ function UserPurchaseDetail() {
                         </li>
 
                         <li>
-                          Precio unitario:<span> ${i.unit_price ? Number(i.unit_price).toFixed(2) : ""}</span>
+                          Precio unitario:
+                          <span>
+                            {' '}
+                            $
+                            {i.unit_price
+                              ? Number(i.unit_price).toFixed(2)
+                              : ''}
+                          </span>
                         </li>
                         <li>
                           Cantidad:

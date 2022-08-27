@@ -354,14 +354,14 @@ template {
 @import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
 :root {
   /* COLORS */
-  --main-color-dark: #222831;
+  --main-color-dark: #06283d;
   --main-color-light: #f1f2f3;
   --main-color-white: #ffffff;
   --heading-color: #000000;
   --text-color-light: #ffffff;
   --text-color-dark: #1c1c1c;
   --brand-color: #1363df;
-  --main-color-admin-dark: #353a3e;
+  --main-color-admin-dark: #06283d;
 
   /* HOVERS */
   --btn-hover: #47b5ff;
