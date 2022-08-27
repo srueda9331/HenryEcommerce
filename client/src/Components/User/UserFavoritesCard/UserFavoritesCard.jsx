@@ -33,13 +33,15 @@ function UserFavoritesCard({ id, favoritosId }) {
     navigate(`/detalle/${id}`);
   };
 
+  console.log(product);
+
   if (product)
     return (
       <Container>
         <Row className="userFavCard__container">
           <Col lg={3}>
             <img
-              src={product?.imgUri}
+              src={product?.image}
               alt="foto del producto"
               className="img-fluid userFavImg"
             />

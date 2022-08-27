@@ -1,7 +1,5 @@
 import { React } from 'react';
 import hamburguesasMini from '../../Assets/Images/logofinal.png';
-import combitos from '../../Assets/Images/logofinalfinal.png';
-import bebidas from '../../Assets/Images/bebidas/bebidas-transparentes-copia.png';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -11,19 +11,18 @@ import { setLoginState } from '../../../Redux/actions/actions';
 import './UserPersonalInfo.css';
 
 function UserPersonalInfo() {
-
   const dispatch = useDispatch();
   const isSession = useSelector((state) => state.loginState);
 
   const [input, setInput] = useState({
     firstName: isSession.firstName,
-    lastName: isSession.lastName
+    lastName: isSession.lastName,
   });
 
   const [password, setPassword] = useState({
-    beforePassword: "",
-    password: "",
-    confirm: ""
+    beforePassword: '',
+    password: '',
+    confirm: '',
   });
   const [error, setError] = useState({});
 
@@ -51,30 +50,34 @@ function UserPersonalInfo() {
         title: 'Error!',
         text: 'Los campos no pueden estar vacios!',
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU',
         imageWidth: 150,
         imageHeight: 150,
-        imageAlt: 'Logo henrys',
+        imageAlt: 'Logo',
       });
       return;
     }
     try {
-      await axios.put(`/users/${isSession.id}`, {...input}, {
-        headers: {
-          'auth-token': isSession.token,
-        },
-      });
+      await axios.put(
+        `/users/${isSession.id}`,
+        { ...input },
+        {
+          headers: {
+            'auth-token': isSession.token,
+          },
+        }
+      );
       const updateSession = {
         ...isSession,
         ...input,
       };
 
       const updateLocal = {
-        ...JSON.parse(window.localStorage.getItem("user")),
+        ...JSON.parse(window.localStorage.getItem('user')),
         ...input,
       };
 
-      window.localStorage.setItem("user", JSON.stringify(updateLocal));
+      window.localStorage.setItem('user', JSON.stringify(updateLocal));
 
       dispatch(setLoginState(updateSession));
       Swal.fire({
@@ -84,10 +87,10 @@ function UserPersonalInfo() {
         title: 'Exito!',
         text: 'Se han modificado los datos!',
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png',
+          'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
         imageWidth: 150,
         imageHeight: 150,
-        imageAlt: 'Logo henrys',
+        imageAlt: 'Logo',
       });
     } catch (error) {
       Swal.fire({
@@ -97,33 +100,31 @@ function UserPersonalInfo() {
         title: 'Opss...',
         text: 'Error del servidor!',
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU',
         imageWidth: 150,
         imageHeight: 150,
-        imageAlt: 'Logo henrys',
+        imageAlt: 'Logo ',
       });
     }
-
   }
   function defaultData() {
     setInput({
-        firstName: isSession.firstName,
-        lastName: isSession.lastName
-    }); 
-    resetPassInputs();   
+      firstName: isSession.firstName,
+      lastName: isSession.lastName,
+    });
+    resetPassInputs();
   }
 
-  function resetPassInputs(){
+  function resetPassInputs() {
     setPassword({
-        beforePassword: "",
-        password: "",
-        confirm: ""
+      beforePassword: '',
+      password: '',
+      confirm: '',
     });
     setError({});
   }
 
   function handlePassword(e) {
-
     setPassword({ ...password, [e.target.name]: e.target.value });
     setError(validate({ ...password, [e.target.name]: e.target.value }));
   }
@@ -143,10 +144,10 @@ function UserPersonalInfo() {
         title: 'No se puede cambiar la contraseña',
         text: 'Por favor complete todos los espacios correctamente',
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU',
         imageWidth: 150,
         imageHeight: 150,
-        imageAlt: 'Logo henrys',
+        imageAlt: 'Logo ',
       });
       return;
     }
@@ -170,10 +171,10 @@ function UserPersonalInfo() {
         title: 'Exito!',
         text: 'Contraseña modificada!',
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png',
+          'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
         imageWidth: 150,
         imageHeight: 150,
-        imageAlt: 'Logo henrys',
+        imageAlt: 'Logo ',
       });
     } catch (error) {
       Swal.fire({
@@ -183,10 +184,10 @@ function UserPersonalInfo() {
         title: 'Opss...',
         text: 'La contraseña actual es incorrecta!',
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU',
         imageWidth: 150,
         imageHeight: 150,
-        imageAlt: 'Logo henrys',
+        imageAlt: 'Logo ',
       });
     }
   }
@@ -267,7 +268,7 @@ function UserPersonalInfo() {
               />
             </Form.Group>
             <div className="formGrid__errContainer">
-                {error.password && <p>{error.password}</p>}
+              {error.password && <p>{error.password}</p>}
             </div>
           </Col>
           <Button

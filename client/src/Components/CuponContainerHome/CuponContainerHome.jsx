@@ -32,7 +32,7 @@ function CuponContainerHome() {
 
   return (
     <div className="cuponsHome__mainContainer pt-5">
-      <h2 className="p-3">Aprovechá las promos que Henry´s tiene para vos</h2>
+      <h2 className="p-3">3jota te ofrece estas ofertas</h2>
       <div className="couponsHome pb-5 mt-4">
         {coupons &&
           coupons.length > 0 &&
