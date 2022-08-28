@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   filterBrand,
+  filterDisplay,
   getProduct,
   orderPrice,
 } from '../../Redux/actions/actions';
@@ -15,19 +16,28 @@ function FiltersMenu({ setFilter, filters }) {
   const handleOnChange = (e) => {
     setFilter(e.target.name, e.target.value);
   };
-
+ 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
 
+  let size = useSelector(state => state.products.map(el => el.display))
+  console.log(size);
+
   const handleOrder = (e) => {
+    console.log(e.target.value);
     dispatch(orderPrice(e.target.value));
+
   };
 
   const handleFilter = (e) => {
     dispatch(filterBrand(e.target.value));
+  };
+
+  const handleDisplay = (e) => {
+    dispatch(filterDisplay(e.target.value));
   };
 
   return (
@@ -44,8 +54,8 @@ function FiltersMenu({ setFilter, filters }) {
           className="select__order"
         >
           <option value="All">Todos</option>
-          <option value="Max">Mayor precio</option>
-          <option value="Min">Menor precio</option>
+          <option value="Max">Mayor a menor precio</option>
+          <option value="Min">Menor a mayor precio</option>
         </select>
 
         <label>
@@ -54,6 +64,19 @@ function FiltersMenu({ setFilter, filters }) {
             <option value="All">All</option>
             <option value="Samsung">Samsung</option>
             <option value="Huawei">Huawei</option>
+            <option value="Apple">Apple</option>
+            <option value="Xiaomi">Xiaomi</option>
+            <option value="Asus">Asus</option>
+
+          </select>
+        </label>
+        <label>
+          Filtrar por tamaño de pantalla:
+          <select onClick={(e) => handleDisplay(e)}>
+            <option value="menor-display">Menor a 6.3 ''</option>
+            <option value="entre-display">Entre 6.3 a 6.5 ''</option>
+            <option value="mayor-display">Mayor a 6.5 ''</option>
+
           </select>
         </label>
       </div>

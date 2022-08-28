@@ -87,6 +87,7 @@ function ProductDetail() {
                     <strong>Height:</strong> {producto.height} cm
                   </p>
                 )}
+
                 <div className="productDetail__foot__container">
                   <div className="price__container">
                     <h3>

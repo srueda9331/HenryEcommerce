@@ -4,7 +4,8 @@
 }
 
 .productDetail__img {
-  max-width: 50%;
+  max-width: 60%;
+  margin-top: '500px';
 }
 
 .productDetail__tittle {
