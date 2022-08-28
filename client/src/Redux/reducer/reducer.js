@@ -23,6 +23,7 @@ import {
   ORDER_PRICE,
   FILTER_BRAND,
   POST_PRODUCT,
+  FILTER_DISPLAY,
 } from '../actions/actions';
 
 import { addFav, addItem, deleteAllItem, deleteItem, subsFav } from './utils';
@@ -40,9 +41,11 @@ const initialState = {
   users: [],
   purchaseInfo: undefined,
   orders: [],
+  filteredProducts: []
 };
 
 const rootReducer = (state = initialState, action = {}) => {
+  console.log(action.payload);
   switch (action.type) {
     case GET_USERS:
       return {
@@ -66,32 +69,47 @@ const rootReducer = (state = initialState, action = {}) => {
         productDetail: [],
       };
     case ORDER_PRICE:
-      const sortPrices =
-        action.payload === 'Max'
+      // const productsAgain = state.allProducts
+      // console.log(productsAgain.map(e => e.price));
+      const sortPrices = action.payload === 'Max'
           ? state.products.sort((a, b) => {
-              if (a.price > b.price) return 1;
-              if (b.price > a.price) return -1;
+              if (a.price > b.price) return -1;
+              if (b.price > a.price) return 1;
               return 0;
             })
           : state.products.sort((a, b) => {
-              if (a.price > b.price) return -1;
+              if (a.price > b.price) return 1;
               if (b.price > a.price) return -1;
               return 0;
             });
       return {
         ...state,
-        phones: action.payload === 'All' ? state.products : [...sortPrices],
+        products: action.payload === 'All' ? state.products : [...sortPrices],
       };
     case FILTER_BRAND:
       const allPhones = state.allProducts;
       const filteredBrands =
         action.payload === 'All'
           ? allPhones
-          : allPhones.filter((p) => p.brand === action.payload);
+          : allPhones.filter((p) => p.brands === action.payload);
       return {
         ...state,
         products: filteredBrands,
+        filteredProducts : filteredBrands 
+        
+        
       };
+    case FILTER_DISPLAY:
+      let display = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
+      let size = action.payload === 'menor-display'? 
+      display.filter(p => p.display < 6.3 ) : 
+      action.payload === 'entre-display'?
+      display.filter(p => p.display > 6.2 && p.display < 6.6) :
+      display.filter(p => p.display > 6.5)
+      return {
+        ...state,
+        products: size[0]? size : state.allProducts
+      }  
     case ADD_TO_CART:
       /* payload es el id, array de products, y el array de carrito */
       return {
