@@ -185,9 +185,10 @@ export function getProductById(id, setloading) {
       });
     } catch (error) {
       console.log(error);
-    } finally {
-      setloading(false);
     }
+    // finally {
+    //   setloading(false);
+    // }
   };
 }
 
