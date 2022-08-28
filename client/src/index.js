@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
@@ -15,8 +15,8 @@ axios.defaults.baseURL = process.env.REACT_APP_API || 'http://localhost:3001';
 const DOMAIN = process.env.REACT_APP_DOMAIN;
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <Auth0Provider
     domain={DOMAIN}
     clientId={CLIENT_ID}
@@ -31,8 +31,8 @@ ReactDOM.render(
         </BrowserRouter>
       </Provider>
     </React.StrictMode>
-  </Auth0Provider>,
-  document.getElementById('root'));
+  </Auth0Provider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
