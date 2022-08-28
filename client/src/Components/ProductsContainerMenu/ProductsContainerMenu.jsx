@@ -7,7 +7,9 @@ import './ProductsContainerMenu.css';
 import Swal from 'sweetalert2';
 
 function ProductsContainerMenu({ currentProduct }) {
+
   const dispatch = useDispatch();
+  const msg = useState('')
   let itemsToCart = useSelector((state) => state.cart);
   const [mount, setMount] = useState(true);
 
@@ -52,7 +54,10 @@ function ProductsContainerMenu({ currentProduct }) {
   return (
     <div>
       <Container className="products__container__menu mt-3">
-        {currentProduct.map((item) => (
+        {
+        
+        currentProduct.length?
+        currentProduct.map((item) => (
           <CardProductMenu
             id={item.id}
             name={item.name}
@@ -62,7 +67,11 @@ function ProductsContainerMenu({ currentProduct }) {
             key={item.name}
             addToCart={addToCart}
           />
-        ))}
+        ))
+        : 
+        (
+          <h2>LO SENTIMOS</h2>
+        )}
       </Container>
     </div>
   );

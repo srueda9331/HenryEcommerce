@@ -55,7 +55,9 @@ function Menu() {
   return (
     <div className="menu__container">
       <SearchBar setFilter={setFilter} />
-      <FiltersMenu setFilter={setFilter} filters={filters} />
+      {/* <FiltersMenu setFilter={setFilter} filters={filters} /> */}
+      <FiltersMenu />
+
 
       {!currentProduct.length && <ErrorNoResults />}
       {currentProduct.length > 0 && (

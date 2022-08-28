@@ -74,6 +74,12 @@ function ProductDetail() {
                     height: {producto.height} cm
                   </p>
                 )}
+                 {producto.height && (
+                  <p>
+                    <CgSize />
+                    display: {producto.display} ''
+                  </p>
+                )}
 
                 <p>
                   <strong>Precio: $ {producto.price}</strong>
