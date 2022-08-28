@@ -87,7 +87,8 @@ const rootReducer = (state = initialState, action = {}) => {
         products: action.payload === 'All' ? state.products : [...sortPrices],
       };
     case FILTER_BRAND:
-      const allPhones = state.allProducts;
+      const allPhones = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
+      console.log(allPhones);
       const filteredBrands =
         action.payload === 'All'
           ? allPhones
@@ -108,7 +109,8 @@ const rootReducer = (state = initialState, action = {}) => {
       display.filter(p => p.display > 6.5)
       return {
         ...state,
-        products: size[0]? size : state.allProducts
+        products: size[0]? size : state.allProducts,
+        filteredProducts: size
       }  
     case ADD_TO_CART:
       /* payload es el id, array de products, y el array de carrito */
