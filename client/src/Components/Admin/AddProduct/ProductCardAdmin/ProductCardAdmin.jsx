@@ -21,11 +21,11 @@ function ProductCardAdmin({ data, isDeleted }) {
   };
 
   const onDelete = () => {
-    if (isDeleted) {
-      dispatch(deleteProduct(data.id));
-    } else {
-      dispatch(restoreProduct(data.id));
-    }
+    dispatch(deleteProduct(data.id));
+  };
+
+  const onRestore = () => {
+    dispatch(restoreProduct(data.id));
   };
 
   return (
@@ -45,14 +45,16 @@ function ProductCardAdmin({ data, isDeleted }) {
           {data.name}
         </Card.Title>
         <div className="productCard__buttons">
-          {isDeleted && (
-            <Button onClick={redirect} variant="secondary">
-              <PencilSquare />
-            </Button>
-          )}
+          <Button onClick={redirect} variant="secondary">
+            <PencilSquare />
+          </Button>
 
           <Button onClick={onDelete} variant="secondary">
-            {isDeleted ? <Trash /> : <ArrowClockwise />}
+            {<Trash />}
+          </Button>
+
+          <Button onClick={onRestore} variant="secondary">
+            {<ArrowClockwise />}
           </Button>
         </div>
       </Card.Body>

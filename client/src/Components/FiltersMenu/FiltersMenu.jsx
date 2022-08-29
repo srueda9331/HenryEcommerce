@@ -22,6 +22,9 @@ function FiltersMenu({ setFilter, filters }) {
     dispatch(getProduct());
   }, [dispatch]);
 
+  let size = useSelector((state) => state.products.map((el) => el.display));
+  console.log(size);
+
   const handleOrder = (e) => {
     dispatch(orderPrice(e.target.value));
   };
@@ -33,10 +36,6 @@ function FiltersMenu({ setFilter, filters }) {
   return (
     <Container>
       <div className="m-3 order__container">
-        <Button as={Link} to="/addProduct" className="createBurger__btn">
-          Add Product
-        </Button>
-
         <select
           name="order"
           onChange={handleOnChange}
@@ -54,6 +53,18 @@ function FiltersMenu({ setFilter, filters }) {
             <option value="All">All</option>
             <option value="Samsung">Samsung</option>
             <option value="Huawei">Huawei</option>
+            <option value="Apple">Apple</option>
+            <option value="Xiaomi">Xiaomi</option>
+            <option value="Asus">Asus</option>
+          </select>
+        </label>
+        <label>
+          Filtrar por tamaño de pantalla:
+          <select onClick={(e) => handleDisplay(e)}>
+            <option value="menor-display">Menor a 6.3 ''</option>
+            <option value="entre-display">Entre 6.3 a 6.5 ''</option>
+            <option value="mayor-display">Mayor a 6.5 ''</option>
+            >>>>>>> Stashed changes
           </select>
         </label>
       </div>

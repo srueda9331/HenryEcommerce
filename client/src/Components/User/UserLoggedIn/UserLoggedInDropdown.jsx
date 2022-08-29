@@ -39,7 +39,7 @@ function UserLoggedInDropdown({ userData, logoutSession }) {
         </Link>
         <Dropdown.Divider />
 
-        {/* {userData.role === 'admin' && (
+        {userData.role === 'admin' && (
           <Dropdown.ItemText>
             <Button
               as={Link}
@@ -50,9 +50,9 @@ function UserLoggedInDropdown({ userData, logoutSession }) {
               Panel Admin
             </Button>
           </Dropdown.ItemText>
-        )} */}
+        )}
 
-        {userData.role === 'employee' && (
+        {/* {userData.role === 'employee' && (
           <Dropdown.ItemText>
             <Button
               as={Link}
@@ -63,7 +63,7 @@ function UserLoggedInDropdown({ userData, logoutSession }) {
               Empleado
             </Button>
           </Dropdown.ItemText>
-        )}
+        )} */}
       </Dropdown.Menu>
     </Dropdown>
   );

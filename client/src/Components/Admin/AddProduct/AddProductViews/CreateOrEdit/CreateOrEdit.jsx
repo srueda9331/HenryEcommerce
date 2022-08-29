@@ -85,6 +85,10 @@ function CreateOrEdit({ data }) {
     }
   }
 
+  function returnback() {
+    navigate('/adminproducts');
+  }
+
   function isEdit() {
     return data && Object.keys(data).length;
   }
@@ -311,6 +315,8 @@ function CreateOrEdit({ data }) {
           >
             Confirmar
           </Button>
+
+          <Button onClick={returnback}>Volver</Button>
         </Form>
       </div>
       <hr />

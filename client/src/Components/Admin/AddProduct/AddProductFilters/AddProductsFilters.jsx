@@ -1,22 +1,32 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Container from 'react-bootstrap/Container';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { useNavigate, Link } from 'react-router-dom';
+import { getProduct } from '../../../../Redux/actions/actions';
+import { useDispatch } from 'react-redux';
 
 import './AddProductFilters.css';
 
 function AddProductsFilters({ setFilter, filters }) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
-  const handleOnChange = (e) => {
-    setFilter(e.target.name, e.target.value);
-  };
+  function filter(e) {
+    const value = e.target.value;
+    let st = '';
+    let isDeleted = '';
+    if (value === 'true') {
+      isDeleted = true;
+    } else if (value === 'false') {
+      isDeleted = '';
+    }
+    dispatch(getProduct(st, isDeleted));
+  }
 
   const creaproduct = () => {
     navigate('/adminCreate');
@@ -26,7 +36,7 @@ function AddProductsFilters({ setFilter, filters }) {
     <Container>
       <div className="m-3 order__container">
         <Button
-          onClick={handleShow}
+          onClick={creaproduct}
           variant="secondary"
           className="productFilters__btnModal"
         >
@@ -56,11 +66,23 @@ function AddProductsFilters({ setFilter, filters }) {
           size="sm"
         >
           <Button
-            onClick={handleOnChange}
+            onClick={filter}
+            name="isDeleted"
+            value="false"
+            className={
+              filters.isDeleted === 'true'
+                ? 'filter__btn activeBtn'
+                : 'filter__btn'
+            }
+          >
+            Activos
+          </Button>
+          <Button
+            onClick={filter}
             name="isDeleted"
             value="true"
             className={
-              filters.isDeleted === 'true'
+              filters.isDeleted === 'false'
                 ? 'filter__btn activeBtn'
                 : 'filter__btn'
             }
