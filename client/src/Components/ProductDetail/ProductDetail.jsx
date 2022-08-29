@@ -76,15 +76,20 @@ function ProductDetail() {
                     <strong>Storage:</strong> {producto.storage} gb
                   </p>
                 )}
+                {producto.camera && (
+                  <p>
+                    <strong>Camera:</strong> {producto.camera} Mpx
+                  </p>
+                )}
                 {producto.weight && (
                   <p>
                     {' '}
                     <strong>Weight:</strong> {producto.weight} gr
                   </p>
                 )}
-                {producto.height && (
+                {producto.batery && (
                   <p>
-                    <strong>Height:</strong> {producto.height} cm
+                    <strong>Battery:</strong> {producto.batery} mAh
                   </p>
                 )}
 

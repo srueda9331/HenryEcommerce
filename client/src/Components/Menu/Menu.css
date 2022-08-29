@@ -43,3 +43,30 @@
 .disablePag:hover {
   cursor: default;
 }
+
+.block-filters-products{
+  font-display: flex;
+  flex-direction: row;
+}
+
+.filter-container{
+  display: flex;
+  margin-left: -940px;
+  margin-top: -40px;
+  flex-direction: column;
+}
+
+.products-container-menu{
+  margin-top: -460px;
+  margin-left: 250px;
+}
+
+.filter{
+  width: 150px;
+ 
+
+}
+
+.filter :hover{
+  border-color: blue;
+}

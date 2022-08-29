@@ -55,14 +55,22 @@ function Menu() {
   return (
     <div className="menu__container">
       <SearchBar setFilter={setFilter} />
+      <div className='block-filters-products'>
+
       {/* <FiltersMenu setFilter={setFilter} filters={filters} /> */}
-      <FiltersMenu />
+        <div className='filter-container'>
+          <FiltersMenu />
+        </div>
+      
 
 
       {!currentProduct.length && <ErrorNoResults />}
       {currentProduct.length > 0 && (
+        <div className='products-container-menu'>
         <ProductsContainerMenu currentProduct={currentProduct} />
+        </div>
       )}
+      </div>
 
       <div className="menu__pagination__container mb-3 mt-3">
         <Pagination
