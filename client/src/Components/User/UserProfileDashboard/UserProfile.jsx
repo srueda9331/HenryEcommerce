@@ -47,7 +47,7 @@ function UserProfileDashboard() {
       setLoading(false);
     }
   }
-
+  console.log(sesionInfo.imgUri);
   return (
     <section>
       <Container>
