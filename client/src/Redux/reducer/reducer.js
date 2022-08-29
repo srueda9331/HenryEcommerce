@@ -25,7 +25,8 @@ import {
   POST_PRODUCT,
   FILTER_DISPLAY,
   FILTER_BY_CAMERA,
-  FILTER_MEMORY_RAM
+  FILTER_MEMORY_RAM,
+  FILTER_BATTERY
 } from '../actions/actions';
 
 import { addFav, addItem, deleteAllItem, deleteItem, subsFav } from './utils';
@@ -101,37 +102,72 @@ const rootReducer = (state = initialState, action = {}) => {
         filteredProducts : filteredBrands   
       };
     case FILTER_DISPLAY:
-      let display = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
-      let size = action.payload === 'menor-display'? 
+      let display = state.filteredProducts;
+      console.log(display);
+      let size = action.payload === 'All'?
+      state.allProducts :
+      action.payload === 'menor-display'? 
       display.filter(p => p.display < 6.3 ) : 
       action.payload === 'entre-display'?
       display.filter(p => p.display > 6.2 && p.display < 6.6) :
       display.filter(p => p.display > 6.5)
       return {
         ...state,
-        products: size[0]? size : state.allProducts,
+        products: size,
         filteredProducts: size
       };
     case FILTER_MEMORY_RAM:
-      const memoryRam = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
-      const filteredRam = action.payload === "All"
-        ? memoryRam
-        : memoryRam.filter(p => p.ram == action.payload);
+      const memoryRam = state.filteredProducts; 
+      console.log(memoryRam);
+
+      const filteredRam = action.payload === 'All'? 
+      state.allProducts : 
+      action.payload === '4'?
+      memoryRam.filter(p => p.ram < 4) :
+      action.payload === '6'?
+      memoryRam.filter(p => p.ram >= 4 && p.ram < 7 ) :
+      action.payload === '8'?
+      memoryRam.filter(p => p.ram >= 7 && p.ram <= 9 ) :
+      memoryRam.filter(p => p.ram > 9)
       return {
         ...state,
         products: filteredRam,
-        filteredProducts:filteredRam
+        filteredProducts: filteredRam
       };
     case FILTER_BY_CAMERA:
-      const cameras = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
-      const filteredCamera = action.payload === "All"
-        ? cameras
-        : cameras.filter((p) => p.camera == action.payload);
+      const cameras = state.filteredProducts 
+      console.log(cameras);
+      const filteredCameras = action.payload === 'All'? 
+      state.allProducts :  
+      action.payload === '12'?
+      cameras.filter(p => p.camera < 13) :
+      action.payload === '13'?
+      cameras.filter(p => p.camera >= 13 && p.camera < 25 ) :
+      action.payload === '25'?
+      cameras.filter(p => p.camera >= 25 && p.camera <= 49 ) :
+      cameras.filter(p => p.camera > 49)
       return {
         ...state,
-        products: filteredCamera,
-        filteredProducts : filteredCamera
+        products: filteredCameras,
+        filteredProducts: filteredCameras
       };
+    case FILTER_BATTERY:
+        const batteries = state.filteredProducts;
+        console.log(batteries);
+        const filteredBatteries = action.payload === 'All'? 
+        state.allProducts : 
+        action.payload === '3750'?
+        batteries.filter(p => p.batery < 3750) :
+        action.payload === '4100'?
+        batteries.filter(p => p.batery >= 3750 && p.batery <= 4100 ) :
+        action.payload === '4600'?
+        batteries.filter(p => p.batery > 4100 && p.batery <= 4600 ) :
+        batteries.filter(p => p.batery > 4600)
+        return {
+          ...state,
+          products: filteredBatteries, 
+          filteredProducts: filteredBatteries
+        };  
     case ADD_TO_CART:
       /* payload es el id, array de products, y el array de carrito */
       return {
