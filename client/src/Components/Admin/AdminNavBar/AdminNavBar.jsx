@@ -64,13 +64,13 @@ function AdminNavBar() {
                 >
                   <FileSpreadsheetFill /> Cupones
                 </Nav.Link>
-                <Nav.Link
+                {/* <Nav.Link
                   as={Link}
                   to={'/adminnewsletter'}
                   className="adminNavBar__link"
                 >
                   <EnvelopePaperFill /> Newsletter
-                </Nav.Link>
+                </Nav.Link> */}
                 <Nav.Link as={Link} to={'/'} className="adminNavBar__link">
                   <BoxArrowLeft />
                   Salir

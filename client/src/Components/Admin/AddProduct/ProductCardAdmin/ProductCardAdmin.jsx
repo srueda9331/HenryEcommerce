@@ -30,8 +30,8 @@ function ProductCardAdmin({ data, isDeleted }) {
 
   return (
     <Card style={{ width: '15rem' }} className="adminProductHome__card">
-      <Card.Img
-        variant="top"
+      <img
+        // variant="top"
         src={data.image}
         className="adminProductHome__card__img img-card"
         onError={
