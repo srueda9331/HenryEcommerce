@@ -61,7 +61,7 @@ function AdminDashboard() {
             </Card.Body>
           </Card>
 
-          <Card style={{ width: '18rem' }} className="adminHome__card">
+          {/* <Card style={{ width: '18rem' }} className="adminHome__card">
             <Card.Img
               variant="top"
               src={newsletterImg}
@@ -76,7 +76,7 @@ function AdminDashboard() {
                 Ingresar
               </Button>
             </Card.Body>
-          </Card>
+          </Card> */}
         </div>
       </Container>
     </div>
