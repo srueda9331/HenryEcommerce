@@ -1,0 +1,23 @@
+.products__container__menu {
+  display: grid;
+  grid-template-columns: repeat(3, 230px);
+  gap: 35px;
+  padding: 35px;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .products__container__menu {
+    display: grid;
+    grid-template-columns: repeat(2, 230px);
+    gap: 35px;
+    padding: 35px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .products__container__menu {
+    grid-template-columns: 100%;
+  }
+}
