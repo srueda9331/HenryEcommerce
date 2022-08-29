@@ -20,7 +20,7 @@ import UserActivateAccount from './Components/User/UserActivateAccount/UserActiv
 import ShoppingCart from './Components/ShoppingCart/ShoppingCart';
 // import UserPurchase from './Components/User/UserPurchase/UserPurchase';
 
-// import AdminDashboard from './Components/Admin/Dashboard/AdminDashboard';
+import AdminDashboard from './Components/Admin/Dashboard/AdminDashboard';
 // import SendNewsletter from './Components/Admin/SendNewsletter/SendNewsletter';
 
 import {
@@ -109,10 +109,10 @@ function App() {
         />
 
         {/* ADMIN ROUTES */}
-        {/* <Route
+        <Route
           path="/adminhome"
           element={isSessionAdmin ? <AdminDashboard /> : <Navigate to="/" />}
-        /> */}
+        />
         {/* <Route
           path="/adminnewsletter"
           element={isSessionAdmin ? <SendNewsletter /> : <Navigate to="/" />}
