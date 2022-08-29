@@ -5,7 +5,7 @@ import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home';
 import Menu from './Components/Menu/Menu';
-import AddProduct from './Components/AddProduct/AddProduct';
+// import AddProduct from './Components/AddProduct/AddProduct';
 // import AboutUs from './Components/AboutUs/AboutUs';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import NotFound from './Components/NotFound/NotFound';
@@ -18,7 +18,7 @@ import UserProfileDashboard from './Components/User/UserProfileDashboard/UserPro
 import UserActivateAccount from './Components/User/UserActivateAccount/UserActivateAccount';
 // import UserReview from './Components/User/UserReview/UserReview';
 import ShoppingCart from './Components/ShoppingCart/ShoppingCart';
-// import UserPurchase from './Components/User/UserPurchase/UserPurchase';
+import UserPurchase from './Components/User/UserPurchase/UserPurchase';
 
 import AdminDashboard from './Components/Admin/Dashboard/AdminDashboard';
 // import SendNewsletter from './Components/Admin/SendNewsletter/SendNewsletter';
@@ -57,7 +57,7 @@ function App() {
         <Route path="/" element={<Home />} />
         {/* <Route path="/contacto" element={<ContactoForm />} /> */}
         <Route path="/menu" element={<Menu />} />
-        <Route path="/addProduct" element={<AddProduct />} />
+        {/* <Route path="/addProduct" element={<AddProduct />} /> */}
         {/* <Route path="/nosotros" element={<AboutUs />} /> */}
         <Route path="/detalle/:id" element={<ProductDetail />} />
         {/* <Route path="/quedicendenosotros" element={<ReviewsContainer />} /> */}
@@ -96,12 +96,12 @@ function App() {
         {/* <Route
           path="/mercadoPago"
           element={isSession ? <MercadoPago /> : <Navigate to="/" />}
-        />
+        /> */}
 
         <Route
           path="/pay/"
           element={isSession ? <UserPurchase /> : <Navigate to="/" />}
-        /> */}
+        />
 
         <Route
           path="/user/purchaseDetail/:id"

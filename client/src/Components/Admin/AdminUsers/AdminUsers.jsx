@@ -128,11 +128,6 @@ function AdminUsers() {
         },
         title: 'Exito!',
         text: 'Se ha podido desactivar el usuario!',
-        imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png',
-        imageWidth: 150,
-        imageHeight: 150,
-        imageAlt: 'Logo henrys',
       });
       // setTimeout(function () {
       //   window.location.reload();
@@ -144,11 +139,6 @@ function AdminUsers() {
         },
         title: 'Error',
         text: error.response.data.error[0].msg || 'Algo salio mal..',
-        imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png',
-        imageWidth: 150,
-        imageHeight: 150,
-        imageAlt: 'Logo henrys',
       });
     }
   }
@@ -176,11 +166,6 @@ function AdminUsers() {
         },
         title: 'Exito!',
         text: 'Se ha podido desactivar el usuario!',
-        imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png',
-        imageWidth: 150,
-        imageHeight: 150,
-        imageAlt: 'Logo henrys',
       });
     } catch (error) {
       Swal.fire({
@@ -189,11 +174,6 @@ function AdminUsers() {
         },
         title: 'Error',
         text: error.response.data.error[0].msg || 'Algo salio mal..',
-        imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png',
-        imageWidth: 150,
-        imageHeight: 150,
-        imageAlt: 'Logo henrys',
       });
     }
   }

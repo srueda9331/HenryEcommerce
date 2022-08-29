@@ -25,7 +25,9 @@ function FiltersMenu({ setFilter, filters }) {
     dispatch(getProduct());
   }, [dispatch]);
 
-  let size = useSelector(state => state.products.map(el => el.display))
+
+  let size = useSelector((state) => state.products.map((el) => el.display));
+
   console.log(size);
 
   const handleOrder = (e) => {
@@ -53,10 +55,6 @@ function FiltersMenu({ setFilter, filters }) {
   return (
     <Container>
       <div className="m-3 order__container">
-        <Button as={Link} to="/addProduct" className="createBurger__btn">
-          Add Product
-        </Button>
-
         <select
           name="order"
           onChange={handleOnChange}
@@ -120,6 +118,7 @@ function FiltersMenu({ setFilter, filters }) {
             <option value="50">50 Mpx</option>
             <option value="64">64 Mpx</option>
             <option value="108">108 Mpx</option>
+
           </select>
         </label>
       </div>

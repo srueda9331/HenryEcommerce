@@ -50,6 +50,7 @@ export function getUser(token, query = '/') {
 export function getProduct(name = '', isDeleted = '') {
   return async function (dispatch) {
     const json = await axios(`/products?name=${name}&isDeleted=${isDeleted}`);
+    console.log(json);
     try {
       return dispatch({
         type: GET_PRODUCT,
@@ -335,10 +336,10 @@ export function postPurchase(purchaseId, token) {
   };
 }
 
-export function deleteProduct(id, producto) {
+export function deleteProduct(id) {
   return async function (dispatch) {
     try {
-      await axios.delete(`/${producto}/${id}`, {
+      await axios.delete(`/product/${id}`, {
         headers: {
           'auth-token': JSON.parse(localStorage.getItem('user')).token,
         },
@@ -353,11 +354,11 @@ export function deleteProduct(id, producto) {
   };
 }
 
-export function restoreProduct(id, producto) {
+export function restoreProduct(id) {
   return async function (dispatch) {
     try {
       await axios.post(
-        `/${producto}/${id}`,
+        `/product/${id}`,
         {},
         {
           headers: {

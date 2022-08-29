@@ -45,31 +45,11 @@ function AddProductHome() {
 
   useEffect(() => {
     if (!mount.current) {
-      dispatch(
-        getProduct(
-          filters.category,
-          filters.order,
-          filters.search,
-          filters.isVeggie,
-          filters.isDeleted,
-          filters.addBase,
-          filters.addIngredient
-        )
-      );
+      dispatch(getProduct(filters.search));
       mount.current = true;
     } else if (filters) {
       setPage(1);
-      dispatch(
-        getProduct(
-          filters.category,
-          filters.order,
-          filters.search,
-          filters.isVeggie,
-          filters.isDeleted,
-          filters.addBase,
-          filters.addIngredient
-        )
-      );
+      dispatch(getProduct(filters.search));
     }
   }, [dispatch, filters]);
 
