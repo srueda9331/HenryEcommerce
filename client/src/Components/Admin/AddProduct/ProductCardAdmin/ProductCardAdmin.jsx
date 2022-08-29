@@ -33,7 +33,7 @@ function ProductCardAdmin({ data, isDeleted }) {
       <Card.Img
         variant="top"
         src={data.image}
-        className="adminProductHome__card__img"
+        className="adminProductHome__card__img img-card"
         onError={
           data.type === 'ingredients'
             ? (e) => (e) => setImgProductHomeErr(e)

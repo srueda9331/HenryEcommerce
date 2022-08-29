@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/esm/Container';
 import Button from 'react-bootstrap/esm/Button';
-import ActivateImg from '../../../Assets/Images/combos/combo2-dobles.png';
+import ActivateImg from '../../../Assets/Images/logofinalfinal.png';
 import { Link, useParams } from 'react-router-dom';
 import { FcAdvertising, FcHighPriority, FcOk } from 'react-icons/fc';
 
@@ -23,29 +23,31 @@ function UserActivateAccount() {
           await axios.put(`/activateAccount/${id}`);
           setSucess(1);
         } catch (error) {
-            let imgUrl = "https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png";
-            const msg = error.response.data.error;
-            let title = "Oops..."
-            
-            if(typeof(msg) === "string" && msg === "La cuenta ya fue activada!"){
-                imgUrl = "https://res.cloudinary.com/henrysburgers/image/upload/v1659800373/warning-henrys_saeddx.png";
-                title = "";
-                setSucess(0);
-            }else{
-                setSucess(-1);
-            }
+          let imgUrl =
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU';
+          const msg = error.response.data.error;
+          let title = 'Oops...';
 
-            Swal.fire({
-                customClass: {
-                  confirmButton: 'confirmBtnSwal',
-                },
-                title,
-                text: typeof(msg) !== "string" ? "Error al activar la cuenta!" : msg,
-                imageUrl: imgUrl,
-                imageWidth: 170,
-                imageHeight: 170,
-                imageAlt: 'Logo henrys',
-              });
+          if (typeof msg === 'string' && msg === 'La cuenta ya fue activada!') {
+            imgUrl =
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkkK2ODYBplJ5DnVfl_N3V_to76h7oCJco7Q&usqp=CAU';
+            title = '';
+            setSucess(0);
+          } else {
+            setSucess(-1);
+          }
+
+          Swal.fire({
+            customClass: {
+              confirmButton: 'confirmBtnSwal',
+            },
+            title,
+            text: typeof msg !== 'string' ? 'Error al activar la cuenta!' : msg,
+            imageUrl: imgUrl,
+            imageWidth: 170,
+            imageHeight: 170,
+            imageAlt: 'Logo',
+          });
         }
       };
       fetchData(id);
@@ -57,18 +59,22 @@ function UserActivateAccount() {
       <Container>
         <div className="userActivate__container">
           <div>
-            <h1>{isSuccess !== 0 ? "¡Bienvenido!" : ""}</h1>
-            <h2 className="userActivate__subtittle"> 
+            <h1>{isSuccess !== 0 ? '¡Bienvenido!' : ''}</h1>
+            <h2 className="userActivate__subtittle">
               {isSuccess === 1 && <FcOk />}
               {isSuccess === 0 && <FcAdvertising />}
-              {isSuccess === -1 && <FcHighPriority />}               
-              {isSuccess === 1 && " Cuenta activada con éxito"}
-              {isSuccess === 0 && " La cuenta ya fue activada!"}
-              {isSuccess === -1 && " Error al activar la cuenta!"}
+              {isSuccess === -1 && <FcHighPriority />}
+              {isSuccess === 1 && ' Cuenta activada con éxito'}
+              {isSuccess === 0 && ' La cuenta ya fue activada!'}
+              {isSuccess === -1 && ' Error al activar la cuenta!'}
             </h2>
-            <p>{isSuccess === 1 ? "Empezá a disfrutar de las más deliciosas hamburguesas" : ""}</p> 
+            <p>
+              {isSuccess === 1
+                ? 'Empezá a disfrutar de las más deliciosas hamburguesas'
+                : ''}
+            </p>
             <Button as={Link} to="/">
-                {isSuccess === 1 ? "Iniciar la experiencia" : "Volver al menú"}
+              {isSuccess === 1 ? 'Iniciar la experiencia' : 'Volver al menú'}
             </Button>
           </div>
           <img

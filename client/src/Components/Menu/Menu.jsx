@@ -25,10 +25,7 @@ function Menu() {
   const mount = useRef(false);
 
   const [filters, setFilters] = useState({
-    category: category, // alguna filtro
-    order: '', // algun string
     search: '', // algun string
-    isVeggie: '', // vegano
   });
 
   function setFilter(name, value) {
@@ -47,32 +44,20 @@ function Menu() {
 
   useEffect(() => {
     if (!mount.current) {
-        dispatch(
-            getProduct(
-              filters.category,
-              filters.order,
-              filters.search,
-              filters.isVeggie
-            )
-          );
+      dispatch(getProduct(filters.search));
       mount.current = true;
     } else if (filters) {
       setPage(1);
-      dispatch(
-        getProduct(
-          filters.category,
-          filters.order,
-          filters.search,
-          filters.isVeggie
-        )
-      );
+      dispatch(getProduct(filters.search));
     }
   }, [dispatch, filters]);
 
   return (
     <div className="menu__container">
       <SearchBar setFilter={setFilter} />
-      <FiltersMenu setFilter={setFilter} filters={filters} />
+      {/* <FiltersMenu setFilter={setFilter} filters={filters} /> */}
+      <FiltersMenu />
+
 
       {!currentProduct.length && <ErrorNoResults />}
       {currentProduct.length > 0 && (

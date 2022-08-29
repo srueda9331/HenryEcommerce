@@ -328,6 +328,9 @@ function ShoppingCart() {
                 </Link>
               </div>
             </div>
+            <Link to="/menu">
+              <Button>Seguir Comprando</Button>
+            </Link>
           </div>
         </>
       )}

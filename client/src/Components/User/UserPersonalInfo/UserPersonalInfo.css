@@ -12,6 +12,7 @@
   background: var(--main-color-light);
   box-shadow: var(--bs-btn);
   border-radius: var(--br-btn);
+  color: #1363df;
 }
 
 .userInfo__row {

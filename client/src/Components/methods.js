@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useSelector } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
-import imgProductErr from "../Assets/Images/mountain-icon.png";
-import axios from "axios";
+import { useSelector } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
+import imgProductErr from '../Assets/Images/userdefault.png';
+import axios from 'axios';
 
 export function setImgError(e, img) {
   if (!img) return;
@@ -12,14 +12,14 @@ export function setImgError(e, img) {
 export function setImgProductErr(e) {
   setImgError(
     e,
-    "https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1"
+    'https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1'
   );
 }
 
 export function setImgProductHomeErr(e) {
   setImgError(
     e,
-    "https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1"
+    'https://i0.wp.com/elfutbolito.mx/wp-content/uploads/2019/04/image-not-found.png?ssl=1'
   );
 }
 
@@ -49,7 +49,7 @@ export function isLoggedAdmin() {
     return undefined;
   }
 
-  return isSession.role === "admin";
+  return isSession.role === 'admin';
 }
 
 export function isLoggedAdminEmployee() {
@@ -58,19 +58,19 @@ export function isLoggedAdminEmployee() {
     return undefined;
   }
 
-  return isSession.role !== "customer";
+  return isSession.role !== 'customer';
 }
 
 export async function postImageToCloudinary(e) {
   try {
     const files = e.target.files;
     const data = new FormData();
-    data.append("file", files[0]);
-    data.append("upload_preset", "eo1vcv2i");
+    data.append('file', files[0]);
+    data.append('upload_preset', 'eo1vcv2i');
     const res = await fetch(
-      "https://api.cloudinary.com/v1_1/dc8w6pspj/image/upload",
+      'https://api.cloudinary.com/v1_1/dc8w6pspj/image/upload',
       {
-        method: "POST",
+        method: 'POST',
         body: data,
       }
     );
@@ -90,7 +90,7 @@ export async function updateModelImg(modelName, token, imgUri, id) {
     { imgUri },
     {
       headers: {
-        "auth-token": token,
+        'auth-token': token,
       },
     }
   );

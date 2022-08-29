@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   filterBrand,
+  filterDisplay,
   getProduct,
   orderPrice,
+  filterRam,
+  filterByCamera
 } from '../../Redux/actions/actions';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -15,22 +18,38 @@ function FiltersMenu({ setFilter, filters }) {
   const handleOnChange = (e) => {
     setFilter(e.target.name, e.target.value);
   };
-
+ 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProduct());
   }, [dispatch]);
 
+
   let size = useSelector((state) => state.products.map((el) => el.display));
+
   console.log(size);
 
   const handleOrder = (e) => {
+    console.log(e.target.value);
     dispatch(orderPrice(e.target.value));
+
   };
 
   const handleFilter = (e) => {
     dispatch(filterBrand(e.target.value));
+  };
+
+  const handleDisplay = (e) => {
+    dispatch(filterDisplay(e.target.value));
+  };
+
+  const handleRam = (e) => {
+    dispatch(filterRam(e.target.value));
+  };
+  
+  const handleCamera = (e) => {
+    dispatch(filterByCamera(e.target.value));
   };
 
   return (
@@ -43,8 +62,8 @@ function FiltersMenu({ setFilter, filters }) {
           className="select__order"
         >
           <option value="All">Todos</option>
-          <option value="Max">Mayor precio</option>
-          <option value="Min">Menor precio</option>
+          <option value="Max">Mayor a menor precio</option>
+          <option value="Min">Menor a mayor precio</option>
         </select>
 
         <label>
@@ -56,6 +75,7 @@ function FiltersMenu({ setFilter, filters }) {
             <option value="Apple">Apple</option>
             <option value="Xiaomi">Xiaomi</option>
             <option value="Asus">Asus</option>
+
           </select>
         </label>
         <label>
@@ -64,7 +84,41 @@ function FiltersMenu({ setFilter, filters }) {
             <option value="menor-display">Menor a 6.3 ''</option>
             <option value="entre-display">Entre 6.3 a 6.5 ''</option>
             <option value="mayor-display">Mayor a 6.5 ''</option>
-            >>>>>>> Stashed changes
+
+          </select>
+        </label>
+      </div>
+      <div className="filter">
+        <label>
+          Filtrar por memoria RAM:
+          <select onClick={(e) => handleRam(e)}>
+            <option value="All">All</option>
+            <option value="2">2GB</option>
+            <option value="3">3 GB</option>
+            <option value="4">4 GB</option>
+            <option value="6">6 GB</option>
+            <option value="8">8 GB</option>
+            <option value="12">12 GB</option>
+            <option value="16">16 GB</option>
+            <option value="18">18 GB</option>
+          </select>
+        </label>
+      </div>
+      <div className="filter">
+        <label>
+          Filtrar por Camara:
+          <select onClick={(e) => handleCamera(e)}>
+            <option value="All">All</option>
+            <option value="8">8 Mpx</option>
+            <option value="12">12 Mpx</option>
+            <option value="13">13 Mpx</option>
+            <option value="24">24 Mpx</option>
+            <option value="40">40 Mpx</option>
+            <option value="48">48 Mpx</option>
+            <option value="50">50 Mpx</option>
+            <option value="64">64 Mpx</option>
+            <option value="108">108 Mpx</option>
+
           </select>
         </label>
       </div>

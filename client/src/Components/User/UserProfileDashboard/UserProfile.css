@@ -1,3 +1,14 @@
+div .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div .container-cards {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 .mainTitle__profile {
   text-align: center;
 }
@@ -132,7 +143,7 @@
 }
 
 .profile__form__label {
-  color: #ffbe33;
+  color: #1363df;
 }
 
 .profile__form__input {
@@ -154,7 +165,7 @@
 }
 
 .profile__loader {
-  color: #ffbe33;
+  color: #1363df;
 }
 
 @media (max-width: 1024px) {

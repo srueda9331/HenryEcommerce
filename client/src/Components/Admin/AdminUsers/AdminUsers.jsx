@@ -24,14 +24,14 @@ function AdminUsers() {
   const [filter, setFilter] = useState('');
   function handleClose() {
     setShow(false);
-    setRol("");
+    setRol('');
   }
   function handleConfirm() {
     setShow(false);
     if (rol !== '') {
       submitRole(id);
     }
-    setRol("");
+    setRol('');
   }
   function handleShow(id) {
     setShow(true);
@@ -97,8 +97,7 @@ function AdminUsers() {
     if (name === '') query = '';
     else if (name === 'active') {
       query = '?active=true';
-    }
-    else if (name === 'inactive') {
+    } else if (name === 'inactive') {
       query = '?active=false';
     }
     setFilter(name);
@@ -107,15 +106,13 @@ function AdminUsers() {
 
   async function handleDelete(id) {
     try {
-
-        let query = '?rol=' + filter;
-        if (filter === '') query = '';
-        else if (filter === 'active') {
-          query = '?active=true';
-        }
-        else if (filter === 'inactive') {
-          query = '?active=false';
-        }
+      let query = '?rol=' + filter;
+      if (filter === '') query = '';
+      else if (filter === 'active') {
+        query = '?active=true';
+      } else if (filter === 'inactive') {
+        query = '?active=false';
+      }
 
       await axios.delete('/users/' + id, {
         headers: {
@@ -149,15 +146,13 @@ function AdminUsers() {
   async function handleActive(id) {
     const obj = {};
     try {
-
-        let query = '?rol=' + filter;
-        if (filter === '') query = '';
-        else if (filter === 'active') {
-          query = '?active=true';
-        }
-        else if (filter === 'inactive') {
-          query = '?active=false';
-        }
+      let query = '?rol=' + filter;
+      if (filter === '') query = '';
+      else if (filter === 'active') {
+        query = '?active=true';
+      } else if (filter === 'inactive') {
+        query = '?active=false';
+      }
 
       await axios.post('/users/' + id, obj, {
         headers: {
@@ -172,9 +167,6 @@ function AdminUsers() {
         title: 'Exito!',
         text: 'Se ha podido desactivar el usuario!',
       });
-      // setTimeout(function () {
-      //   window.location.reload();
-      // }, 3000);
     } catch (error) {
       Swal.fire({
         customClass: {
@@ -255,74 +247,73 @@ function AdminUsers() {
           </thead>
           <tbody>
             {users.rows &&
-              users.rows.map((user) => 
-                  <tr key={user.id}>
-                    <td>
-                      {user.firstName} {user.lastName}
-                    </td>
-                    <td>{user.email}</td>
-                    <td>{user.role}</td>
-                    <td className="adminUser__td__btns">
-                      {!user.deletedAt && (
-                        <Button
-                          variant="outline-secondary"
-                          size="sm"
-                          onClick={() => handleShow(user.id)}
-                        >
-                          <PencilSquare />
-                        </Button>
-                      )}                      
+              users.rows.map((user) => (
+                <tr key={user.id}>
+                  <td>
+                    {user.firstName} {user.lastName}
+                  </td>
+                  <td>{user.email}</td>
+                  <td>{user.role}</td>
+                  <td className="adminUser__td__btns">
+                    {!user.deletedAt && (
+                      <Button
+                        variant="outline-secondary"
+                        size="sm"
+                        onClick={() => handleShow(user.id)}
+                      >
+                        <PencilSquare />
+                      </Button>
+                    )}
 
-                      {user.deletedAt && user.role !== "admin" &&
-                        <Button
+                    {user.deletedAt && user.role !== 'admin' && (
+                      <Button
                         variant="outline-success"
                         size="sm"
                         onClick={() => handleActive(user.id)}
                       >
                         <PersonCheckFill />
-                      </Button>                      
-                      }
+                      </Button>
+                    )}
 
-                      {!user.deletedAt && user.role !== "admin" && 
-                        <Button
-                          variant="outline-danger"
-                          size="sm"
-                          onClick={() => handleDelete(user.id)}
-                        >
-                          <PersonXFill />
-                        </Button>                     
-                      }
-                    </td>
-                  </tr>                
-              )}
+                    {!user.deletedAt && user.role !== 'admin' && (
+                      <Button
+                        variant="outline-danger"
+                        size="sm"
+                        onClick={() => handleDelete(user.id)}
+                      >
+                        <PersonXFill />
+                      </Button>
+                    )}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </Table>
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-            <Modal.Title>Modificar Rol</Modal.Title>
+          <Modal.Title>Modificar Rol</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <Form.Select
-            aria-label="selectRol"
-            onChange={(e) => handleRole(e)}
-            >
-            <option value="" hidden defaultValue>Selecionar</option>
+          <Form.Select aria-label="selectRol" onChange={(e) => handleRole(e)}>
+            <option value="" hidden defaultValue>
+              Selecionar
+            </option>
             <option value="admin">ADMIN</option>
             <option value="employee">EMPLEADO</option>
             <option value="customer">USUARIO</option>
-            </Form.Select>
+          </Form.Select>
         </Modal.Body>
         <Modal.Footer>
-            <Button
+          <Button
             disabled={!rol.length}
             variant="primary"
             onClick={() => handleConfirm()}
-            >
+          >
             Confirmar
-            </Button>
+          </Button>
         </Modal.Footer>
-        </Modal>
+      </Modal>
     </Container>
   );
 }
