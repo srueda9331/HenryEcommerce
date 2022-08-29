@@ -26,6 +26,13 @@ export const ORDER_PRICE = 'ORDER_PRICE';
 export const FILTER_BRAND = 'FILTER_BRAND';
 export const POST_PRODUCT = 'POST_PRODUCT';
 export const FILTER_DISPLAY = 'FILTER_DISPLAY';
+export const FILTER_MEMORY = 'FILTER_MEMORY';
+export const FILTER_WEIGHT = 'FILTER_WEIGHT';
+export const FILTER_BATTERY = 'FILTER_BATTERY';
+
+
+
+
 
 export function getUser(token, query = '/') {
   return async function (dispatch) {
@@ -86,6 +93,29 @@ export function filterDisplay(payload) {
     payload,
   };
 }
+
+
+export function filterMemory(payload) {
+  return {
+    type: FILTER_MEMORY,
+    payload,
+  };
+}
+
+export function filterWeight(payload) {
+  return {
+    type: FILTER_WEIGHT,
+    payload,
+  };
+}
+
+export function filterBattery(payload) {
+  return {
+    type: FILTER_BATTERY,
+    payload,
+  };
+}
+
 
 export function clearState(payload) {
   return {

@@ -24,6 +24,9 @@ import {
   FILTER_BRAND,
   POST_PRODUCT,
   FILTER_DISPLAY,
+  FILTER_BATTERY,
+  FILTER_MEMORY,
+  FILTER_WEIGHT,
 } from '../actions/actions';
 
 import { addFav, addItem, deleteAllItem, deleteItem, subsFav } from './utils';
@@ -111,7 +114,41 @@ const rootReducer = (state = initialState, action = {}) => {
         ...state,
         products: size[0]? size : state.allProducts,
         filteredProducts: size
-      }  
+      } 
+    case FILTER_BATTERY:
+      let allBattery = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
+      let filteredBattery = action.payload === 'all'? 
+      allBattery : 
+      allBattery.filter(b => b.batery === action.payload)
+      return {
+        ...state,
+        products: filteredBattery[0]? filteredBattery: state.allProducts,
+        filteredProducts: filteredBattery
+      }
+    case FILTER_MEMORY:
+      let allmemories = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
+      let filteredMemory = action.payload === 'menor-display'? 
+      display.filter(p => p.display < 6.3 ) : 
+      action.payload === 'entre-display'?
+      display.filter(p => p.display > 6.2 && p.display < 6.6) :
+      display.filter(p => p.display > 6.5)
+      return {
+        ...state,
+        products: size[0]? size : state.allProducts,
+        filteredProducts: size
+      }
+    case FILTER_WEIGHT:
+      let allWeight = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
+      let filteredWeight = action.payload === 'menor-display'? 
+      display.filter(p => p.display < 6.3 ) : 
+      action.payload === 'entre-display'?
+      display.filter(p => p.display > 6.2 && p.display < 6.6) :
+      display.filter(p => p.display > 6.5)
+      return {
+        ...state,
+        products: size[0]? size : state.allProducts,
+        filteredProducts: size
+      }      
     case ADD_TO_CART:
       /* payload es el id, array de products, y el array de carrito */
       return {

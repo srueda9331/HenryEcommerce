@@ -239,13 +239,13 @@ function AddProduct({ data }) {
             </Form.Group>
             <Form.Group as={Col} controlId="burgerPrice">
               <Form.Label>Brand *</Form.Label>
-              <Form.Control
-                placeholder="Brand *"
-                onChange={onChange}
-                type="text"
-                value={input.brands}
-                name="brands"
-              />
+              <Form.Select>
+                <option value={input.brands}>Samsung</option>
+                <option value={input.brands}>Huawei</option>
+                <option value={input.brands}>Apple</option>
+                <option value={input.brands}>Xiaomi</option>
+                <option value={input.brands}>Asus</option>
+              </Form.Select>
             </Form.Group>
 
             <Form.Group>

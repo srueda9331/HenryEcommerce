@@ -68,10 +68,10 @@ function ProductDetail() {
                     weight: {producto.weight} gr
                   </p>
                 )}
-                {producto.height && (
+                {producto.batery && (
                   <p>
                     <CgSize />
-                    height: {producto.height} cm
+                    battery: {producto.batery} mAh
                   </p>
                 )}
                  {producto.height && (

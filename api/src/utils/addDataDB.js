@@ -504,7 +504,7 @@ function addDataDB() {
       storage: 128,
       camera: 48,
       display: 6.5,
-      batery: 4.0,
+      batery: 4000,
       description:
         "El Huawei Enjoy 20 Pro es un smartphone Android con una pantalla Full HD+ de 6.5 pulgadas. Potenciado por un procesador Dimensity 800 de Mediatek, el Huawei Enjoy 20 Pro cuenta con conectividad 5G en sus dos variantes con 6GB o 8GB de memoria RAM y 128GB de almacenamiento interno expandible mediantes memorias NM. La cámara principal del Enjoy 20 Pro es triple, con un lente principal de 48 MP y lentes secundarios de 8 MP y 2 MP, mientras que su cámara para selfies es de 16 megapixels. Completando las características del Huawei Enjoy 20 Pro encontramos una batería de 4000 mAh con soporte para carga rápida, lector de huellas montado de costado, tasa de refresco de pantalla de 90 Hz y corre EMUI 10.1 basado en Android 10 sin los servicios Google Play.",
       image: "https://i.blogs.es/bf2314/enjoy/1366_2000.webp",
