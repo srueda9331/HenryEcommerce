@@ -7,7 +7,8 @@ import {
   getProduct,
   orderPrice,
   filterRam,
-  filterByCamera
+  filterByCamera,
+  filterBattery
 } from '../../Redux/actions/actions';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -26,7 +27,7 @@ function FiltersMenu({ setFilter, filters }) {
   }, [dispatch]);
 
 
-  let size = useSelector((state) => state.products.map((el) => el.display));
+  let size = useSelector((state) => state.products.map((el) => el.batery));
 
   console.log(size);
 
@@ -52,23 +53,34 @@ function FiltersMenu({ setFilter, filters }) {
     dispatch(filterByCamera(e.target.value));
   };
 
+  const handleBattery = (e) => {
+    dispatch(filterBattery(e.target.value));
+  };
+  
   return (
     <Container>
       <div className="m-3 order__container">
+        <div className="filter">
+        <h4>Ordenar:</h4>
         <select
           name="order"
           onChange={handleOnChange}
           onClick={(e) => handleOrder(e)}
           className="select__order"
         >
-          <option value="All">Todos</option>
           <option value="Max">Mayor a menor precio</option>
           <option value="Min">Menor a mayor precio</option>
         </select>
-
+       
+        </div>  
+        <br />
+        <br />
+        <h4>Filtrar por:</h4>
+        <div className="filter">
         <label>
-          Filtrar por marca:
-          <select onClick={(e) => handleFilter(e)}>
+          Por marca:
+          <br />
+          <select onClick={(e) => handleFilter(e)} className="filter">
             <option value="All">All</option>
             <option value="Samsung">Samsung</option>
             <option value="Huawei">Huawei</option>
@@ -78,47 +90,60 @@ function FiltersMenu({ setFilter, filters }) {
 
           </select>
         </label>
+        </div>
+        <br />
+        <div >
         <label>
-          Filtrar por tamaño de pantalla:
-          <select onClick={(e) => handleDisplay(e)}>
+          Tamaño de pantalla:
+          <br />
+          <select onClick={(e) => handleDisplay(e)} className="filter">
+            <option value="All">All</option>
             <option value="menor-display">Menor a 6.3 ''</option>
-            <option value="entre-display">Entre 6.3 a 6.5 ''</option>
+            <option value="entre-display">Entre 6.3 y 6.5 ''</option>
             <option value="mayor-display">Mayor a 6.5 ''</option>
 
           </select>
         </label>
       </div>
-      <div className="filter">
+      <br />
+      <div >
         <label>
-          Filtrar por memoria RAM:
-          <select onClick={(e) => handleRam(e)}>
+          Memoria RAM:
+          <br />
+          <select onClick={(e) => handleRam(e)} className="filter">
             <option value="All">All</option>
-            <option value="2">2GB</option>
-            <option value="3">3 GB</option>
-            <option value="4">4 GB</option>
-            <option value="6">6 GB</option>
-            <option value="8">8 GB</option>
-            <option value="12">12 GB</option>
-            <option value="16">16 GB</option>
-            <option value="18">18 GB</option>
+            <option value="4">Menor a 3.99 GB</option>
+            <option value="6">Entre 4 y 6.99 GB</option>
+            <option value="8">Entre 7 y 9 GB</option>
+            <option value="12">Mayor a 9 GB</option>
           </select>
         </label>
       </div>
-      <div className="filter">
+      <br />
+      <div >
         <label>
-          Filtrar por Camara:
-          <select onClick={(e) => handleCamera(e)}>
+          Por Camara:
+          <br />
+          <select onClick={(e) => handleCamera(e)} className="filter">
             <option value="All">All</option>
-            <option value="8">8 Mpx</option>
-            <option value="12">12 Mpx</option>
-            <option value="13">13 Mpx</option>
-            <option value="24">24 Mpx</option>
-            <option value="40">40 Mpx</option>
-            <option value="48">48 Mpx</option>
-            <option value="50">50 Mpx</option>
-            <option value="64">64 Mpx</option>
-            <option value="108">108 Mpx</option>
-
+            <option value="12">Menor a 12.99 Mpx</option>
+            <option value="13">Entre 13 Mpx y 24.99 Mpx</option>
+            <option value="25">Entre 25 Mpx y 49 Mpx</option>
+            <option value="40">Mayor a 49 Mpx</option>
+          </select>
+        </label>
+      </div>
+      <br />
+      <div >
+        <label>
+          Por Batería:
+          <br />
+          <select onClick={(e) => handleBattery(e)} className="filter">
+            <option value="All">All</option>
+            <option value="3750">Menor a 3750 mAh</option>
+            <option value="4100">Entre 3750 y 4100 mAh</option>
+            <option value="4600">Entre 4101 y 4600 mAh</option>
+            <option value="4800">Mayor a 4600 mAh</option>
           </select>
         </label>
       </div>
@@ -200,6 +225,7 @@ function FiltersMenu({ setFilter, filters }) {
             Veggie
           </Button>
         </ButtonGroup> */}
+        </div>
       </div>
     </Container>
   );
