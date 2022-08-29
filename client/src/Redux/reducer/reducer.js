@@ -24,6 +24,8 @@ import {
   FILTER_BRAND,
   POST_PRODUCT,
   FILTER_DISPLAY,
+  FILTER_BY_CAMERA,
+  FILTER_MEMORY_RAM
 } from '../actions/actions';
 
 import { addFav, addItem, deleteAllItem, deleteItem, subsFav } from './utils';
@@ -96,9 +98,7 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         products: filteredBrands,
-        filteredProducts : filteredBrands 
-        
-        
+        filteredProducts : filteredBrands   
       };
     case FILTER_DISPLAY:
       let display = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
@@ -111,7 +111,27 @@ const rootReducer = (state = initialState, action = {}) => {
         ...state,
         products: size[0]? size : state.allProducts,
         filteredProducts: size
-      }  
+      };
+    case FILTER_MEMORY_RAM:
+      const memoryRam = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
+      const filteredRam = action.payload === "All"
+        ? memoryRam
+        : memoryRam.filter(p => p.ram == action.payload);
+      return {
+        ...state,
+        products: filteredRam,
+        filteredProducts:filteredRam
+      };
+    case FILTER_BY_CAMERA:
+      const cameras = state.filteredProducts[0]? state.filteredProducts : state.allProducts;
+      const filteredCamera = action.payload === "All"
+        ? cameras
+        : cameras.filter((p) => p.camera == action.payload);
+      return {
+        ...state,
+        products: filteredCamera,
+        filteredProducts : filteredCamera
+      };
     case ADD_TO_CART:
       /* payload es el id, array de products, y el array de carrito */
       return {

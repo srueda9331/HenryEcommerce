@@ -6,6 +6,8 @@ import {
   filterDisplay,
   getProduct,
   orderPrice,
+  filterRam,
+  filterByCamera
 } from '../../Redux/actions/actions';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -38,6 +40,14 @@ function FiltersMenu({ setFilter, filters }) {
 
   const handleDisplay = (e) => {
     dispatch(filterDisplay(e.target.value));
+  };
+
+  const handleRam = (e) => {
+    dispatch(filterRam(e.target.value));
+  };
+  
+  const handleCamera = (e) => {
+    dispatch(filterByCamera(e.target.value));
   };
 
   return (
@@ -77,6 +87,39 @@ function FiltersMenu({ setFilter, filters }) {
             <option value="entre-display">Entre 6.3 a 6.5 ''</option>
             <option value="mayor-display">Mayor a 6.5 ''</option>
 
+          </select>
+        </label>
+      </div>
+      <div className="filter">
+        <label>
+          Filtrar por memoria RAM:
+          <select onClick={(e) => handleRam(e)}>
+            <option value="All">All</option>
+            <option value="2">2GB</option>
+            <option value="3">3 GB</option>
+            <option value="4">4 GB</option>
+            <option value="6">6 GB</option>
+            <option value="8">8 GB</option>
+            <option value="12">12 GB</option>
+            <option value="16">16 GB</option>
+            <option value="18">18 GB</option>
+          </select>
+        </label>
+      </div>
+      <div className="filter">
+        <label>
+          Filtrar por Camara:
+          <select onClick={(e) => handleCamera(e)}>
+            <option value="All">All</option>
+            <option value="8">8 Mpx</option>
+            <option value="12">12 Mpx</option>
+            <option value="13">13 Mpx</option>
+            <option value="24">24 Mpx</option>
+            <option value="40">40 Mpx</option>
+            <option value="48">48 Mpx</option>
+            <option value="50">50 Mpx</option>
+            <option value="64">64 Mpx</option>
+            <option value="108">108 Mpx</option>
           </select>
         </label>
       </div>
