@@ -87,6 +87,11 @@ function ProductDetail() {
                     <strong>Weight:</strong> {producto.weight} gr
                   </p>
                 )}
+                {producto.display && (
+                  <p>
+                    <strong>Display:</strong> {producto.display} ''
+                  </p>
+                )}
                 {producto.batery && (
                   <p>
                     <strong>Battery:</strong> {producto.batery} mAh

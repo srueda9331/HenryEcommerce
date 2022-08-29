@@ -99,7 +99,7 @@ function FiltersMenu({ setFilter, filters }) {
           <select onClick={(e) => handleDisplay(e)} className="filter">
             <option value="All">All</option>
             <option value="menor-display">Menor a 6.3 ''</option>
-            <option value="entre-display">Entre 6.3 a 6.5 ''</option>
+            <option value="entre-display">Entre 6.3 y 6.5 ''</option>
             <option value="mayor-display">Mayor a 6.5 ''</option>
 
           </select>
