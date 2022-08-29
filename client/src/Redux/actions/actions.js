@@ -26,6 +26,8 @@ export const ORDER_PRICE = 'ORDER_PRICE';
 export const FILTER_BRAND = 'FILTER_BRAND';
 export const POST_PRODUCT = 'POST_PRODUCT';
 export const FILTER_DISPLAY = 'FILTER_DISPLAY';
+export const FILTER_MEMORY_RAM = "FILTER_MEMORY_RAM";
+export const FILTER_BY_CAMERA = "FILTER_BY_CAMERA"
 
 export function getUser(token, query = '/') {
   return async function (dispatch) {
@@ -83,6 +85,20 @@ export function filterBrand(payload) {
 export function filterDisplay(payload) {
   return {
     type: FILTER_DISPLAY,
+    payload,
+  };
+}
+
+export function filterRam(payload){
+  return {
+    type: FILTER_MEMORY_RAM,
+    payload,
+  };
+}
+
+export function filterByCamera(payload){
+  return {
+    type: FILTER_BY_CAMERA,
     payload,
   };
 }
