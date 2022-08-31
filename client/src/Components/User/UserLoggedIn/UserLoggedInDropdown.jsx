@@ -52,7 +52,7 @@ function UserLoggedInDropdown({ userData, logoutSession }) {
           </Dropdown.ItemText>
         )}
 
-        {/* {userData.role === 'employee' && (
+        {userData.role === 'employee' && (
           <Dropdown.ItemText>
             <Button
               as={Link}
@@ -63,7 +63,7 @@ function UserLoggedInDropdown({ userData, logoutSession }) {
               Empleado
             </Button>
           </Dropdown.ItemText>
-        )} */}
+        )}
       </Dropdown.Menu>
     </Dropdown>
   );

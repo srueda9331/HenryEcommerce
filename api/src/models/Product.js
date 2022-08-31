@@ -64,10 +64,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.TEXT,
         allowNull: true,
       },
-      stock: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
     },
     {
       sequelize,
