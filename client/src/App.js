@@ -5,7 +5,6 @@ import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home';
 import Menu from './Components/Menu/Menu';
-// import AddProduct from './Components/AddProduct/AddProduct';
 // import AboutUs from './Components/AboutUs/AboutUs';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import NotFound from './Components/NotFound/NotFound';
@@ -26,7 +25,7 @@ import AdminDashboard from './Components/Admin/Dashboard/AdminDashboard';
 import {
   isLogged,
   isLoggedAdmin,
-  // isLoggedAdminEmployee,
+  isLoggedAdminEmployee,
 } from './Components/methods';
 // import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
 import AddProductHome from './Components/Admin/AddProduct/ProductHome/AddProductHome';
@@ -37,16 +36,16 @@ import EditProducts from './Components/Admin/AddProduct/EditProducts/EditProduct
 import CouponAdmin from './Components/Admin/Coupons/CouponAdmin/CouponAdmin';
 import UserPurchaseDetail from './Components/User/UserPurchaseDetail/UserPurchaseDetail';
 
-// import EmployeeHome from './Components/employeePanel/employeeHome/EmployeeHome';
-// import EmployeePendingOrder from './Components/employeePanel/EmployeePendignOrder/EmployeePendingOrder';
-// import EmployeeOrderReady from './Components/employeePanel/EmployeeOrderReady/EmployeeOrderReady';
+import EmployeeHome from './Components/employeePanel/employeeHome/EmployeeHome';
+import EmployeePendingOrder from './Components/employeePanel/EmployeePendignOrder/EmployeePendingOrder';
+import EmployeeOrderReady from './Components/employeePanel/EmployeeOrderReady/EmployeeOrderReady';
 
 import './App.css';
 
 function App() {
   const isSession = isLogged();
   const isSessionAdmin = isLoggedAdmin();
-  // const isSessionAdminEmployee = isLoggedAdminEmployee();
+  const isSessionAdminEmployee = isLoggedAdminEmployee();
 
   return (
     <div className="App">
@@ -57,7 +56,6 @@ function App() {
         <Route path="/" element={<Home />} />
         {/* <Route path="/contacto" element={<ContactoForm />} /> */}
         <Route path="/menu" element={<Menu />} />
-        {/* <Route path="/addProduct" element={<AddProduct />} /> */}
         {/* <Route path="/nosotros" element={<AboutUs />} /> */}
         <Route path="/detalle/:id" element={<ProductDetail />} />
         {/* <Route path="/quedicendenosotros" element={<ReviewsContainer />} /> */}
@@ -140,7 +138,7 @@ function App() {
         />
 
         {/* EMPLOYEE ROUTES */}
-        {/* <Route
+        <Route
           path="/employeehome"
           element={
             isSessionAdminEmployee ? <EmployeeHome /> : <Navigate to="/" />
@@ -165,7 +163,7 @@ function App() {
               <Navigate to="/" />
             )
           }
-        /> */}
+        />
       </Routes>
       <Footer />
     </div>
