@@ -248,6 +248,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => addToCart(item.id)}
+                      disabled={item.cantidad === item.quantity? true : false}
                     >
                       <PlusLg />
                     </Button>
@@ -255,6 +256,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => handleDelete(item.id)}
+                      disabled={item.cantidad === 1 ? true  : false}
                     >
                       <DashLg />
                     </Button>
@@ -265,6 +267,10 @@ function ShoppingCart() {
                     >
                       Quitar Producto
                     </Button>
+                    <span id='existencias-carrito'>Stock: {item.cantidad === item.quantity? 
+                        <span id='sin-existencias'>Sin existencias</span> : 
+                        <span id='disponible'>Disponible</span> }
+                    </span>
                   </div>
                   <hr />
                 </div>
