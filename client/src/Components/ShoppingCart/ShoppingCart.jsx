@@ -65,6 +65,8 @@ function ShoppingCart() {
     0
   );
 
+  console.log(total);
+
   const handleMPago = async () => {
     try {
       const json = await axios.post(

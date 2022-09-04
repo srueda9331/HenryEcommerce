@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Swal from 'sweetalert2';
-import contactImg from '../../Assets/Images/Hamburguesas/Stacker-Triple.png';
+import contactImg from '../../Assets/Images/logofinal.png';
 import emailjs from '@emailjs/browser';
 
 import './ContactForm.css';
@@ -22,7 +22,7 @@ function ContactoForm() {
       title: 'Mensaje enviado con éxito',
       text: 'Muchas gracias por contactarnos, en breve estaremos comunicandonos.',
       imageUrl:
-        'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png',
+        'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
       imageWidth: 200,
       imageHeight: 200,
       imageAlt: 'Logo henrys',

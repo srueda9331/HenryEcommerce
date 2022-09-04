@@ -26,7 +26,7 @@ function ReviewsContainer() {
 
   return (
     <Container className="mt-5 mb-5 reviews__container">
-      <h2>Los clientes andan diciendo...</h2>
+      <h2>Las opiniones de nuestros clientes</h2>
       <hr />
       <Carousel variant="dark" activeIndex={index} onSelect={handleSelect}>
         {allReviews.length > 0 ? (

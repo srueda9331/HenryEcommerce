@@ -44,3 +44,17 @@
 .item__detail {
   margin-top: 30px;
 }
+
+@media (min-width: 1200px) {
+  .productDetail__img {
+    width: 600px;
+    height: 500px;
+  }
+}
+
+@media (min-width: 992px) {
+  .productDetail__img {
+    width: 600px;
+    height: 500px;
+  }
+}
