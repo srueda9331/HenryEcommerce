@@ -895,6 +895,7 @@ async function changeStatus(id, status, employee) {
                           >
                             Para nosotros es muy importante conocer tu opinión
                             por eso:
+                            
                           </td>
                         </tr>
                         <tr>
@@ -908,6 +909,22 @@ async function changeStatus(id, status, employee) {
                               border-bottom: 3px solid #eeeeee;
                             "
                           >
+                          <a
+                              href="${`${process.env.HOST}/calificanos/${id}`}"
+                              style="
+                                background: #ffbe33;
+                                text-decoration: none !important;
+                                display: inline-block;
+                                font-weight: 500;
+                                color: #fff;
+                                text-transform: uppercase;
+                                font-size: 14px;
+                                padding: 7px 15px;
+                                display: inline-block;
+                                border-radius: 50px;
+                              "
+                              >Calificanos</a
+                            >
                           </td>
                         </tr>
                       </table>

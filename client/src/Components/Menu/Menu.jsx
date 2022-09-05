@@ -15,7 +15,7 @@ function Menu() {
   const dispatch = useDispatch();
   /* paginas */
   const [currentPage, setCurrentPage] = useState(1);
-  const [burgersPerPage, setBurgersPerPage] = useState(9);
+  const [burgersPerPage, setBurgersPerPage] = useState(8);
   const lastBurgerIndex = currentPage * burgersPerPage;
   const firstBurgerIndex = lastBurgerIndex - burgersPerPage;
   const allProducts = useSelector((state) => state.products);

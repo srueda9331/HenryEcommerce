@@ -142,7 +142,6 @@ function NavBar() {
                 >
                   Nosotros
                 </Nav.Link>
-                */}
                 {/* <Nav.Link
                   className={
                     path === '/contacto' ? 'linkActive' : 'navBar__users__link'
