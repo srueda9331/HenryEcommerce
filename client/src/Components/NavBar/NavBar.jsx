@@ -132,7 +132,7 @@ function NavBar() {
                 >
                   Menú
                 </Nav.Link>
-                {/* <Nav.Link
+                <Nav.Link
                   className={
                     path === '/nosotros' ? 'linkActive' : 'navBar__users__link'
                   }
@@ -163,7 +163,7 @@ function NavBar() {
                   onClick={setScrollToTop}
                 >
                   Reviews
-                </Nav.Link> */}
+                </Nav.Link>
                 <Nav.Link
                   className="ms-5 me-5"
                   as={Link}

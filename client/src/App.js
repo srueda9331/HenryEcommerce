@@ -15,21 +15,21 @@ import UserFavorites from './Components/User/UserFavorites/UserFavorites';
 import UserPersonalInfo from './Components/User/UserPersonalInfo/UserPersonalInfo';
 import UserProfileDashboard from './Components/User/UserProfileDashboard/UserProfile';
 import UserActivateAccount from './Components/User/UserActivateAccount/UserActivateAccount';
-// import UserReview from './Components/User/UserReview/UserReview';
+import UserReview from './Components/User/UserReview/UserReview';
 import ShoppingCart from './Components/ShoppingCart/ShoppingCart';
 import UserPurchase from './Components/User/UserPurchase/UserPurchase';
 
 import AdminDashboard from './Components/Admin/Dashboard/AdminDashboard';
-// import SendNewsletter from './Components/Admin/SendNewsletter/SendNewsletter';
+import SendNewsletter from './Components/Admin/SendNewsletter/SendNewsletter';
 
 import {
   isLogged,
   isLoggedAdmin,
   isLoggedAdminEmployee,
 } from './Components/methods';
-// import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
+import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
 import AddProductHome from './Components/Admin/AddProduct/ProductHome/AddProductHome';
-// import ReviewsContainer from './Components/ReviewsContainer/ReviewsContainer';
+import ReviewsContainer from './Components/ReviewsContainer/ReviewsContainer';
 import AdminUsers from './Components/Admin/AdminUsers/AdminUsers';
 import CreateOrEdit from './Components/Admin/AddProduct/AddProductViews/CreateOrEdit/CreateOrEdit';
 import EditProducts from './Components/Admin/AddProduct/EditProducts/EditProducts';
@@ -58,7 +58,7 @@ function App() {
         <Route path="/menu" element={<Menu />} />
         {/* <Route path="/nosotros" element={<AboutUs />} /> */}
         <Route path="/detalle/:id" element={<ProductDetail />} />
-        {/* <Route path="/quedicendenosotros" element={<ReviewsContainer />} /> */}
+        <Route path="/quedicendenosotros" element={<ReviewsContainer />} />
 
         {/* USER ROUTES */}
         <Route
@@ -81,20 +81,20 @@ function App() {
           path="/userprofiledashboard"
           element={isSession ? <UserProfileDashboard /> : <Navigate to="/" />}
         />
-        {/* <Route
+        <Route
           path="/calificanos/:purchaseId"
           element={isSession ? <UserReview /> : <Navigate to="/" />}
-        /> */}
+        />
         <Route
           path="/activateAcount/:id"
           element={isSession ? <Navigate to="/" /> : <UserActivateAccount />}
         />
         <Route path="/cart" element={<ShoppingCart />} />
 
-        {/* <Route
+        <Route
           path="/mercadoPago"
           element={isSession ? <MercadoPago /> : <Navigate to="/" />}
-        /> */}
+        />
 
         <Route
           path="/pay/"
@@ -111,10 +111,10 @@ function App() {
           path="/adminhome"
           element={isSessionAdmin ? <AdminDashboard /> : <Navigate to="/" />}
         />
-        {/* <Route
+        <Route
           path="/adminnewsletter"
           element={isSessionAdmin ? <SendNewsletter /> : <Navigate to="/" />}
-        /> */}
+        />
 
         <Route
           path="/adminproducts"

@@ -6,9 +6,10 @@ const { QRCodeGenerator } = require("../utils/QRCodeGenerator");
 
 async function create(data, user) {
   try {
+    console.log(data);
     const receipt = await mercadopagoRepository.getPaymentById(data.purchaseId);
     const order = await Order.create({ ...data, data: receipt });
-    await order.addCustomer(user.id);
+    await order.addCustomer(user);
     const orderAndUser = await Order.findByPk(order.purchaseId, {
       include: {
         association: "customer",
@@ -18,9 +19,9 @@ async function create(data, user) {
 
     await transporter.sendMail({
       from: '"Recibo de compra" <henryecommerceg13@gmail.com',
-      to: user.email,
+      to: data.user.email,
       subject: "Recibo de compra",
-      text: `Hola ${user.firstName} su pedido está en proceso de elaboración.
+      text: `Hola ${data.user.firstName} su pedido está en proceso de elaboración.
     Le avisaremos cuando su pedido esté listo para retirar!
     Adjuntamos el comprobante: `,
       html: `
@@ -257,7 +258,7 @@ async function create(data, user) {
                         text-align: center;
                       "
                     >
-                      ${user.lastName} ${user.firstName}, te
+                      ${data.user.lastName} ${data.user.name}, te
                       acercamos la factura con información de tu transacción.
                     </p>
                   </td>
@@ -334,7 +335,7 @@ async function create(data, user) {
                             padding: 15px 10px 5px 10px;
                           "
                         >
-                          $ ${e.price + " c/u"}
+                          $ ${e.unit_price + "0 c/u"}
                         </td>
                       </tr>
                       `
@@ -384,7 +385,7 @@ async function create(data, user) {
                             border-bottom: 3px solid #eeeeee;
                           "
                         >
-                          $ ${receipt.transaction_amount}
+                          $ ${receipt.transaction_amount}.00
                         </td>
                       </tr>
                     </table>
