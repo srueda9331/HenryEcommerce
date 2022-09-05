@@ -1,9 +1,11 @@
-import React from "react";
-import "./Cards.css";
-import { cardsData } from "../../../Data/Data";
-import RightSide from "../RigthSide/RightSide"
 
-import Card from "../CardDashboard/Card";
+import React from 'react';
+import './Cards.css';
+import { cardsData } from '../../methods';
+import RightSide from '../RigthSide/RightSide';
+
+import Card from '../CardDashboard/Card';
+
 
 const Cards = () => {
   return (
@@ -18,14 +20,17 @@ const Cards = () => {
               value={card.value}
               png={card.png}
               series={card.series}
-              
             />
           </div>
         );
       })}
-    <RightSide />
+
+      <RightSide />
+
     </div>
   );
 };
 
+
 export default Cards;
+

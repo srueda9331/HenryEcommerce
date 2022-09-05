@@ -37,7 +37,9 @@ import EditProducts from './Components/Admin/AddProduct/EditProducts/EditProduct
 import CouponAdmin from './Components/Admin/Coupons/CouponAdmin/CouponAdmin';
 import UserPurchaseDetail from './Components/User/UserPurchaseDetail/UserPurchaseDetail';
 
+
 import MainDash from './Components/Admin/MainDash/MainDash'
+
 import EmployeeHome from './Components/employeePanel/employeeHome/EmployeeHome';
 import EmployeePendingOrder from './Components/employeePanel/EmployeePendignOrder/EmployeePendingOrder';
 import EmployeeOrderReady from './Components/employeePanel/EmployeeOrderReady/EmployeeOrderReady';
@@ -144,31 +146,20 @@ function App() {
           element={isSessionAdmin ? <MainDash /> : <Navigate to="/" />}
         />
 
-        {/* EMPLOYEE ROUTES */}
-        <Route
+        {/* <Route
           path="/employeehome"
-          element={
-            isSessionAdminEmployee ? <EmployeeHome /> : <Navigate to="/" />
-          }
-        />
+          element={isSessionAdmin ? <EmployeeHome /> : <Navigate to="/" />}
+        /> */}
         <Route
           path="/employeependingorders"
           element={
-            isSessionAdminEmployee ? (
-              <EmployeePendingOrder />
-            ) : (
-              <Navigate to="/" />
-            )
+            isSessionAdmin ? <EmployeePendingOrder /> : <Navigate to="/" />
           }
         />
         <Route
           path="/employeeordersready"
           element={
-            isSessionAdminEmployee ? (
-              <EmployeeOrderReady />
-            ) : (
-              <Navigate to="/" />
-            )
+            isSessionAdmin ? <EmployeeOrderReady /> : <Navigate to="/" />
           }
         />
       </Routes>

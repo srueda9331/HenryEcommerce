@@ -1,20 +1,24 @@
-import React from "react";
-import "./Updates.css";
-import { UpdatesData } from "../../../Data/Data";
+
+import React from 'react';
+import './Updates.css';
+import { UpdatesData } from '../../methods';
+
 
 const Updates = () => {
   return (
     <div className="Updates">
-      {UpdatesData.map((update,id) => {
+      {UpdatesData.map((update, id) => {
         return (
           <div className="update" key={id}>
             <img src={update.img} alt="profile" />
             <div className="noti">
-              <div  style={{marginBottom: '0.5rem'}}>
+              s
+              <div style={{ marginBottom: '0.5rem' }}>
                 <span>{update.name}</span>
                 <span> {update.noti}</span>
               </div>
-                <span>{update.time}</span>
+              <span>{update.time}</span>
+
             </div>
           </div>
         );
@@ -22,5 +26,6 @@ const Updates = () => {
     </div>
   );
 };
+
 
 export default Updates;
