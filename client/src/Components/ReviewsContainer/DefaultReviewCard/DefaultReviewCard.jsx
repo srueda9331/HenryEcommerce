@@ -15,9 +15,8 @@ function DefaultReviewCard() {
         </div>
         <Card.Body className="defaultreviews__mainCard__body">
           <Card.Text>
-            Excelente servicio y productos!!! La comida ríquisima, la página es
-            muy sencilla y expeditiva en su uso. Volvería a pedir. Excelente
-            servicio y productos!!.
+            La mejor página para comprar, super rápidos y confiables un placer
+            haberlos encontrado!
           </Card.Text>
         </Card.Body>
         <p className="divider__reviewCard">________________________</p>
@@ -25,7 +24,7 @@ function DefaultReviewCard() {
           className="defaultreviews__mainCard__footer"
           style={{ borderRadius: '18px' }}
         >
-          - Washington Gutierrez
+          Nicolás Ala
         </Card.Footer>
       </Card>
     </div>

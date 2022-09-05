@@ -142,7 +142,8 @@ function NavBar() {
                 >
                   Nosotros
                 </Nav.Link>
-                <Nav.Link
+                */}
+                {/* <Nav.Link
                   className={
                     path === '/contacto' ? 'linkActive' : 'navBar__users__link'
                   }
@@ -151,7 +152,7 @@ function NavBar() {
                   onClick={setScrollToTop}
                 >
                   Contacto
-                </Nav.Link>
+                </Nav.Link> */}
                 <Nav.Link
                   className={
                     path === '/quedicendenosotros'

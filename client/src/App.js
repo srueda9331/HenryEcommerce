@@ -21,6 +21,7 @@ import UserPurchase from './Components/User/UserPurchase/UserPurchase';
 
 import AdminDashboard from './Components/Admin/Dashboard/AdminDashboard';
 import SendNewsletter from './Components/Admin/SendNewsletter/SendNewsletter';
+import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
 
 import {
   isLogged,
