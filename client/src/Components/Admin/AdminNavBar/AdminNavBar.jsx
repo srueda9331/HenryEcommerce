@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import {
   HouseFill,
   PeopleFill,
+  BagCheckFill,
   EnvelopePaperFill,
   BoxArrowLeft,
   ClipboardDataFill,
@@ -64,9 +65,7 @@ function AdminNavBar() {
                 >
                   <FileSpreadsheetFill /> Cupones
                 </Nav.Link>
-<<<<<<< Updated upstream
-                {/* <Nav.Link
-=======
+
                 <Nav.Link
                   as={Link}
                   to={'/admindashboard'}
@@ -74,8 +73,9 @@ function AdminNavBar() {
                 >
                   <BagCheckFill /> Ventas
                 </Nav.Link>
+
+
                 <Nav.Link
->>>>>>> Stashed changes
                   as={Link}
                   to={'/adminnewsletter'}
                   className="adminNavBar__link"

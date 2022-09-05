@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import './Card.css';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -5,6 +6,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { motion, LayoutGroup } from 'framer-motion';
 import { UilTimes } from '@iconscout/react-unicons';
 import Chart from 'react-apexcharts';
+
 
 // parent Card
 
@@ -65,6 +67,7 @@ function ExpandedCard({ param, setExpanded }) {
         top: 0,
         left: 0,
         blur: 3,
+
         color: '#000',
         opacity: 0.35,
       },
@@ -77,6 +80,7 @@ function ExpandedCard({ param, setExpanded }) {
         enabled: false,
       },
       stroke: {
+
         curve: 'smooth',
         colors: ['white'],
       },
@@ -89,6 +93,7 @@ function ExpandedCard({ param, setExpanded }) {
         show: true,
       },
       xaxis: {
+
         type: 'datetime',
         categories: [
           '2018-09-19T00:00:00.000Z',
@@ -112,10 +117,12 @@ function ExpandedCard({ param, setExpanded }) {
       }}
       layoutId="expandableCard"
     >
+
       <div style={{ alignSelf: 'flex-end', cursor: 'pointer', color: 'white' }}>
         <UilTimes onClick={setExpanded} />
       </div>
       <span>{param.title}</span>
+
       <div className="chartContainer">
         <Chart options={data.options} series={param.series} type="area" />
       </div>
@@ -124,4 +131,6 @@ function ExpandedCard({ param, setExpanded }) {
   );
 }
 
+
 export default Card;
+

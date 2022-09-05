@@ -1,6 +1,8 @@
+
 import React from 'react';
 import './Updates.css';
 import { UpdatesData } from '../../methods';
+
 
 const Updates = () => {
   return (
@@ -16,6 +18,7 @@ const Updates = () => {
                 <span> {update.noti}</span>
               </div>
               <span>{update.time}</span>
+
             </div>
           </div>
         );
@@ -23,5 +26,6 @@ const Updates = () => {
     </div>
   );
 };
+
 
 export default Updates;

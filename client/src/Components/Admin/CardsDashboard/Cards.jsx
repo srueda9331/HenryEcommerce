@@ -1,9 +1,11 @@
+
 import React from 'react';
 import './Cards.css';
 import { cardsData } from '../../methods';
 import RightSide from '../RigthSide/RightSide';
 
 import Card from '../CardDashboard/Card';
+
 
 const Cards = () => {
   return (
@@ -22,9 +24,13 @@ const Cards = () => {
           </div>
         );
       })}
+
       <RightSide />
+
     </div>
   );
 };
 
+
 export default Cards;
+

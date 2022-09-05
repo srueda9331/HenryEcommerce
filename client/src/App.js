@@ -37,13 +37,13 @@ import EditProducts from './Components/Admin/AddProduct/EditProducts/EditProduct
 import CouponAdmin from './Components/Admin/Coupons/CouponAdmin/CouponAdmin';
 import UserPurchaseDetail from './Components/User/UserPurchaseDetail/UserPurchaseDetail';
 
-<<<<<<< Updated upstream
-=======
-import MainDash from './Components/Admin/MainDash/MainDash';
->>>>>>> Stashed changes
+
+import MainDash from './Components/Admin/MainDash/MainDash'
+
 import EmployeeHome from './Components/employeePanel/employeeHome/EmployeeHome';
 import EmployeePendingOrder from './Components/employeePanel/EmployeePendignOrder/EmployeePendingOrder';
 import EmployeeOrderReady from './Components/employeePanel/EmployeeOrderReady/EmployeeOrderReady';
+
 
 import './App.css';
 
@@ -140,6 +140,10 @@ function App() {
         <Route
           path="/adminEditProducts/:id"
           element={isSessionAdmin ? <EditProducts /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/admindashboard"
+          element={isSessionAdmin ? <MainDash /> : <Navigate to="/" />}
         />
 
         {/* <Route
