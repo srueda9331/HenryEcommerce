@@ -21,7 +21,7 @@ function ReviewCard({ author, description, rating }) {
           className="reviews__mainCard__footer"
           style={{ borderRadius: '18px' }}
         >
-          - {author}
+          {author}
         </Card.Footer>
       </Card>
     </div>
