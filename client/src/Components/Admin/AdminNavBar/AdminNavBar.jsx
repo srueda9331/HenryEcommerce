@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import {
   HouseFill,
   PeopleFill,
+  BagCheckFill,
   EnvelopePaperFill,
   BoxArrowLeft,
   ClipboardDataFill,
@@ -63,6 +64,13 @@ function AdminNavBar() {
                   className="adminNavBar__link"
                 >
                   <FileSpreadsheetFill /> Cupones
+                </Nav.Link>
+                <Nav.Link
+                  as={Link}
+                  to={'/admindashboard'}
+                  className="adminNavBar__link"
+                >
+                  <BagCheckFill /> Ventas
                 </Nav.Link>
                 {/* <Nav.Link
                   as={Link}

@@ -1,0 +1,13 @@
+.RightSide{
+    display: flex;
+    flex-direction: column;
+    /* padding-top: 1rem; */
+    width:30%;
+    justify-content: space-evenly;
+}
+
+h4{
+  font-size: medium;
+  margin-left: 1rem;
+  text-align: start;
+}
