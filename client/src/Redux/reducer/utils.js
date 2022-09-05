@@ -11,11 +11,12 @@ export const addItem = (id, allProducts, cart) => {
     allProducts.find((p) => p.id === id.idtelefono) ||
     cart.find((p) => p.id === id.idtelefono);
 
+  newProduct['iduser'] = id.iduser;
   //console.log(typeof newProduct);
   if (!newProduct) {
     return [...cart];
   }
-
+  console.log(newProduct);
   const productExist = cart.find((item) => item.id === newProduct.id);
 
   if (!productExist) {

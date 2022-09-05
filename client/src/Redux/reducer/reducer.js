@@ -141,7 +141,7 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case FILTER_BY_CAMERA:
       const cameras = state.filteredProducts;
-      console.log(cameras);
+      //   console.log(cameras);
       const filteredCameras =
         action.payload === 'All'
           ? state.allProducts
@@ -159,7 +159,7 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case FILTER_BATTERY:
       const batteries = state.filteredProducts;
-      console.log(batteries);
+      //console.log(batteries);
       const filteredBatteries =
         action.payload === 'All'
           ? state.allProducts
