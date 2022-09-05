@@ -63,10 +63,10 @@ export function getProduct(name = '', isDeleted = '') {
   };
 }
 
-export function addCartProduct(id) {
+export function addCartProduct(payload) {
   return {
     type: ADD_TO_CART,
-    payload: id,
+    payload: payload,
   };
 }
 

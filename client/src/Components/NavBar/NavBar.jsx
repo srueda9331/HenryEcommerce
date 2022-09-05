@@ -71,7 +71,7 @@ function NavBar() {
     }
 
     if (window.localStorage.getItem('carrito')) {
-      dispatch(deleteCart(false));
+      dispatch(deleteCart());
       window.localStorage.removeItem('carrito');
     }
 
@@ -142,7 +142,7 @@ function NavBar() {
                 >
                   Nosotros
                 </Nav.Link>
-                */}
+
                 {/* <Nav.Link
                   className={
                     path === '/contacto' ? 'linkActive' : 'navBar__users__link'

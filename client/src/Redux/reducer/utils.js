@@ -5,9 +5,13 @@ export const addItem = (id, allProducts, cart) => {
   /* busco en "todos" (que en realidad es lo filtrado)"
     /* sino */
   /* busco en el carrito */
-  const newProduct =
-    allProducts.find((p) => p.id === id) || cart.find((p) => p.id === id);
+  //console.log(id.iduser);
 
+  const newProduct =
+    allProducts.find((p) => p.id === id.idtelefono) ||
+    cart.find((p) => p.id === id.idtelefono);
+
+  //console.log(typeof newProduct);
   if (!newProduct) {
     return [...cart];
   }
@@ -15,8 +19,10 @@ export const addItem = (id, allProducts, cart) => {
   const productExist = cart.find((item) => item.id === newProduct.id);
 
   if (!productExist) {
+    //si no hay un elemento igual en el carrito
     return [...cart, { ...newProduct, cantidad: 1 }];
   } else {
+    //si ya hay un elemento en el carrito igual se suma + cantidad
     return cart.map((e) =>
       e.id === newProduct.id ? { ...e, cantidad: e.cantidad + 1 } : e
     );
