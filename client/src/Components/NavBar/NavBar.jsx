@@ -95,7 +95,7 @@ function NavBar() {
   return (
     <>
       {isAdmin && <AdminNavBar />}
-      {isEmployee && <EmployeeNavBar />}
+      {isEmployee && <AdminNavBar />}
 
       {!isAdmin && !isEmployee && (
         <Navbar className="navBar" expand="lg" variant="dark" sticky="top">

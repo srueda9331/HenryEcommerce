@@ -64,13 +64,24 @@ function AdminNavBar() {
                 >
                   <FileSpreadsheetFill /> Cupones
                 </Nav.Link>
+<<<<<<< Updated upstream
                 {/* <Nav.Link
+=======
+                <Nav.Link
+                  as={Link}
+                  to={'/admindashboard'}
+                  className="adminNavBar__link"
+                >
+                  <BagCheckFill /> Ventas
+                </Nav.Link>
+                <Nav.Link
+>>>>>>> Stashed changes
                   as={Link}
                   to={'/adminnewsletter'}
                   className="adminNavBar__link"
                 >
                   <EnvelopePaperFill /> Newsletter
-                </Nav.Link> */}
+                </Nav.Link>
                 <Nav.Link as={Link} to={'/'} className="adminNavBar__link">
                   <BoxArrowLeft />
                   Salir

@@ -4,9 +4,16 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import newsletterImg from '../../../Assets/Images/Admin/newsletter.png';
+<<<<<<< Updated upstream
 import usersImg from '../../../Assets/Images/Admin/Usuarios.png';
 import productsImg from '../../../Assets/Images/Admin/productos.png';
 import discountImg from '../../../Assets/Images/Admin/descuentos.png';
+=======
+import usersImg from '../../../Assets/Images/Admin/users.jpeg';
+import productsImg from '../../../Assets/Images/Admin/products.jpeg';
+import discountImg from '../../../Assets/Images/Admin/discounts.jpeg';
+import sellImg from '../../../Assets/Images/Admin/sells.jpeg';
+>>>>>>> Stashed changes
 
 import './AdminDashboard.css';
 
@@ -61,7 +68,7 @@ function AdminDashboard() {
             </Card.Body>
           </Card>
 
-          {/* <Card style={{ width: '18rem' }} className="adminHome__card">
+          <Card style={{ width: '18rem' }} className="adminHome__card">
             <Card.Img
               variant="top"
               src={newsletterImg}
@@ -69,14 +76,12 @@ function AdminDashboard() {
             />
             <Card.Body className="adminHome__card__body">
               <Card.Title>Enviar Novedades</Card.Title>
-              <Card.Text>
-                Compartí todas las novedades con tus clientes.
-              </Card.Text>
+              <Card.Text>Envia novedades a tus clientes.</Card.Text>
               <Button as={Link} to="/adminnewsletter" variant="secondary">
                 Ingresar
               </Button>
             </Card.Body>
-          </Card> */}
+          </Card>
         </div>
       </Container>
     </div>

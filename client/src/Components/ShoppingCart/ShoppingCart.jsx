@@ -12,7 +12,7 @@ import {
 import CardProductCart from '../CardProductCart/CardProductCart';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-import { PlusLg, DashLg, Trash } from 'react-bootstrap-icons';
+import { PlusLg, DashLg, Trash, Windows } from 'react-bootstrap-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import imgDefault from '../../Assets/Images/default.jpg';
 
@@ -35,6 +35,11 @@ function ShoppingCart() {
     if (!mount) {
       if (itemsToCart && itemsToCart.length) {
         window.localStorage.setItem('carrito', JSON.stringify(itemsToCart));
+        const userid = JSON.parse(window.localStorage.getItem('user'));
+        const comprajson = JSON.parse(window.localStorage.getItem('carrito'));
+        console.log(userid.id);
+        const comprauser = [...comprajson, userid.id];
+        console.log(comprauser);
       } else {
         window.localStorage.removeItem('carrito');
         window.localStorage.removeItem('compra');
@@ -250,7 +255,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => addToCart(item.id)}
-                      disabled={item.cantidad === item.quantity? true : false}
+                      disabled={item.cantidad === item.quantity ? true : false}
                     >
                       <PlusLg />
                     </Button>
@@ -258,7 +263,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => handleDelete(item.id)}
-                      disabled={item.cantidad === 1 ? true  : false}
+                      disabled={item.cantidad === 1 ? true : false}
                     >
                       <DashLg />
                     </Button>
@@ -269,9 +274,13 @@ function ShoppingCart() {
                     >
                       Quitar Producto
                     </Button>
-                    <span id='existencias-carrito'>Stock: {item.cantidad === item.quantity? 
-                        <span id='sin-existencias'>Sin existencias</span> : 
-                        <span id='disponible'>Disponible</span> }
+                    <span id="existencias-carrito">
+                      Stock:{' '}
+                      {item.cantidad === item.quantity ? (
+                        <span id="sin-existencias">Sin existencias</span>
+                      ) : (
+                        <span id="disponible">Disponible</span>
+                      )}
                     </span>
                   </div>
                   <hr />
