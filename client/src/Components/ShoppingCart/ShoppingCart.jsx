@@ -319,17 +319,17 @@ function ShoppingCart() {
 
                 {discount > 0 && (
                   <h3 className="shoppingCart__h2 mb-4">
-                    Subtotal: <span>{`$${' ' + total.toFixed(3)}`}</span>
+                    Subtotal: <span>{`$${' ' + total.toFixed(2)}`}</span>
                   </h3>
                 )}
                 {discount > 0 && (
                   <h3 className="shoppingCart__h2 mb-4">
-                    Descuentos: <span>{`$${' ' + discount.toFixed(3)}`}</span>
+                    Descuentos: <span>{`$${' ' + discount.toFixed(2)}`}</span>
                   </h3>
                 )}
                 <h2 className="shoppingCart__h2 mb-4">
                   <strong>Total de mi compra:</strong>
-                  <span> {`$${' ' + (total - discount).toFixed(3)}`}</span>
+                  <span> {`$${' ' + (total - discount).toFixed(2)}`}</span>
                 </h2>
                 <Link to={false}>
                   <Button onClick={handleMPago}>Confirmar Pago</Button>

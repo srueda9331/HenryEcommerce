@@ -132,7 +132,7 @@ function NavBar() {
                 >
                   Menú
                 </Nav.Link>
-                {/* <Nav.Link
+                <Nav.Link
                   className={
                     path === '/nosotros' ? 'linkActive' : 'navBar__users__link'
                   }

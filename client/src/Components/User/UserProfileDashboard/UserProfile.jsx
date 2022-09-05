@@ -97,23 +97,21 @@ function UserProfileDashboard() {
         </Card>
         <div className="container-cards">
           <div className="card w-25">
-            {/* <Card className="card-body">
+            <Card className="card-body">
               <div className="">
                 <Card.Header className="card-tittle" as="h2">
-                  Mis Favoritos
+                  Mis Compras
                 </Card.Header>
               </div>
               <Card.Body className="card-text">
-                <Card.Text>
-                  Guardá tus productos favoritos para tenerlos siempre cerca.
-                </Card.Text>
+                <Card.Text>Mirá tus compras realizadas</Card.Text>
               </Card.Body>
               <Card.Footer className="card-footer">
-                <Link className="btn " to="/userfavorites">
+                <Link className="btn " to="/userbuyhistory">
                   <ArrowRightCircleFill className="profile__infoCard__arrow" />
                 </Link>
               </Card.Footer>
-            </Card> */}
+            </Card>
 
             <Card className="card-tittle">
               <div className="card">

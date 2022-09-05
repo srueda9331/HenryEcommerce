@@ -20,14 +20,15 @@ import ShoppingCart from './Components/ShoppingCart/ShoppingCart';
 import UserPurchase from './Components/User/UserPurchase/UserPurchase';
 
 import AdminDashboard from './Components/Admin/Dashboard/AdminDashboard';
-// import SendNewsletter from './Components/Admin/SendNewsletter/SendNewsletter';
+import SendNewsletter from './Components/Admin/SendNewsletter/SendNewsletter';
 import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
+
 import {
   isLogged,
   isLoggedAdmin,
   isLoggedAdminEmployee,
 } from './Components/methods';
-// import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
+import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
 import AddProductHome from './Components/Admin/AddProduct/ProductHome/AddProductHome';
 import ReviewsContainer from './Components/ReviewsContainer/ReviewsContainer';
 import AdminUsers from './Components/Admin/AdminUsers/AdminUsers';
@@ -111,10 +112,10 @@ function App() {
           path="/adminhome"
           element={isSessionAdmin ? <AdminDashboard /> : <Navigate to="/" />}
         />
-        {/* <Route
+        <Route
           path="/adminnewsletter"
           element={isSessionAdmin ? <SendNewsletter /> : <Navigate to="/" />}
-        /> */}
+        />
 
         <Route
           path="/adminproducts"
