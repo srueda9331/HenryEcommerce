@@ -28,7 +28,7 @@ import {
   isLoggedAdmin,
   isLoggedAdminEmployee,
 } from './Components/methods';
-import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
+
 import AddProductHome from './Components/Admin/AddProduct/ProductHome/AddProductHome';
 import ReviewsContainer from './Components/ReviewsContainer/ReviewsContainer';
 import AdminUsers from './Components/Admin/AdminUsers/AdminUsers';
