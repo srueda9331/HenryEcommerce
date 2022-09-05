@@ -5,7 +5,6 @@ import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home';
 import Menu from './Components/Menu/Menu';
-// import AddProduct from './Components/AddProduct/AddProduct';
 // import AboutUs from './Components/AboutUs/AboutUs';
 import ProductDetail from './Components/ProductDetail/ProductDetail';
 import NotFound from './Components/NotFound/NotFound';
@@ -16,37 +15,40 @@ import UserFavorites from './Components/User/UserFavorites/UserFavorites';
 import UserPersonalInfo from './Components/User/UserPersonalInfo/UserPersonalInfo';
 import UserProfileDashboard from './Components/User/UserProfileDashboard/UserProfile';
 import UserActivateAccount from './Components/User/UserActivateAccount/UserActivateAccount';
-// import UserReview from './Components/User/UserReview/UserReview';
+import UserReview from './Components/User/UserReview/UserReview';
 import ShoppingCart from './Components/ShoppingCart/ShoppingCart';
 import UserPurchase from './Components/User/UserPurchase/UserPurchase';
 
 import AdminDashboard from './Components/Admin/Dashboard/AdminDashboard';
-// import SendNewsletter from './Components/Admin/SendNewsletter/SendNewsletter';
+import SendNewsletter from './Components/Admin/SendNewsletter/SendNewsletter';
+import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
 
 import {
   isLogged,
   isLoggedAdmin,
-  // isLoggedAdminEmployee,
+  isLoggedAdminEmployee,
 } from './Components/methods';
-// import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
+import MercadoPago from './Components/ShoppingCart/mercadoPago/MercadoPago';
 import AddProductHome from './Components/Admin/AddProduct/ProductHome/AddProductHome';
-// import ReviewsContainer from './Components/ReviewsContainer/ReviewsContainer';
+import ReviewsContainer from './Components/ReviewsContainer/ReviewsContainer';
 import AdminUsers from './Components/Admin/AdminUsers/AdminUsers';
 import CreateOrEdit from './Components/Admin/AddProduct/AddProductViews/CreateOrEdit/CreateOrEdit';
 import EditProducts from './Components/Admin/AddProduct/EditProducts/EditProducts';
 import CouponAdmin from './Components/Admin/Coupons/CouponAdmin/CouponAdmin';
 import UserPurchaseDetail from './Components/User/UserPurchaseDetail/UserPurchaseDetail';
+
 import MainDash from './Components/Admin/MainDash/MainDash'
-// import EmployeeHome from './Components/employeePanel/employeeHome/EmployeeHome';
-// import EmployeePendingOrder from './Components/employeePanel/EmployeePendignOrder/EmployeePendingOrder';
-// import EmployeeOrderReady from './Components/employeePanel/EmployeeOrderReady/EmployeeOrderReady';
+import EmployeeHome from './Components/employeePanel/employeeHome/EmployeeHome';
+import EmployeePendingOrder from './Components/employeePanel/EmployeePendignOrder/EmployeePendingOrder';
+import EmployeeOrderReady from './Components/employeePanel/EmployeeOrderReady/EmployeeOrderReady';
+
 
 import './App.css';
 
 function App() {
   const isSession = isLogged();
   const isSessionAdmin = isLoggedAdmin();
-  // const isSessionAdminEmployee = isLoggedAdminEmployee();
+  const isSessionAdminEmployee = isLoggedAdminEmployee();
 
   return (
     <div className="App">
@@ -57,10 +59,9 @@ function App() {
         <Route path="/" element={<Home />} />
         {/* <Route path="/contacto" element={<ContactoForm />} /> */}
         <Route path="/menu" element={<Menu />} />
-        {/* <Route path="/addProduct" element={<AddProduct />} /> */}
         {/* <Route path="/nosotros" element={<AboutUs />} /> */}
         <Route path="/detalle/:id" element={<ProductDetail />} />
-        {/* <Route path="/quedicendenosotros" element={<ReviewsContainer />} /> */}
+        <Route path="/quedicendenosotros" element={<ReviewsContainer />} />
 
         {/* USER ROUTES */}
         <Route
@@ -83,20 +84,20 @@ function App() {
           path="/userprofiledashboard"
           element={isSession ? <UserProfileDashboard /> : <Navigate to="/" />}
         />
-        {/* <Route
+        <Route
           path="/calificanos/:purchaseId"
           element={isSession ? <UserReview /> : <Navigate to="/" />}
-        /> */}
+        />
         <Route
           path="/activateAcount/:id"
           element={isSession ? <Navigate to="/" /> : <UserActivateAccount />}
         />
         <Route path="/cart" element={<ShoppingCart />} />
 
-        {/* <Route
+        <Route
           path="/mercadoPago"
           element={isSession ? <MercadoPago /> : <Navigate to="/" />}
-        /> */}
+        />
 
         <Route
           path="/pay/"
@@ -113,10 +114,10 @@ function App() {
           path="/adminhome"
           element={isSessionAdmin ? <AdminDashboard /> : <Navigate to="/" />}
         />
-        {/* <Route
+        <Route
           path="/adminnewsletter"
           element={isSessionAdmin ? <SendNewsletter /> : <Navigate to="/" />}
-        /> */}
+        />
 
         <Route
           path="/adminproducts"
@@ -144,7 +145,7 @@ function App() {
         />
 
         {/* EMPLOYEE ROUTES */}
-        {/* <Route
+        <Route
           path="/employeehome"
           element={
             isSessionAdminEmployee ? <EmployeeHome /> : <Navigate to="/" />
@@ -169,7 +170,7 @@ function App() {
               <Navigate to="/" />
             )
           }
-        /> */}
+        />
       </Routes>
       <Footer />
     </div>

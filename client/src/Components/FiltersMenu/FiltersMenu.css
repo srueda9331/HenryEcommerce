@@ -11,7 +11,8 @@
 }
 
 /* importante */
-.activeBtn, .activeBtn:focus {
+.activeBtn,
+.activeBtn:focus {
   background-color: var(--main-color-dark);
   color: var(--main-color-white);
 }
@@ -31,7 +32,6 @@
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
-  
 }
 
 .createBurger__btn {
@@ -54,4 +54,8 @@
   border-radius: 50px;
   border: var(--bc-inputs);
   margin: 5px;
+}
+
+.filter__tittle {
+  margin-top: 10px;
 }

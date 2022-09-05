@@ -65,6 +65,8 @@ function ShoppingCart() {
     0
   );
 
+  console.log(total);
+
   const handleMPago = async () => {
     try {
       const json = await axios.post(
@@ -248,6 +250,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => addToCart(item.id)}
+                      disabled={item.cantidad === item.quantity? true : false}
                     >
                       <PlusLg />
                     </Button>
@@ -255,6 +258,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => handleDelete(item.id)}
+                      disabled={item.cantidad === 1 ? true  : false}
                     >
                       <DashLg />
                     </Button>
@@ -265,6 +269,10 @@ function ShoppingCart() {
                     >
                       Quitar Producto
                     </Button>
+                    <span id='existencias-carrito'>Stock: {item.cantidad === item.quantity? 
+                        <span id='sin-existencias'>Sin existencias</span> : 
+                        <span id='disponible'>Disponible</span> }
+                    </span>
                   </div>
                   <hr />
                 </div>
@@ -311,17 +319,17 @@ function ShoppingCart() {
 
                 {discount > 0 && (
                   <h3 className="shoppingCart__h2 mb-4">
-                    Subtotal: <span>{`$${' ' + total.toFixed(3)}`}</span>
+                    Subtotal: <span>{`$${' ' + total.toFixed(2)}`}</span>
                   </h3>
                 )}
                 {discount > 0 && (
                   <h3 className="shoppingCart__h2 mb-4">
-                    Descuentos: <span>{`$${' ' + discount.toFixed(3)}`}</span>
+                    Descuentos: <span>{`$${' ' + discount.toFixed(2)}`}</span>
                   </h3>
                 )}
                 <h2 className="shoppingCart__h2 mb-4">
                   <strong>Total de mi compra:</strong>
-                  <span> {`$${' ' + (total - discount).toFixed(3)}`}</span>
+                  <span> {`$${' ' + (total - discount).toFixed(2)}`}</span>
                 </h2>
                 <Link to={false}>
                   <Button onClick={handleMPago}>Confirmar Pago</Button>

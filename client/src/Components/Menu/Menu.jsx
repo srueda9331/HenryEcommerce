@@ -55,18 +55,20 @@ function Menu() {
   return (
     <div className="menu__container">
       <SearchBar setFilter={setFilter} />
-      <div className="block-filters-products">
-        {/* <FiltersMenu setFilter={setFilter} filters={filters} /> */}
-        <div className="filter-container">
-          <FiltersMenu />
-        </div>
-
-        {/* {!currentProduct.length && <ErrorNoResults />} */}
-        {currentProduct.length > 0 && (
-          <div className="products-container-menu">
-            <ProductsContainerMenu currentProduct={currentProduct} />
+      <div className="menu_filter_container">
+        <div className="block-filters-products">
+          {/* <FiltersMenu setFilter={setFilter} filters={filters} /> */}
+          <div className="filter-container col-2">
+            <FiltersMenu />
           </div>
-        )}
+
+          {/* {!currentProduct.length && <ErrorNoResults />} */}
+          {currentProduct.length > 0 && (
+            <div className="products-container-menu col-xl-10 col-12">
+              <ProductsContainerMenu currentProduct={currentProduct} />
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="menu__pagination__container mb-3 mt-3">

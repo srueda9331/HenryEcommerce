@@ -35,7 +35,6 @@ function CreateOrEdit({ data }) {
     image: '',
     brands: '',
     quantity: '',
-    stock: '',
   });
 
   useEffect(() => {
@@ -55,7 +54,6 @@ function CreateOrEdit({ data }) {
         price: data.price,
         image: data.image ? data.image : '',
         quantity: data.quantity,
-        stock: data.stock,
       });
       setRestore(true);
     }
@@ -279,16 +277,6 @@ function CreateOrEdit({ data }) {
                 type="number"
                 value={input.quantity}
                 name="quantity"
-              />
-            </Form.Group>
-            <Form.Group as={Col} controlId="burgerPrice">
-              <Form.Label>Stock *</Form.Label>
-              <Form.Control
-                placeholder="stock *"
-                onChange={onChange}
-                type="boolean"
-                value={input.stock}
-                name="stock"
               />
             </Form.Group>
             <Form.Group as={Col} controlId="burgerPrice">

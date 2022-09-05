@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
-import orderReady from '../../../Assets/Images/Employee/orderready.png';
-import pendingdOrder from '../../../Assets/Images/Employee/pendingorder.png';
+import orderReady from '../../../Assets/Images/Admin/ready.png';
+import pendingdOrder from '../../../Assets/Images/Admin/pending.png';
 import EmployeeNavBar from '../EmployeeNavBar/EmployeeNavBar';
 
 import './EmployeeHome.css';
