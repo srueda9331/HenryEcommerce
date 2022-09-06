@@ -30,15 +30,6 @@ async function precharge() {
           isConfirmed: true,
         },
         {
-          id: "9d70e6a6-bc63-46aa-9a4c-22c540a565fd",
-          firstName: "Facundo",
-          lastName: "Juarez",
-          email: "employee@gmail.com",
-          password: await bcrypt.hash("1234", 10),
-          role: "employee",
-          isConfirmed: true,
-        },
-        {
           id: "5418ad15-329f-43fb-a626-201ebdf0a6a6",
           firstName: "Gabriel",
           lastName: "Juarez",

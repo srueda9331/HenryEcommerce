@@ -37,20 +37,19 @@ import EditProducts from './Components/Admin/AddProduct/EditProducts/EditProduct
 import CouponAdmin from './Components/Admin/Coupons/CouponAdmin/CouponAdmin';
 import UserPurchaseDetail from './Components/User/UserPurchaseDetail/UserPurchaseDetail';
 
-
-import MainDash from './Components/Admin/MainDash/MainDash'
+import MainDash from './Components/Admin/MainDash/MainDash';
 
 import EmployeeHome from './Components/employeePanel/employeeHome/EmployeeHome';
 import EmployeePendingOrder from './Components/employeePanel/EmployeePendignOrder/EmployeePendingOrder';
 import EmployeeOrderReady from './Components/employeePanel/EmployeeOrderReady/EmployeeOrderReady';
 
-
 import './App.css';
+import UserBuyHistory from './Components/User/UserBuyHistory/UserBuyHistory';
 
 function App() {
   const isSession = isLogged();
   const isSessionAdmin = isLoggedAdmin();
-  const isSessionAdminEmployee = isLoggedAdminEmployee();
+  // const isSessionAdminEmployee = isLoggedAdminEmployee();
 
   return (
     <div className="App">
@@ -64,7 +63,6 @@ function App() {
         {/* <Route path="/nosotros" element={<AboutUs />} /> */}
         <Route path="/detalle/:id" element={<ProductDetail />} />
         <Route path="/quedicendenosotros" element={<ReviewsContainer />} />
-
         {/* USER ROUTES */}
         <Route
           path="/userlogin"
@@ -87,6 +85,10 @@ function App() {
           element={isSession ? <UserProfileDashboard /> : <Navigate to="/" />}
         />
         <Route
+          path="/userbuyhistory"
+          element={isSession ? <UserBuyHistory /> : <Navigate to="/" />}
+        />
+        <Route
           path="/calificanos/:purchaseId"
           element={isSession ? <UserReview /> : <Navigate to="/" />}
         />
@@ -95,22 +97,18 @@ function App() {
           element={isSession ? <Navigate to="/" /> : <UserActivateAccount />}
         />
         <Route path="/cart" element={<ShoppingCart />} />
-
         <Route
           path="/mercadoPago"
           element={isSession ? <MercadoPago /> : <Navigate to="/" />}
         />
-
         <Route
           path="/pay/"
           element={isSession ? <UserPurchase /> : <Navigate to="/" />}
         />
-
         <Route
           path="/user/purchaseDetail/:id"
           element={isSession ? <UserPurchaseDetail /> : <Navigate to="/" />}
         />
-
         {/* ADMIN ROUTES */}
         <Route
           path="/adminhome"
@@ -120,7 +118,6 @@ function App() {
           path="/adminnewsletter"
           element={isSessionAdmin ? <SendNewsletter /> : <Navigate to="/" />}
         />
-
         <Route
           path="/adminproducts"
           element={isSessionAdmin ? <AddProductHome /> : <Navigate to="/" />}
@@ -145,19 +142,15 @@ function App() {
           path="/admindashboard"
           element={isSessionAdmin ? <MainDash /> : <Navigate to="/" />}
         />
-
-        {/* <Route
-          path="/employeehome"
-          element={isSessionAdmin ? <EmployeeHome /> : <Navigate to="/" />}
-        /> */}
         <Route
-          path="/employeependingorders"
+          path="/adminpendingorders"
           element={
             isSessionAdmin ? <EmployeePendingOrder /> : <Navigate to="/" />
           }
         />
+        z
         <Route
-          path="/employeeordersready"
+          path="/adminordersready"
           element={
             isSessionAdmin ? <EmployeeOrderReady /> : <Navigate to="/" />
           }
