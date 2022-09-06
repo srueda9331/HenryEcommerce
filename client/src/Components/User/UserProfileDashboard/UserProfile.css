@@ -4,10 +4,21 @@ div .row {
   align-items: center;
 }
 
-div .container-cards {
+.container-cards-card {
+  width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.card-width {
+  width: 25%;
+  margin: 10px;
+}
+.container-cards {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 20px;
+  align-items: center;
 }
 .mainTitle__profile {
   text-align: center;

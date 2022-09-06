@@ -96,41 +96,44 @@ function UserProfileDashboard() {
           </Card.Body>
         </Card>
         <div className="container-cards">
-          <div className="card w-25">
-            <Card className="card-body">
-              <div className="">
-                <Card.Header className="card-tittle" as="h2">
-                  Mis Compras
-                </Card.Header>
-              </div>
-              <Card.Body className="card-text">
-                <Card.Text>Mirá tus compras realizadas</Card.Text>
-              </Card.Body>
-              <Card.Footer className="card-footer">
-                <Link className="btn " to="/userbuyhistory">
-                  <ArrowRightCircleFill className="profile__infoCard__arrow" />
-                </Link>
-              </Card.Footer>
-            </Card>
-
-            <Card className="card-tittle">
-              <div className="card">
-                <Card.Header className="card-tittle" as="h2">
-                  Mis Datos
-                </Card.Header>
-              </div>
-              <Card.Body className="card-text">
-                <Card.Text>
-                  Mantené tus datos siempre actualizados para una mejor
-                  experiencia.
-                </Card.Text>
-              </Card.Body>
-              <Card.Footer className="card-footer">
-                <Link className="btn" to="/userpersonalinfo">
-                  <ArrowRightCircleFill className="profile__infoCard__arrow" />
-                </Link>
-              </Card.Footer>
-            </Card>
+          <div className="container-cards-card">
+            <div className="card-width">
+              <Card className="card-body">
+                <div className="card">
+                  <Card.Header className="card-tittle" as="h2">
+                    Mis Compras
+                  </Card.Header>
+                </div>
+                <Card.Body className="card-text">
+                  <Card.Text>Mirá tus compras realizadas</Card.Text>
+                </Card.Body>
+                <Card.Footer className="card-footer">
+                  <Link className="btn " to="/userbuyhistory">
+                    <ArrowRightCircleFill className="profile__infoCard__arrow" />
+                  </Link>
+                </Card.Footer>
+              </Card>
+            </div>
+            <div className="card-width">
+              <Card className="card-body">
+                <div className="card">
+                  <Card.Header className="card-tittle" as="h2">
+                    Mis Datos
+                  </Card.Header>
+                </div>
+                <Card.Body className="card-text">
+                  <Card.Text>
+                    Mantené tus datos siempre actualizados para una mejor
+                    experiencia.
+                  </Card.Text>
+                </Card.Body>
+                <Card.Footer className="card-footer">
+                  <Link className="btn" to="/userpersonalinfo">
+                    <ArrowRightCircleFill className="profile__infoCard__arrow" />
+                  </Link>
+                </Card.Footer>
+              </Card>
+            </div>
 
             {/* <Card className="card-tittle">
               <div className="card">
