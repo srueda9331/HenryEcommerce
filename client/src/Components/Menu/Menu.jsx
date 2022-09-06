@@ -15,12 +15,12 @@ function Menu() {
   const dispatch = useDispatch();
   /* paginas */
   const [currentPage, setCurrentPage] = useState(1);
-  const [burgersPerPage, setBurgersPerPage] = useState(8);
-  const lastBurgerIndex = currentPage * burgersPerPage;
-  const firstBurgerIndex = lastBurgerIndex - burgersPerPage;
+  const [phonesPerPage, setPhonesPerPage] = useState(8);
+  const lastPhoneIndex = currentPage * phonesPerPage;
+  const firstPhoneIndex = lastPhoneIndex - phonesPerPage;
   const allProducts = useSelector((state) => state.products);
   const category = useSelector((state) => state.category);
-  const currentProduct = allProducts.slice(firstBurgerIndex, lastBurgerIndex);
+  const currentProduct = allProducts.slice(firstPhoneIndex, lastPhoneIndex);
 
   const mount = useRef(false);
 
@@ -54,7 +54,7 @@ function Menu() {
 
   return (
     <div className="menu__container">
-      <SearchBar setFilter={setFilter} />
+      <SearchBar setFilter={setFilter} setCurrentPage={setCurrentPage} />
       <div className="menu_filter_container">
         <div className="block-filters-products">
           {/* <FiltersMenu setFilter={setFilter} filters={filters} /> */}
@@ -73,7 +73,7 @@ function Menu() {
 
       <div className="menu__pagination__container mb-3 mt-3">
         <Pagination
-          burgersPerPage={burgersPerPage}
+          phonesPerPage={phonesPerPage}
           allProducts={allProducts.length}
           currentPage={currentPage}
           setCurrentPage={setPage}

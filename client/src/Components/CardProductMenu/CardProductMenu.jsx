@@ -81,7 +81,7 @@ function CardProductMenu({ id, name, price, imgUri, addToCart, brands }) {
     //   </Card.Body>
     // </Card>
 
-    <div>
+    <div className="container__prduct-detail">
       <div className="page-wrapper">
         <div className="page-inner">
           <div className="row">
@@ -98,11 +98,11 @@ function CardProductMenu({ id, name, price, imgUri, addToCart, brands }) {
                     <HeartFill className="cardMenu__favorite__Svg " />
                   )}
                 </Button>
+                <img className="img-card" src={imgUri} alt="" />
                 <Link to={`/detalle/${id}`}>
-                  <img className="img-card" src={imgUri} alt="" />
                   <div className="img-info">
                     <div className="info-inner">
-                      <span className="p-name">{name}</span>
+                      <span className="p-name">{name.toUpperCase()}</span>
                     </div>
                     <div className="a-size">
                       <span className="size">{brands}</span>

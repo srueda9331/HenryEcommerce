@@ -136,10 +136,12 @@ function Footer() {
             </form>
           </Col>
           <Col sm={12} lg={4} className="p-3">
-            <Link to="/">
-              <img src={imgFooter} className="nav-img" alt=" logo" />
-            </Link>
-            <h4>"El mundo en tus manos"</h4>
+            <div className="footer__logo-lema">
+              <Link to="/">
+                <img src={imgFooter} className="nav-img" alt=" logo" />
+              </Link>
+              <h4>"El mundo en tus manos"</h4>
+            </div>
           </Col>
           <Col sm={12} lg={4} className="p-3">
             <p>Seguinos:</p>
