@@ -17,6 +17,7 @@ function EmployeePendingOrder() {
   const orders = useSelector((state) =>
     state.orders.filter((ord) => ord.status === 'Pendiente')
   );
+  const session = useSelector((state) => state.loginState);
   const [show, setShow] = useState(false);
   const [orderId, setOrderId] = useState('');
   const handleClose = () => setShow(false);
@@ -30,6 +31,7 @@ function EmployeePendingOrder() {
       setSubmited(true);
       const data = {
         status: 'Listo',
+        employee: session.firstName + ' ' + session.lastName,
       };
       await setStateOrder(orderId, data);
       let updateData = [];
@@ -57,7 +59,7 @@ function EmployeePendingOrder() {
       <hr />
       <Container>
         <Table bordered hover responsive>
-          <thead className="employee__thead">
+          <thead>
             <tr>
               <th>Fecha y Hora</th>
               <th>Cliente</th>
@@ -70,10 +72,6 @@ function EmployeePendingOrder() {
             {!orders.length && (
               <tr>
                 <td colSpan={6} className="pt-5 pb-5">
-                  <h2>
-                    <GiPartyPopper className="giPartyPopper" /> ¡Felicitaciones!
-                    <GiPartyPopper className="giPartyPopper" />
-                  </h2>
                   <p>No hay órdenes pendientes para preparar.</p>
                 </td>
               </tr>

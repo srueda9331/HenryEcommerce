@@ -35,11 +35,11 @@ function ShoppingCart() {
     if (!mount) {
       if (itemsToCart && itemsToCart.length) {
         window.localStorage.setItem('carrito', JSON.stringify(itemsToCart));
-        const userid = JSON.parse(window.localStorage.getItem('user'));
-        const comprajson = JSON.parse(window.localStorage.getItem('carrito'));
-        console.log(userid.id);
-        const comprauser = [...comprajson, userid.id];
-        console.log(comprauser);
+        // const userid = JSON.parse(window.localStorage.getItem('user'));
+        // const comprajson = JSON.parse(window.localStorage.getItem('carrito'));
+        // console.log(userid.id);
+        // const comprauser = [...comprajson, userid.id];
+        // console.log(comprauser);
       } else {
         window.localStorage.removeItem('carrito');
         window.localStorage.removeItem('compra');

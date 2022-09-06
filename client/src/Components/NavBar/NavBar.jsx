@@ -152,18 +152,7 @@ function NavBar() {
                 >
                   Contacto
                 </Nav.Link> */}
-                <Nav.Link
-                  className={
-                    path === '/quedicendenosotros'
-                      ? 'linkActive'
-                      : 'navBar__users__link'
-                  }
-                  as={Link}
-                  to="/quedicendenosotros"
-                  onClick={setScrollToTop}
-                >
-                  Reviews
-                </Nav.Link>
+
                 <Nav.Link
                   className="ms-5 me-5"
                   as={Link}

@@ -47,40 +47,6 @@ function CardProductMenu({ id, name, price, imgUri, addToCart, brands }) {
   };
 
   return (
-    // <Card className="card__menu" style={{ width: '18rem' }}>
-    //   <Button
-    //     variant="outline"
-    //     onClick={() => ClickFav(id)}
-    //     className="cardMenu__favorite__link"
-    //   >
-    //     {!favorites.includes(id) ? (
-    //       <Heart className="cardMenu__favorite__Svg " />
-    //     ) : (
-    //       <HeartFill className="cardMenu__favorite__Svg " />
-    //     )}
-    //   </Button>
-    //   <Card.Img
-    //     variant="top"
-    //     src={imgUri ? imgUri : ''}
-    //     onError={setImgProductHomeErr}
-    //     className="card__img__menu"
-    //   />
-    //   <Card.Body className="card__menu__body">
-    //     <Card.Title>
-    //       <p>{name}</p>
-    //     </Card.Title>
-    //     <Link className="footer__mail__link" to={`/detalle/${id}`}>
-    //       <p>Ver Más</p>
-    //     </Link>
-    //     <div className="card__cart__container">
-    //       <span>${price}</span>
-    //       <Button onClick={() => addToCart(id)} className="card__menu__cart">
-    //         <CartPlus />
-    //       </Button>
-    //     </div>
-    //   </Card.Body>
-    // </Card>
-
     <div className="container__prduct-detail">
       <div className="page-wrapper">
         <div className="page-inner">

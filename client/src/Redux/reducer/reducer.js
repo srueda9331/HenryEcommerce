@@ -94,7 +94,6 @@ const rootReducer = (state = initialState, action = {}) => {
         products: action.payload === 'All' ? state.products : [...sortPrices],
       };
     case FILTER_BRAND:
-
       const allPhones = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
       console.log(allPhones);
       const filteredBrands =
@@ -202,7 +201,7 @@ const rootReducer = (state = initialState, action = {}) => {
     case LOCAL_STORAGE:
       return {
         ...state,
-        // cart: action.payload,
+        cart: action.payload,
         cartStorage: action.payload
       };
     case GET_FAVORITES:

@@ -68,20 +68,11 @@ function UserActivateAccount() {
               {isSuccess === 0 && ' La cuenta ya fue activada!'}
               {isSuccess === -1 && ' Error al activar la cuenta!'}
             </h2>
-            <p>
-              {isSuccess === 1
-                ? 'Empezá a disfrutar de las más deliciosas hamburguesas'
-                : ''}
-            </p>
+            <p>{isSuccess === 1 ? '' : ''}</p>
             <Button as={Link} to="/">
               {isSuccess === 1 ? 'Iniciar la experiencia' : 'Volver al menú'}
             </Button>
           </div>
-          <img
-            src={ActivateImg}
-            alt="foto de un combo de dos hamburguesas"
-            className="img-fluid userActivate__img"
-          />
         </div>
       </Container>
     </>
