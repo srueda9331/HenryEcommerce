@@ -3,7 +3,14 @@ import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
 import './CardCuponHome.css';
 
-function CardCupponHome({ code, title, imgUri, discountPorcentage, expired }) {
+function CardCupponHome({
+  code,
+  title,
+  imgUri,
+  discountPorcentage,
+  expired,
+  expirationDate,
+}) {
   function copyCode() {
     navigator.clipboard.writeText(code);
   }
@@ -30,32 +37,89 @@ function CardCupponHome({ code, title, imgUri, discountPorcentage, expired }) {
   }
 
   return (
-    <section className={expired ? 'couponsHome__disabled' : ''}>
-      <div className="cardCuponHome__cupon">
-        <div className="cardCuponHome__containerImg">
-          <img
-            className="cardCuponHome__img img-fluid"
-            src={imgUri}
-            alt="cupon "
-          />
+    <div>
+      <section
+        className={expired ? 'couponsHome__disabled' : 'sectionCupponsHome'}
+      >
+        <div className="cardCuponHome__cupon">
+          <div className="cardCuponHome__containerImg">
+            <img
+              className="cardCuponHome__img img-fluid"
+              src={imgUri}
+              alt="cupon "
+            />
+          </div>
+          <div className="cardCuponHome__text">
+            <h2>{title}</h2>
+            <p>{discountPorcentage + '% OFF'}</p>
+            <Button
+              onClick={handle}
+              variant="primary"
+              className={
+                expired
+                  ? 'cupponCardHome__cupponButton disCursor'
+                  : 'cupponCardHome__cupponButton'
+              }
+            >
+              {code}
+            </Button>
+          </div>
         </div>
-        <div className="cardCuponHome__text">
-          <h2>{title}</h2>
-          <p>{discountPorcentage + '% OFF'}</p>
-          <Button
-            onClick={handle}
-            variant="primary"
-            className={
-              expired
-                ? 'cupponCardHome__cupponButton disCursor'
-                : 'cupponCardHome__cupponButton'
-            }
-          >
-            {code}
-          </Button>
+      </section>
+
+      <section className={expired ? 'couponsHome__disabled' : 'card-section'}>
+        <div className="cardfront">
+          <div className="flip-card">
+            <div className="flip-card__container">
+              <div className="card-front">
+                <div className="card-front__tp card-front__tp--city">
+                  <h2 className="card-front__heading">{title}</h2>
+                  <p className="card-front__text-price">
+                    {discountPorcentage + '% OFF'}
+                  </p>
+                </div>
+
+                <div className="card-front__bt">
+                  <p className="card-front__text-view card-front__text-view--city">
+                    Chekea esta oferta!
+                  </p>
+                </div>
+              </div>
+              <div className="card-back">
+                <img
+                  className="video__container img-fluid"
+                  src={imgUri}
+                  alt="not img"
+                ></img>
+              </div>
+            </div>
+          </div>
+
+          <div className="inside-page">
+            <div className="inside-page__container">
+              <h3 className="inside-page__heading inside-page__heading--city">
+                Para amantes del ahorro!
+              </h3>
+              <p className="inside-page__text">
+                Esta oferta esta vigente hasta el dia: {expirationDate}
+              </p>
+
+              <Button
+                onClick={handle}
+                variant="primary"
+                className={
+                  expired
+                    ? 'cupponCardHome__cupponButton disCursor'
+                    : 'cupponCardHome__cupponButton inside-page__btn inside-page__btn--city'
+                }
+              >
+                {code}
+              </Button>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 

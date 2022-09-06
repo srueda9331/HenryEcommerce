@@ -1,8 +1,6 @@
-
 import React from 'react';
 import './Updates.css';
 import { UpdatesData } from '../../methods';
-
 
 const Updates = () => {
   return (
@@ -12,13 +10,11 @@ const Updates = () => {
           <div className="update" key={id}>
             <img src={update.img} alt="profile" />
             <div className="noti">
-              s
               <div style={{ marginBottom: '0.5rem' }}>
                 <span>{update.name}</span>
                 <span> {update.noti}</span>
               </div>
               <span>{update.time}</span>
-
             </div>
           </div>
         );
@@ -26,6 +22,5 @@ const Updates = () => {
     </div>
   );
 };
-
 
 export default Updates;

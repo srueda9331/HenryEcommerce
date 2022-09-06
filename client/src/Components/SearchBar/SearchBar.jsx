@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Search } from 'react-bootstrap-icons';
 import './SearchBar.css';
 
-function SearchBar({ setFilter }) {
+function SearchBar({ setFilter, setCurrentPage }) {
   const [input, setInput] = useState('');
 
   function handleInput(e) {
@@ -12,6 +12,7 @@ function SearchBar({ setFilter }) {
   function handleSubmit(e) {
     e.preventDefault();
     setFilter('search', input);
+    setCurrentPage(1);
   }
 
   return (

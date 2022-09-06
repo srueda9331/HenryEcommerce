@@ -71,6 +71,7 @@ function EmployeeOrderReady() {
                         ))}
                     </ul>
                   </td>
+                  <td></td>
                   <td>$ {ord.data.transaction_amount}</td>
                   <td>{ord.employee ? ord.employee : ''}</td>
                 </tr>

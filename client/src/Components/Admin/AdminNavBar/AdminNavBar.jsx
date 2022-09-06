@@ -1,11 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import logo from '../../../Assets/Images/logofinal.png';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setOrders } from '../../../Redux/actions/actions';
 import {
   HouseFill,
   PeopleFill,
@@ -19,6 +21,15 @@ import {
 import './AdminNavBar.css';
 
 function AdminNavBar() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const interval = setInterval(() => dispatch(setOrders()), 15000);
+    dispatch(setOrders());
+
+    return () => clearInterval(interval);
+  }, [dispatch]);
+
   return (
     <>
       <Navbar bg="light" expand={false} className="mb-3 adminNavBar">
@@ -73,7 +84,6 @@ function AdminNavBar() {
                 >
                   <BagCheckFill /> Ventas
                 </Nav.Link>
-
 
                 <Nav.Link
                   as={Link}
