@@ -227,13 +227,6 @@ function AdminUsers() {
             >
               Usuarios
             </Button>
-            <Button
-              className={`filter__btn ${filter === 'employee' && 'activeBtn'}`}
-              name="employee"
-              onClick={(e) => filterUsers(e)}
-            >
-              Empleados
-            </Button>
           </ButtonGroup>
         </div>
         <Table responsive bordered hover>

@@ -93,9 +93,10 @@ const rootReducer = (state = initialState, action = {}) => {
         products: action.payload === 'All' ? state.products : [...sortPrices],
       };
     case FILTER_BRAND:
-      const allPhones = state.filteredProducts[0]
-        ? state.filteredProducts
-        : state.allProducts;
+      const allPhones =
+        state.filteredProducts === 0
+          ? state.filteredProducts
+          : state.allProducts;
       console.log(allPhones);
       const filteredBrands =
         action.payload === 'All'

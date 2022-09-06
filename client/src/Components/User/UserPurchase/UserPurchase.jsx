@@ -25,7 +25,6 @@ function UserPurchase() {
   useEffect(() => {
     if (purchaseId) {
       dispatch(postPurchase(purchaseId, token));
-      // Aca tendria que ir la logica de crear la nota
       removeLocalStorage();
       navigate(`/user/purchaseDetail/${purchaseId}`);
     }

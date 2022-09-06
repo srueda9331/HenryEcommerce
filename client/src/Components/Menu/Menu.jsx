@@ -57,12 +57,10 @@ function Menu() {
       <SearchBar setFilter={setFilter} setCurrentPage={setCurrentPage} />
       <div className="menu_filter_container">
         <div className="block-filters-products">
-          {/* <FiltersMenu setFilter={setFilter} filters={filters} /> */}
           <div className="filter-container col-2">
             <FiltersMenu />
           </div>
 
-          {/* {!currentProduct.length && <ErrorNoResults />} */}
           {currentProduct.length > 0 && (
             <div className="products-container-menu col-xl-10 col-12">
               <ProductsContainerMenu currentProduct={currentProduct} />

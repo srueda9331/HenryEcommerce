@@ -62,7 +62,7 @@ function App() {
         <Route path="/menu" element={<Menu />} />
         {/* <Route path="/nosotros" element={<AboutUs />} /> */}
         <Route path="/detalle/:id" element={<ProductDetail />} />
-        <Route path="/quedicendenosotros" element={<ReviewsContainer />} />
+        {/* <Route path="/quedicendenosotros" element={<ReviewsContainer />} /> */}
         {/* USER ROUTES */}
         <Route
           path="/userlogin"
