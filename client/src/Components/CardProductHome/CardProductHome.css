@@ -20,7 +20,7 @@
 }
 
 .cardProductHome__img__container__todos {
-  background-color: var(--main-color-dark);
+  background: linear-gradient(to bottom, #1363df, #06283d);
   display: flex;
   justify-content: center;
   border-radius: 20px;
@@ -43,7 +43,7 @@
   width: 100%;
   opacity: 0;
   transition: 0.5s ease;
-  background-color: var(--main-color-dark);
+  background: linear-gradient(to bottom, #1363df, #06283d);
   border-radius: 20px;
 }
 

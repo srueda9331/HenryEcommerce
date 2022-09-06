@@ -10,6 +10,7 @@ h4 {
 }
 
 .footer__btn__suscribe {
+  margin: 5px;
   margin-left: 5px;
   border-radius: 10px;
   background-color: #1363df;
@@ -36,4 +37,12 @@ a svg {
   color: var(--brand-color);
   font-size: smaller;
   padding-top: 10px;
+}
+
+.footer__logo-lema {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
 }
