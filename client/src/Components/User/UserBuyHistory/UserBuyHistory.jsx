@@ -17,23 +17,26 @@ function UserBuyHistory() {
   return (
     <div>
       <div>Mis compras </div>
-      {userorders.map((order) => {
-        console.log(order.data.additional_info.items[0].title);
-        return (
-          <div className="parentContainer">
-            <OrderCard
-              id={order.purchaseId}
-              status={order.status}
-              date={order.createdAt}
-              title={order.data.additional_info.items[0].title}
-              price={order.data.additional_info.items[0].unit_price}
-              quantity={order.data.additional_info.items[0].quantity}
-              image={order.data.additional_info.items[0].picture_url}
-              productid={order.data.additional_info.items[0].id}
-            />
-          </div>
-        );
-      })}
+      {userorders && userorders?.length > 0 ? (
+        userorders.map((order) => {
+          return (
+            <div className="parentContainer">
+              <OrderCard
+                id={order.purchaseId}
+                status={order.status}
+                date={order.createdAt}
+                title={order.data.additional_info.items[0].title}
+                price={order.data.additional_info.items[0].unit_price}
+                quantity={order.data.additional_info.items[0].quantity}
+                image={order.data.additional_info.items[0].picture_url}
+                productid={order.data.additional_info.items[0].id}
+              />
+            </div>
+          );
+        })
+      ) : (
+        <h2>Aún no tienes compras realizadas</h2>
+      )}
     </div>
   );
 }
