@@ -43,7 +43,7 @@ function SendNewsletter() {
         title: 'Newsletter',
         text: 'Novedades enviadas correctamente!',
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Logo henrys',
@@ -62,7 +62,7 @@ function SendNewsletter() {
         title: 'Opss...',
         text: error.response.data.error,
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/denied_anoxya.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Logo henrys',
@@ -99,17 +99,6 @@ function SendNewsletter() {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Texto del Botón*</Form.Label>
-            <Form.Control
-              name="btnTxt"
-              onChange={handleOnChange}
-              value={input.btnTxt}
-              type="text"
-              placeholder="Texto del botón"
-            />
-          </Form.Group>
-
           <Button
             variant="primary"
             type="submit"
@@ -129,4 +118,3 @@ function SendNewsletter() {
 }
 
 export default SendNewsletter;
-
