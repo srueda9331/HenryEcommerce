@@ -33,7 +33,7 @@ function Footer() {
         title: 'Suscripción Exitosa',
         text: 'A partir de ahora recibirás todas nuestras novedades',
         imageUrl:
-          'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Logo',
@@ -41,13 +41,13 @@ function Footer() {
       setErrors({ email: '' });
     } catch (error) {
       let imgUrl =
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU';
+        'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/denied_anoxya.png';
       const msg = error.response.data.error;
       let title = 'Oops...';
 
       if (typeof msg === 'string' && msg === 'El email ya está suscripto!') {
         imgUrl =
-          'https://img.favpng.com/3/0/4/download-icon-png-favpng-cBvxhrgWGBysNp37aDGKxUn5a_t.jpg';
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png';
         title = '';
       }
 

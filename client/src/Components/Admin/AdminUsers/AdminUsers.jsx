@@ -293,7 +293,6 @@ function AdminUsers() {
               Selecionar
             </option>
             <option value="admin">ADMIN</option>
-            <option value="employee">EMPLEADO</option>
             <option value="customer">USUARIO</option>
           </Form.Select>
         </Modal.Body>
