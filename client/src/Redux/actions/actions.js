@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const GET_PRODUCT = 'GET_PRODUCT';
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
+export const GET_USER_ORDER = 'GET_USER_ORDER';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const CLEAR_CART = 'CLEAR_CART';
 export const CLEAR_STATE = 'CLEAR_STATE';
@@ -55,6 +56,23 @@ export function getProduct(name = '', isDeleted = '') {
     try {
       return dispatch({
         type: GET_PRODUCT,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getUserOrder(token) {
+  return async function (dispatch) {
+    const json = await axios.get(`/orders/user`, {
+      headers: { 'auth-token': token },
+    });
+    console.log(json);
+    try {
+      return dispatch({
+        type: GET_USER_ORDER,
         payload: json.data,
       });
     } catch (error) {

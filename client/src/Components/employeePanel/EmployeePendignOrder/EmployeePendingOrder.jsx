@@ -14,7 +14,6 @@ import './EmployeePendingOrder.css';
 function EmployeePendingOrder() {
   const dispatch = useDispatch();
   const [isSubmited, setSubmited] = useState(false);
-  const session = useSelector((state) => state.loginState);
   const orders = useSelector((state) =>
     state.orders.filter((ord) => ord.status === 'Pendiente')
   );
@@ -31,7 +30,6 @@ function EmployeePendingOrder() {
       setSubmited(true);
       const data = {
         status: 'Listo',
-        employee: session.firstName + ' ' + session.lastName,
       };
       await setStateOrder(orderId, data);
       let updateData = [];
@@ -109,7 +107,6 @@ function EmployeePendingOrder() {
                         ))}
                     </ul>
                   </td>
-
                   <td>$ {ord.data.transaction_amount}</td>
                   <td>
                     <Button

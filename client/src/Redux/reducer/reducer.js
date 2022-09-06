@@ -1,6 +1,7 @@
 import {
   GET_PRODUCT,
   GET_PRODUCT_BY_ID,
+  GET_USER_ORDER,
   ADD_TO_CART,
   CLEAR_CART,
   DELETE_ONE_PRODUCT_CART,
@@ -44,6 +45,7 @@ const initialState = {
   users: [],
   purchaseInfo: undefined,
   orders: [],
+  userorders: [],
   filteredProducts: [],
 };
 
@@ -249,6 +251,11 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         purchaseInfo: action.payload,
+      };
+    case GET_USER_ORDER:
+      return {
+        ...state,
+        userorders: action.payload,
       };
 
     case DELETE_PRODUCT:
