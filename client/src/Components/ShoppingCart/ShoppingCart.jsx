@@ -100,7 +100,7 @@ function ShoppingCart() {
         title: 'Opss...',
         text: 'Primero debes iniciar sesión!',
         imageUrl:
-          'https://img.favpng.com/3/0/4/download-icon-png-favpng-cBvxhrgWGBysNp37aDGKxUn5a_t.jpg',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Logo',

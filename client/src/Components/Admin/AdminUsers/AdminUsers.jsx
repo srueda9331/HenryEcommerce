@@ -165,7 +165,7 @@ function AdminUsers() {
           confirmButton: 'confirmBtnSwal',
         },
         title: 'Exito!',
-        text: 'Se ha podido desactivar el usuario!',
+        text: 'Se ha podido modificar el usuario!',
       });
     } catch (error) {
       Swal.fire({
