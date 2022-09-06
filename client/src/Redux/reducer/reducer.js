@@ -45,8 +45,9 @@ const initialState = {
   users: [],
   purchaseInfo: undefined,
   orders: [],
-  userorders: [],
   filteredProducts: [],
+  cartStorage: []
+
 };
 
 const rootReducer = (state = initialState, action = {}) => {
@@ -93,10 +94,7 @@ const rootReducer = (state = initialState, action = {}) => {
         products: action.payload === 'All' ? state.products : [...sortPrices],
       };
     case FILTER_BRAND:
-      const allPhones =
-        state.filteredProducts === 0
-          ? state.filteredProducts
-          : state.allProducts;
+      const allPhones = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
       console.log(allPhones);
       const filteredBrands =
         action.payload === 'All'
@@ -183,6 +181,7 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cart: addItem(action.payload, state.products, state.cart),
+        cartStorage: addItem(action.payload, state.products, state.cart)
       };
     case DELETE_ONE_PRODUCT_CART:
       return {
@@ -203,6 +202,7 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cart: action.payload,
+        cartStorage: action.payload
       };
     case GET_FAVORITES:
       return {
