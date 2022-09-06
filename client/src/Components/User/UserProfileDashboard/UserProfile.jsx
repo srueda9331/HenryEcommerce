@@ -105,7 +105,7 @@ function UserProfileDashboard() {
                   </Card.Header>
                 </div>
                 <Card.Body className="card-text">
-                  <Card.Text>Mirá tus compras realizadas</Card.Text>
+                  <Card.Text>Mirá tus compras realizadas.</Card.Text>
                 </Card.Body>
                 <Card.Footer className="card-footer">
                   <Link className="btn " to="/userbuyhistory">
