@@ -27,11 +27,11 @@ async function check(req, res, next) {
         surname: user.lastName,
         email: user.email,
       },
-      notification_url:
-        (process.env.NGROK || process.env.BACKEND) +
-        "/pay/mercadopago/notification",
+      // notification_url:
+      //   (process.env.NGROK || process.env.BACKEND) +
+      //   "/pay/mercadopago/notification",
       payment_methods: {
-        installments: 3,
+        installments: 6,
       },
       metadata: { note: req.body.note },
     };

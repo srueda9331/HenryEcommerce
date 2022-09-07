@@ -24,13 +24,13 @@ function UserActivateAccount() {
           setSucess(1);
         } catch (error) {
           let imgUrl =
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU';
+            'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png';
           const msg = error.response.data.error;
           let title = 'Oops...';
 
           if (typeof msg === 'string' && msg === 'La cuenta ya fue activada!') {
             imgUrl =
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkkK2ODYBplJ5DnVfl_N3V_to76h7oCJco7Q&usqp=CAU';
+              'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png';
             title = '';
             setSucess(0);
           } else {
@@ -68,20 +68,11 @@ function UserActivateAccount() {
               {isSuccess === 0 && ' La cuenta ya fue activada!'}
               {isSuccess === -1 && ' Error al activar la cuenta!'}
             </h2>
-            <p>
-              {isSuccess === 1
-                ? 'Empezá a disfrutar de las más deliciosas hamburguesas'
-                : ''}
-            </p>
+            <p>{isSuccess === 1 ? '' : ''}</p>
             <Button as={Link} to="/">
               {isSuccess === 1 ? 'Iniciar la experiencia' : 'Volver al menú'}
             </Button>
           </div>
-          <img
-            src={ActivateImg}
-            alt="foto de un combo de dos hamburguesas"
-            className="img-fluid userActivate__img"
-          />
         </div>
       </Container>
     </>

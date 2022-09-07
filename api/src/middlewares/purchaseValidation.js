@@ -85,16 +85,17 @@ async function validatePurchase(req, res, next) {
   try {
     const items = [];
     const { cart, coupons } = req.body;
+    console.log(cart);
 
     if (!cart || cart.length < 1) {
       return res.status(400).json({ error: "El carrito esta vacio" });
     }
 
     for (let i = 0; i < cart.length; i++) {
-      const { id, createdAt, quantity, name, image, price } = cart[i];
+      const { id, createdAt, cantidad, name, image } = cart[i];
 
       if (createdAt) {
-        const validated = await validateDbProduct(res, id, quantity);
+        const validated = await validateDbProduct(res, id, cantidad);
         if (!validated.error) {
           items.push(validated);
         } else {
@@ -103,12 +104,11 @@ async function validatePurchase(req, res, next) {
       } else {
         const validated = await validateCreatedProduct(
           id,
-          quantity,
+          cantidad,
           name,
-          price,
           image
         );
-        console.log(price);
+        console.log(validated);
         if (!validated.error) {
           items.push(validated);
         } else {
@@ -145,8 +145,8 @@ async function applyCupons(req, res, next) {
       for (let i = 0; i < coupons.length; i++) {
         if (coupons[i].productsId.includes(item.id)) {
           console.log(item.id);
-          item.price =
-            (item.price / 100) * (100 - coupons[i].discountPorcentage);
+          item.unit_price =
+            (item.unit_price / 100) * (100 - coupons[i].discountPorcentage);
           item.title = `${item.title} (${coupons[i].discountPorcentage}%OFF)`;
         }
       }
@@ -156,5 +156,4 @@ async function applyCupons(req, res, next) {
     next(error);
   }
 }
-
 module.exports = { validatePurchase, applyCupons };

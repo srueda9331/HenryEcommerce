@@ -35,7 +35,6 @@ function CreateOrEdit({ data }) {
     image: '',
     brands: '',
     quantity: '',
-    stock: '',
   });
 
   useEffect(() => {
@@ -55,7 +54,6 @@ function CreateOrEdit({ data }) {
         price: data.price,
         image: data.image ? data.image : '',
         quantity: data.quantity,
-        stock: data.stock,
       });
       setRestore(true);
     }
@@ -101,14 +99,14 @@ function CreateOrEdit({ data }) {
         alertCustom(
           input.name,
           'Actualizada con exito!',
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png'
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png'
         );
         navigate('/adminproducts');
       } catch (error) {
         alertCustom(
           'Oops...',
           'No se pudo actualizar el producto!',
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png'
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png'
         );
       }
     } else {
@@ -279,16 +277,6 @@ function CreateOrEdit({ data }) {
                 type="number"
                 value={input.quantity}
                 name="quantity"
-              />
-            </Form.Group>
-            <Form.Group as={Col} controlId="burgerPrice">
-              <Form.Label>Stock *</Form.Label>
-              <Form.Control
-                placeholder="stock *"
-                onChange={onChange}
-                type="boolean"
-                value={input.stock}
-                name="stock"
               />
             </Form.Group>
             <Form.Group as={Col} controlId="burgerPrice">

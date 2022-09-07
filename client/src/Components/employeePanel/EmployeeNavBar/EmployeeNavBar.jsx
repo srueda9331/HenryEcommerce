@@ -30,7 +30,7 @@ function EmployeeNavBar() {
     >
       <Container>
         <Navbar.Brand as={Link} to="/employeehome">
-          <img src={imgNavEmp} className="nav-img" alt="Henrys burguer logo" />
+          <img src={imgNavEmp} className="nav-img" alt="not found" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

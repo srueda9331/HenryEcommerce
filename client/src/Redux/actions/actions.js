@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export const GET_PRODUCT = 'GET_PRODUCT';
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
+export const GET_USER_ORDER = 'GET_USER_ORDER';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const CLEAR_CART = 'CLEAR_CART';
 export const CLEAR_STATE = 'CLEAR_STATE';
@@ -26,10 +27,9 @@ export const ORDER_PRICE = 'ORDER_PRICE';
 export const FILTER_BRAND = 'FILTER_BRAND';
 export const POST_PRODUCT = 'POST_PRODUCT';
 export const FILTER_DISPLAY = 'FILTER_DISPLAY';
-export const FILTER_MEMORY_RAM = "FILTER_MEMORY_RAM";
-export const FILTER_BY_CAMERA = "FILTER_BY_CAMERA";
-export const FILTER_BATTERY = "FILTER_BATTERY";
-
+export const FILTER_MEMORY_RAM = 'FILTER_MEMORY_RAM';
+export const FILTER_BY_CAMERA = 'FILTER_BY_CAMERA';
+export const FILTER_BATTERY = 'FILTER_BATTERY';
 
 export function getUser(token, query = '/') {
   return async function (dispatch) {
@@ -56,6 +56,23 @@ export function getProduct(name = '', isDeleted = '') {
     try {
       return dispatch({
         type: GET_PRODUCT,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getUserOrder(token) {
+  return async function (dispatch) {
+    const json = await axios.get(`/orders/user`, {
+      headers: { 'auth-token': token },
+    });
+    console.log(json);
+    try {
+      return dispatch({
+        type: GET_USER_ORDER,
         payload: json.data,
       });
     } catch (error) {
@@ -92,21 +109,21 @@ export function filterDisplay(payload) {
   };
 }
 
-export function filterRam(payload){
+export function filterRam(payload) {
   return {
     type: FILTER_MEMORY_RAM,
     payload,
   };
 }
 
-export function filterByCamera(payload){
+export function filterByCamera(payload) {
   return {
     type: FILTER_BY_CAMERA,
     payload,
   };
 }
 
-export function filterBattery(payload){
+export function filterBattery(payload) {
   return {
     type: FILTER_BATTERY,
     payload,
@@ -339,6 +356,7 @@ export function postPurchase(purchaseId, token) {
         },
         { headers: { 'auth-token': token } }
       );
+      console.log(purchaseId);
     } catch (error) {
       return error;
     }

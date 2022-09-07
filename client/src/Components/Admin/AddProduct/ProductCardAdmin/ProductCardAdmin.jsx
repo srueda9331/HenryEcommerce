@@ -34,6 +34,7 @@ function ProductCardAdmin({ data, isDeleted }) {
         // variant="top"
         src={data.image}
         className="adminProductHome__card__img img-card"
+        alt="no img"
         onError={
           data.type === 'ingredients'
             ? (e) => (e) => setImgProductHomeErr(e)

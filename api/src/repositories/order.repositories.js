@@ -6,9 +6,10 @@ const { QRCodeGenerator } = require("../utils/QRCodeGenerator");
 
 async function create(data, user) {
   try {
+    console.log(data);
     const receipt = await mercadopagoRepository.getPaymentById(data.purchaseId);
     const order = await Order.create({ ...data, data: receipt });
-    await order.addCustomer(user.id);
+    await order.addCustomer(user);
     const orderAndUser = await Order.findByPk(order.purchaseId, {
       include: {
         association: "customer",
@@ -18,9 +19,9 @@ async function create(data, user) {
 
     await transporter.sendMail({
       from: '"Recibo de compra" <henryecommerceg13@gmail.com',
-      to: user.email,
+      to: data.user.email,
       subject: "Recibo de compra",
-      text: `Hola ${user.firstName} su pedido está en proceso de elaboración.
+      text: `Hola ${data.user.firstName} su pedido está en proceso de elaboración.
     Le avisaremos cuando su pedido esté listo para retirar!
     Adjuntamos el comprobante: `,
       html: `
@@ -257,7 +258,7 @@ async function create(data, user) {
                         text-align: center;
                       "
                     >
-                      ${user.lastName} ${user.firstName}, te
+                      ${data.user.lastName} ${data.user.name}, te
                       acercamos la factura con información de tu transacción.
                     </p>
                   </td>
@@ -334,7 +335,7 @@ async function create(data, user) {
                             padding: 15px 10px 5px 10px;
                           "
                         >
-                          $ ${e.price + " c/u"}
+                          $ ${e.unit_price + "0 c/u"}
                         </td>
                       </tr>
                       `
@@ -384,7 +385,7 @@ async function create(data, user) {
                             border-bottom: 3px solid #eeeeee;
                           "
                         >
-                          $ ${receipt.transaction_amount}
+                          $ ${receipt.transaction_amount}.00
                         </td>
                       </tr>
                     </table>
@@ -591,6 +592,7 @@ async function getByPurchaseId(purchaseId) {
 
 async function changeStatus(id, status, employee) {
   try {
+    const receipt = await mercadopagoRepository.getPaymentById(id);
     const order = await Order.findByPk(id, {
       include: {
         association: "customer",
@@ -601,10 +603,10 @@ async function changeStatus(id, status, employee) {
     if (status === "Listo" || status === "Entregado") {
       const imgQR = await QRCodeGenerator(id);
       await transporter.sendMail({
-        from: '"Retire su compra" <henryecommerceg13@gmail.com',
+        from: '"Su compra esta lista para envío" <henryecommerceg13@gmail.com',
         to: user.email,
         attachDataUrls: true,
-        subject: "Retire su compra",
+        subject: "Su compra esta lista para envío",
         html: `
         <!DOCTYPE html>
 <html>
@@ -630,7 +632,6 @@ async function changeStatus(id, status, employee) {
       img {
         -ms-interpolation-mode: bicubic;
       }
-
       /* RESET STYLES */
       img {
         border: 0;
@@ -648,7 +649,6 @@ async function changeStatus(id, status, employee) {
         padding: 0 !important;
         width: 100% !important;
       }
-
       /* iOS BLUE LINKS */
       a[x-apple-data-detectors] {
         color: inherit !important;
@@ -658,7 +658,6 @@ async function changeStatus(id, status, employee) {
         font-weight: inherit !important;
         line-height: inherit !important;
       }
-
       /* MEDIA QUERIES */
       @media screen and (max-width: 480px) {
         .mobile-hide {
@@ -668,7 +667,6 @@ async function changeStatus(id, status, employee) {
           text-align: center !important;
         }
       }
-
       /* ANDROID CENTER FIX */
       div[style*="margin: 16px 0;"] {
         margin: 0 !important;
@@ -724,7 +722,6 @@ async function changeStatus(id, status, employee) {
                     </tr>
                   </table>
                 </div>
-
                 <div
                   style="
                     display: inline-block;
@@ -771,6 +768,7 @@ async function changeStatus(id, status, employee) {
                                 text-transform: uppercase;
                               "
                             >
+                              <h4>Código de retiro</h4>
                             </td>
                           </tr>
                         </table>
@@ -780,7 +778,6 @@ async function changeStatus(id, status, employee) {
                 </div>
               </td>
             </tr>
-
             <tr>
               <td
                 align="center"
@@ -815,10 +812,11 @@ async function changeStatus(id, status, employee) {
                           margin: 0;
                         "
                       >
+                        ¡<span style="color: #ffbe33">${user.firstName}</span
+                        >, tu compra esta lista para ser despachada!
                       </h2>
                     </td>
                   </tr>
-
                   <tr>
                     <td
                       align="left"
@@ -839,10 +837,10 @@ async function changeStatus(id, status, employee) {
                           text-align: center;
                         "
                       >
+                        Con el código podes seguir tu envío.
                       </p>
                     </td>
                   </tr>
-
                   <tr>
                     <td
                       align="center"
@@ -867,7 +865,6 @@ async function changeStatus(id, status, employee) {
                       />
                     </td>
                   </tr>
-
                   <tr>
                     <td
                       align="left"
@@ -892,8 +889,6 @@ async function changeStatus(id, status, employee) {
                               border-top: 3px solid #eeeeee;
                             "
                           >
-                            Para nosotros es muy importante conocer tu opinión
-                            por eso:
                           </td>
                         </tr>
                         <tr>
@@ -907,6 +902,22 @@ async function changeStatus(id, status, employee) {
                               border-bottom: 3px solid #eeeeee;
                             "
                           >
+                            <a
+                              href="${process.env.HOST}"
+                              style="
+                                background: #ffbe33;
+                                text-decoration: none !important;
+                                display: inline-block;
+                                font-weight: 500;
+                                color: #fff;
+                                text-transform: uppercase;
+                                font-size: 14px;
+                                padding: 7px 15px;
+                                display: inline-block;
+                                border-radius: 50px;
+                              "
+                              >No dejes de visitarnos</a
+                            >
                           </td>
                         </tr>
                       </table>
@@ -915,7 +926,6 @@ async function changeStatus(id, status, employee) {
                 </table>
               </td>
             </tr>
-
             <tr>
               <td
                 align="center"
@@ -964,11 +974,22 @@ async function changeStatus(id, status, employee) {
                                 line-height: 24px;
                               "
                             >
+                      <h5>Domicilio</h5>
+                      ${receipt.additional_info.items
+                        .map(
+                          (e) => `
+                          <p>
+                          * ${e.quantity} ${e.title} <br />
+                          $ ${e.unit_price + " c/u"} 
+                          </p>
+                        `
+                        )
+                        .flat()
+                        .join("")}
                             </td>
                           </tr>
                         </table>
                       </div>
-
                       <div
                         style="
                           display: inline-block;
@@ -998,6 +1019,8 @@ async function changeStatus(id, status, employee) {
                                 line-height: 24px;
                               "
                             >
+                              <h5>Fecha y Hora:</h5>
+                              <p>${new Date()}</p>
                             </td>
                           </tr>
                         </table>
@@ -1007,7 +1030,6 @@ async function changeStatus(id, status, employee) {
                 </table>
               </td>
             </tr>
-
             <tr>
               <td
                 align="center"
@@ -1033,10 +1055,8 @@ async function changeStatus(id, status, employee) {
                         padding-top: 25px;
                       "
                     >
-
                     </td>
                   </tr>
-
                   <tr>
                     <td
                       align="center"

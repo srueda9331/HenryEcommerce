@@ -12,7 +12,7 @@ import {
 import CardProductCart from '../CardProductCart/CardProductCart';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
-import { PlusLg, DashLg, Trash } from 'react-bootstrap-icons';
+import { PlusLg, DashLg, Trash, Windows } from 'react-bootstrap-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import imgDefault from '../../Assets/Images/default.jpg';
 
@@ -35,6 +35,11 @@ function ShoppingCart() {
     if (!mount) {
       if (itemsToCart && itemsToCart.length) {
         window.localStorage.setItem('carrito', JSON.stringify(itemsToCart));
+        // const userid = JSON.parse(window.localStorage.getItem('user'));
+        // const comprajson = JSON.parse(window.localStorage.getItem('carrito'));
+        // console.log(userid.id);
+        // const comprauser = [...comprajson, userid.id];
+        // console.log(comprauser);
       } else {
         window.localStorage.removeItem('carrito');
         window.localStorage.removeItem('compra');
@@ -65,6 +70,8 @@ function ShoppingCart() {
     0
   );
 
+  console.log(total);
+
   const handleMPago = async () => {
     try {
       const json = await axios.post(
@@ -93,7 +100,7 @@ function ShoppingCart() {
         title: 'Opss...',
         text: 'Primero debes iniciar sesión!',
         imageUrl:
-          'https://img.favpng.com/3/0/4/download-icon-png-favpng-cBvxhrgWGBysNp37aDGKxUn5a_t.jpg',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Logo',
@@ -130,7 +137,7 @@ function ShoppingCart() {
           title: 'Opss...',
           text: 'El cupon ingresado no existe!!',
           imageUrl:
-            'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+            'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png',
           imageWidth: 150,
           imageHeight: 150,
           imageAlt: 'Logo',
@@ -154,7 +161,7 @@ function ShoppingCart() {
             title: 'Opss...',
             text: 'El cupon esta vencido',
             imageUrl:
-              'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+              'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png',
             imageWidth: 150,
             imageHeight: 150,
             imageAlt: 'Logo',
@@ -248,6 +255,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => addToCart(item.id)}
+                      disabled={item.cantidad === item.quantity ? true : false}
                     >
                       <PlusLg />
                     </Button>
@@ -255,6 +263,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => handleDelete(item.id)}
+                      disabled={item.cantidad === 1 ? true : false}
                     >
                       <DashLg />
                     </Button>
@@ -265,6 +274,14 @@ function ShoppingCart() {
                     >
                       Quitar Producto
                     </Button>
+                    <span id="existencias-carrito">
+                      Stock:{' '}
+                      {item.cantidad === item.quantity ? (
+                        <span id="sin-existencias">Sin existencias</span>
+                      ) : (
+                        <span id="disponible">Disponible</span>
+                      )}
+                    </span>
                   </div>
                   <hr />
                 </div>
@@ -284,8 +301,6 @@ function ShoppingCart() {
                   rows="3"
                 />
               </div> */}
-
-              <hr />
 
               <div className="cart__discount__container">
                 <h2 className="shoppingCart__h2 mb-4">
@@ -311,17 +326,17 @@ function ShoppingCart() {
 
                 {discount > 0 && (
                   <h3 className="shoppingCart__h2 mb-4">
-                    Subtotal: <span>{`$${' ' + total.toFixed(3)}`}</span>
+                    Subtotal: <span>{`$${' ' + total.toFixed(2)}`}</span>
                   </h3>
                 )}
                 {discount > 0 && (
                   <h3 className="shoppingCart__h2 mb-4">
-                    Descuentos: <span>{`$${' ' + discount.toFixed(3)}`}</span>
+                    Descuentos: <span>{`$${' ' + discount.toFixed(2)}`}</span>
                   </h3>
                 )}
                 <h2 className="shoppingCart__h2 mb-4">
                   <strong>Total de mi compra:</strong>
-                  <span> {`$${' ' + (total - discount).toFixed(3)}`}</span>
+                  <span> {`$${' ' + (total - discount).toFixed(2)}`}</span>
                 </h2>
                 <Link to={false}>
                   <Button onClick={handleMPago}>Confirmar Pago</Button>

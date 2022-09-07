@@ -38,6 +38,10 @@ function MercadoPago() {
     <Container>
       <div className="mercadoPago__container">
         <div className="mercadoPago__pay">
+          <h1 className="mecadoPago__tittle">
+            Estás a un paso de disfrutar tu
+            <span className="mercadoPago__span">Nuevo telefono!</span>
+          </h1>
           <hr />
           <p className="mercadoPago__text">
             Pulsa el siguiente botón para continuar

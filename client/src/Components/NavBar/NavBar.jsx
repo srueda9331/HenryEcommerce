@@ -95,7 +95,7 @@ function NavBar() {
   return (
     <>
       {isAdmin && <AdminNavBar />}
-      {isEmployee && <EmployeeNavBar />}
+      {isEmployee && <AdminNavBar />}
 
       {!isAdmin && !isEmployee && (
         <Navbar className="navBar" expand="lg" variant="dark" sticky="top">
@@ -132,7 +132,7 @@ function NavBar() {
                 >
                   Menú
                 </Nav.Link>
-                {/* <Nav.Link
+                <Nav.Link
                   className={
                     path === '/nosotros' ? 'linkActive' : 'navBar__users__link'
                   }
@@ -142,7 +142,7 @@ function NavBar() {
                 >
                   Nosotros
                 </Nav.Link>
-                <Nav.Link
+                {/* <Nav.Link
                   className={
                     path === '/contacto' ? 'linkActive' : 'navBar__users__link'
                   }
@@ -151,19 +151,8 @@ function NavBar() {
                   onClick={setScrollToTop}
                 >
                   Contacto
-                </Nav.Link>
-                <Nav.Link
-                  className={
-                    path === '/quedicendenosotros'
-                      ? 'linkActive'
-                      : 'navBar__users__link'
-                  }
-                  as={Link}
-                  to="/quedicendenosotros"
-                  onClick={setScrollToTop}
-                >
-                  Reviews
                 </Nav.Link> */}
+
                 <Nav.Link
                   className="ms-5 me-5"
                   as={Link}

@@ -7,9 +7,8 @@ import './ProductsContainerMenu.css';
 import Swal from 'sweetalert2';
 
 function ProductsContainerMenu({ currentProduct }) {
-
   const dispatch = useDispatch();
-  const msg = useState('')
+  const msg = useState('');
   let itemsToCart = useSelector((state) => state.cart);
   const [mount, setMount] = useState(true);
 
@@ -39,7 +38,7 @@ function ProductsContainerMenu({ currentProduct }) {
     Swal.fire({
       position: 'top-end',
       imageUrl:
-        'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+        'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
       imageWidth: 80,
       imageHeight: 80,
       text: 'Producto agregado exitosamente',
@@ -51,25 +50,24 @@ function ProductsContainerMenu({ currentProduct }) {
     });
   };
 
+  console.log(currentProduct);
+
   return (
     <div>
       <Container className="products__container__menu mt-3">
-        {
-        
-        currentProduct.length?
-        currentProduct.map((item) => (
-          <CardProductMenu
-            id={item.id}
-            name={item.name}
-            price={item.price}
-            imgUri={item.image}
-            brands={item.brands}
-            key={item.name}
-            addToCart={addToCart}
-          />
-        ))
-        : 
-        (
+        {currentProduct.length ? (
+          currentProduct.map((item) => (
+            <CardProductMenu
+              id={item.id}
+              name={item.name}
+              price={item.price}
+              imgUri={item.image}
+              brands={item.brands}
+              key={item.name}
+              addToCart={addToCart}
+            />
+          ))
+        ) : (
           <h2>LO SENTIMOS</h2>
         )}
       </Container>
