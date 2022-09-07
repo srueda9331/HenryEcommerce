@@ -22,14 +22,10 @@ function UserBuyHistory() {
           return (
             <div className="parentContainer">
               <OrderCard
+                order={order}
                 id={order.purchaseId}
                 status={order.status}
                 date={order.createdAt}
-                title={order.data.additional_info.items[0].title}
-                price={order.data.additional_info.items[0].unit_price}
-                quantity={order.data.additional_info.items[0].quantity}
-                image={order.data.additional_info.items[0].picture_url}
-                productid={order.data.additional_info.items[0].id}
               />
             </div>
           );
