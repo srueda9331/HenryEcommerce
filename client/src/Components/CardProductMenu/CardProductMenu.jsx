@@ -56,7 +56,7 @@ function CardProductMenu({ id, name, price, imgUri, addToCart, brands }) {
               onClick={() => ClickFav(id)}
               className="cardMenu__favorite__link"
             >
-              {!favorites.includes(id) ? (
+              {!favorites?.includes(id) ? (
                 <Heart className="cardMenu__favorite__Svg " />
               ) : (
                 <HeartFill className="cardMenu__favorite__Svg " />

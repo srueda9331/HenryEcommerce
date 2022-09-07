@@ -20,7 +20,9 @@ function Menu() {
   const firstPhoneIndex = lastPhoneIndex - phonesPerPage;
   const allProducts = useSelector((state) => state.products);
   const category = useSelector((state) => state.category);
-  const currentProduct = allProducts.slice(firstPhoneIndex, lastPhoneIndex);
+  const currentProduct = allProducts?.slice(firstPhoneIndex, lastPhoneIndex);
+  const user = useSelector((state) => state.loginState);
+  const carrito = useSelector((state) => state.cart);
 
   const mount = useRef(false);
 
@@ -42,6 +44,10 @@ function Menu() {
     setCurrentPage(page);
   };
 
+  // useEffect(() => {
+  //   console.log(user);
+  // }, [user]);
+
   useEffect(() => {
     if (!mount.current) {
       dispatch(getProduct(filters.search));
@@ -61,9 +67,13 @@ function Menu() {
             <FiltersMenu />
           </div>
 
-          {currentProduct.length > 0 && (
+          {/* {!currentProduct.length && <ErrorNoResults />} */}
+          {currentProduct?.length > 0 && (
             <div className="products-container-menu col-xl-10 col-12">
-              <ProductsContainerMenu currentProduct={currentProduct} />
+              <ProductsContainerMenu
+                currentProduct={currentProduct}
+                user={user}
+              />
             </div>
           )}
         </div>
@@ -72,7 +82,7 @@ function Menu() {
       <div className="menu__pagination__container mb-3 mt-3">
         <Pagination
           phonesPerPage={phonesPerPage}
-          allProducts={allProducts.length}
+          allProducts={allProducts?.length}
           currentPage={currentPage}
           setCurrentPage={setPage}
         />

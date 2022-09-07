@@ -4,6 +4,7 @@ import { React, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addCartProduct,
+  addCartProduct2,
   allProductsDelete,
   deleteCart,
   productDelete,
@@ -30,6 +31,15 @@ function ShoppingCart() {
   const couponsState = useSelector((state) => state.coupons);
   const [discount, setDiscount] = useState(0);
   const [note, setNote] = useState('');
+  const [filterCarrito, setFilterCarrito] = useState();
+  const [deslogeado, setDeslogeado] = useState();
+  const isSession = useSelector((state) => state.loginState);
+  const user = useSelector((state) => state.loginState);
+
+  useEffect(() => {
+    //console.log(filterCarrito);
+    console.log(itemsToCart);
+  }, [itemsToCart]);
 
   useEffect(() => {
     if (!mount) {
@@ -50,18 +60,62 @@ function ShoppingCart() {
   }, [dispatch, itemsToCart, mount]);
 
   const addToCart = (id) => {
-    dispatch(addCartProduct(id));
+    let payload = {};
+    if (user === null) {
+      payload = {
+        idtelefono: id,
+      };
+    }
+    if (user != null) {
+      payload = {
+        idtelefono: id,
+        iduser: user.id,
+      };
+    }
+    dispatch(addCartProduct(payload));
+    Swal.fire({
+      position: 'top-end',
+      target: '#custom-target',
+      // imageUrl:
+      //   'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+      icon: 'success',
+      imageWidth: 80,
+      imageHeight: 80,
+      text: 'Producto agregado exitosamente',
+      showConfirmButton: false,
+      timer: 900,
+      width: '18rem',
+      height: '5rem',
+      padding: '0.5rem',
+      toast: true,
+      customClass: {},
+    });
   };
 
   const handleDeleteCart = () => {
-    dispatch(deleteCart());
+    dispatch(deleteCart(user));
   };
 
   const handleDelete = (id, all = false) => {
     if (all) {
       dispatch(allProductsDelete(id));
     } else {
-      dispatch(productDelete(id));
+      dispatch(productDelete(id, user));
+      Swal.fire({
+        position: 'top-end',
+        // imageUrl:
+        //   'https://w7.pngwing.com/pngs/598/31/png-transparent-orange-x-sign-computer-icons-x-mark-red-x-mark-miscellaneous-angle-text.png',
+        icon: 'error',
+        imageWidth: 80,
+        imageHeight: 80,
+        text: 'Producto eliminado exitosamente',
+        showConfirmButton: false,
+        timer: 800,
+        width: '18rem',
+        height: '5rem',
+        padding: '0.5rem',
+        toast: true,
+      });
     }
   };
 
@@ -70,7 +124,21 @@ function ShoppingCart() {
     0
   );
 
-  console.log(total);
+  useEffect(() => {
+    if (isSession) {
+      let setear = itemsToCart.filter((e) => {
+        return e.iduser === isSession.id || e.iduser === undefined;
+      });
+      setFilterCarrito(setear);
+    } else {
+      let setear = itemsToCart.filter((e) => {
+        return e.iduser === undefined;
+      });
+      setFilterCarrito(setear);
+    }
+
+    // console.log(filterCarrito);
+  }, [isSession, itemsToCart]);
 
   const handleMPago = async () => {
     try {
@@ -193,7 +261,7 @@ function ShoppingCart() {
       return null;
     });
 
-    console.log(itemsToCart);
+    //console.log(itemsToCart);
 
     setDiscount(discount);
   }, [itemsToCart, coupons]);
@@ -239,7 +307,7 @@ function ShoppingCart() {
           <hr />
           <div className="shoppinCart__container">
             <div className="productsCard__container">
-              {itemsToCart.map((item) => (
+              {filterCarrito?.map((item) => (
                 <div key={item.name}>
                   {
                     <CardProductCart
