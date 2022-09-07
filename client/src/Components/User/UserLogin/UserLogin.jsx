@@ -69,7 +69,7 @@ function UserLogin() {
             ? 'Credenciales inválidas!'
             : error.response.data.error,
         imageUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/denied_anoxya.png',
         imageWidth: 170,
         imageHeight: 170,
         imageAlt: 'Logo henrys',
@@ -95,7 +95,7 @@ function UserLogin() {
           title: 'Mensaje enviado correctamente',
           text: 'Revise el correo para recuperar su cuenta!',
           imageUrl:
-            'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+            'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
           imageWidth: 150,
           imageHeight: 150,
           imageAlt: 'Logo henrys',
@@ -112,10 +112,10 @@ function UserLogin() {
             ? 'Correo inválido!'
             : error.response.data.error,
         imageUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png',
         imageWidth: 150,
         imageHeight: 150,
-        imageAlt: 'Logo henrys',
+        imageAlt: 'Logo',
       });
     } finally {
       setSubmitedRecovery(false);

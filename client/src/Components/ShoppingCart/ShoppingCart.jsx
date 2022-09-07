@@ -137,7 +137,7 @@ function ShoppingCart() {
           title: 'Opss...',
           text: 'El cupon ingresado no existe!!',
           imageUrl:
-            'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+            'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png',
           imageWidth: 150,
           imageHeight: 150,
           imageAlt: 'Logo',
@@ -161,7 +161,7 @@ function ShoppingCart() {
             title: 'Opss...',
             text: 'El cupon esta vencido',
             imageUrl:
-              'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+              'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png',
             imageWidth: 150,
             imageHeight: 150,
             imageAlt: 'Logo',
@@ -301,8 +301,6 @@ function ShoppingCart() {
                   rows="3"
                 />
               </div> */}
-
-              <hr />
 
               <div className="cart__discount__container">
                 <h2 className="shoppingCart__h2 mb-4">

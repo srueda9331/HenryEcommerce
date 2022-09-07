@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './CouponAdmin.css';
 import CuponContainerHome from '../../../CuponContainerHome/CuponContainerHome';
 import CouponUpdate from '../CouponUpdate/CouponUpdate';
-import CardCupponHome from '../../../CardCuponHome/CardCuponHome';
+import CardCupponAdmin from '../../../CardCupponAdmin/CardCupponAdmin';
 import { getCoupons, getProduct } from '../../../../Redux/actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
@@ -67,7 +67,7 @@ function CouponAdmin() {
         coupons?.map((c, i) => (
           <div key={c.code} className="couponAdmin__CardCupponHome">
             {
-              <CardCupponHome
+              <CardCupponAdmin
                 code={c.code}
                 title={c.title}
                 expirationDate={c.expirationDate}

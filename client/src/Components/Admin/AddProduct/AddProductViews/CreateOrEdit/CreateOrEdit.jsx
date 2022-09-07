@@ -99,14 +99,14 @@ function CreateOrEdit({ data }) {
         alertCustom(
           input.name,
           'Actualizada con exito!',
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png'
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png'
         );
         navigate('/adminproducts');
       } catch (error) {
         alertCustom(
           'Oops...',
           'No se pudo actualizar el producto!',
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301854/error-henrys_zoxhtl.png'
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/warning_tjpeqz.png'
         );
       }
     } else {
