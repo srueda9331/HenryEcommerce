@@ -2,6 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+
 import './ItemCard.css';
 
 
@@ -11,7 +12,6 @@ function ItemCard({ order }) {
     <div>
       {order.data.additional_info.items.map((item) => {
         return (
-
           <div className="container__itemcard">
             <div className="container__itemcard_item--img ">
               <Card.Img
@@ -44,8 +44,6 @@ function ItemCard({ order }) {
               </Link>
             </div>
           </div>
-
-
         );
       })}
     </div>
