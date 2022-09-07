@@ -145,8 +145,8 @@ async function applyCupons(req, res, next) {
       for (let i = 0; i < coupons.length; i++) {
         if (coupons[i].productsId.includes(item.id)) {
           console.log(item.id);
-          item.price =
-            (item.price / 100) * (100 - coupons[i].discountPorcentage);
+          item.unit_price =
+            (item.unit_price / 100) * (100 - coupons[i].discountPorcentage);
           item.title = `${item.title} (${coupons[i].discountPorcentage}%OFF)`;
         }
       }
@@ -156,5 +156,4 @@ async function applyCupons(req, res, next) {
     next(error);
   }
 }
-
 module.exports = { validatePurchase, applyCupons };

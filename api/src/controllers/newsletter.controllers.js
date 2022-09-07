@@ -137,7 +137,6 @@ async function sendEmails(req, res, next) {
                         </tr>
                         <tr>
                           <td style="text-align: center">
-                            </a>
                           </td>
                         </tr>
                         <tr>
@@ -163,6 +162,23 @@ async function sendEmails(req, res, next) {
                             >
                                 <strong>${description}</strong>                              
                             </p>
+      
+                            <a
+                              href="${process.env.HOST}/"
+                              style="
+                                background: #ffbe33;
+                                text-decoration: none !important;
+                                display: inline-block;
+                                font-weight: 500;
+                                margin-top: 24px;
+                                color: #fff;
+                                text-transform: uppercase;
+                                font-size: 14px;
+                                padding: 10px 24px;
+                                display: inline-block;
+                                border-radius: 50px;
+                              "
+                              >${"VER MÁS"}</a
                             >
                           </td>
                         </tr>
@@ -185,7 +201,7 @@ async function sendEmails(req, res, next) {
                           margin: 0 0 0;
                         "
                       >
-                        &copy;
+                        &copy; <strong>Henry Ecommerce</strong>
                       </p>
                     </td>
                   </tr>

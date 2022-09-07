@@ -29,7 +29,7 @@ function CardProductMenu({ id, name, price, imgUri, addToCart, brands }) {
         title: 'Opss...',
         text: 'Primero debes iniciar sesión!',
         imageUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/denied_anoxya.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Logo',
@@ -47,28 +47,30 @@ function CardProductMenu({ id, name, price, imgUri, addToCart, brands }) {
   };
 
   return (
-    <div>
+    <div className="container__prduct-detail">
       <div className="page-wrapper">
         <div className="page-inner">
+          <div className="favorite__button">
+            <Button
+              variant="outline"
+              onClick={() => ClickFav(id)}
+              className="cardMenu__favorite__link"
+            >
+              {!favorites.includes(id) ? (
+                <Heart className="cardMenu__favorite__Svg " />
+              ) : (
+                <HeartFill className="cardMenu__favorite__Svg " />
+              )}
+            </Button>
+          </div>
           <div className="row">
             <div className="el-wrapper">
               <div className="box-up">
-                <Button
-                  variant="outline"
-                  onClick={() => ClickFav(id)}
-                  className="cardMenu__favorite__link"
-                >
-                  {!favorites?.includes(id) ? (
-                    <Heart className="cardMenu__favorite__Svg " />
-                  ) : (
-                    <HeartFill className="cardMenu__favorite__Svg " />
-                  )}
-                </Button>
+                <img className="img-card" src={imgUri} alt="" />
                 <Link to={`/detalle/${id}`}>
-                  <img className="img-card" src={imgUri} alt="" />
                   <div className="img-info">
                     <div className="info-inner">
-                      <span className="p-name">{name}</span>
+                      <span className="p-name">{name.toUpperCase()}</span>
                     </div>
                     <div className="a-size">
                       <span className="size">{brands}</span>

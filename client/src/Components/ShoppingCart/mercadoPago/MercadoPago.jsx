@@ -7,17 +7,16 @@ import { Navigate } from 'react-router-dom';
 
 import './mercadoPago.css';
 
-
 function MercadoPago() {
-  const id = JSON.parse(window.localStorage.getItem("compra"))?.id;
+  const id = JSON.parse(window.localStorage.getItem('compra'))?.id;
 
   useEffect(() => {
-      montarButtonMP(id);
+    montarButtonMP(id);
   }, [id]);
 
   const montarButtonMP = (id) => {
-    if(!id){
-        return;
+    if (!id) {
+      return;
     }
     const formChilds = document.getElementById('MP').childNodes;
     if (id && formChilds.length === 0) {
@@ -31,8 +30,8 @@ function MercadoPago() {
     }
   };
 
-  if(!id){
-    return <Navigate to="/" ></Navigate>
+  if (!id) {
+    return <Navigate to="/"></Navigate>;
   }
 
   return (
@@ -49,13 +48,7 @@ function MercadoPago() {
           </p>
           <form id="MP" method="GET" />
         </div>
-        <div className="mercadoPago__img">
-          {/* <img
-            src={imgMp}
-            alt="Foto de dos hamburugesas y un balde de papas"
-            className="img-fluid"
-          /> */}
-        </div>
+        <div className="mercadoPago__img"></div>
       </div>
     </Container>
   );

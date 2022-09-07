@@ -1,6 +1,7 @@
 import {
   GET_PRODUCT,
   GET_PRODUCT_BY_ID,
+  GET_USER_ORDER,
   ADD_TO_CART,
   ADD_TO_CART2,
   CLEAR_CART,
@@ -29,6 +30,7 @@ import {
   FILTER_MEMORY_RAM,
   FILTER_BATTERY,
   CLEAR_CART_UNDEFINED,
+
 } from '../actions/actions';
 
 import {
@@ -55,6 +57,7 @@ const initialState = {
   purchaseInfo: undefined,
   orders: [],
   filteredProducts: [],
+  cartStorage: []
 };
 
 const rootReducer = (state = initialState, action = {}) => {
@@ -101,9 +104,7 @@ const rootReducer = (state = initialState, action = {}) => {
         products: action.payload === 'All' ? state.products : [...sortPrices],
       };
     case FILTER_BRAND:
-      const allPhones = state.filteredProducts[0]
-        ? state.filteredProducts
-        : state.allProducts;
+      const allPhones = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
       console.log(allPhones);
       const filteredBrands =
         action.payload === 'All'
@@ -151,7 +152,7 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case FILTER_BY_CAMERA:
       const cameras = state.filteredProducts;
-      //   console.log(cameras);
+      console.log(cameras);
       const filteredCameras =
         action.payload === 'All'
           ? state.allProducts
@@ -169,7 +170,7 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case FILTER_BATTERY:
       const batteries = state.filteredProducts;
-      //console.log(batteries);
+      console.log(batteries);
       const filteredBatteries =
         action.payload === 'All'
           ? state.allProducts
@@ -190,6 +191,7 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cart: addItem(action.payload, state.products, state.cart),
+        cartStorage: addItem(action.payload, state.products, state.cart)
       };
 
     case DELETE_ONE_PRODUCT_CART:
@@ -216,6 +218,7 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cart: action.payload,
+        cartStorage: action.payload
       };
     case GET_FAVORITES:
       return {
@@ -265,6 +268,11 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         purchaseInfo: action.payload,
+      };
+    case GET_USER_ORDER:
+      return {
+        ...state,
+        userorders: action.payload,
       };
 
     case DELETE_PRODUCT:

@@ -67,7 +67,7 @@ function AdminUsers() {
         title: 'Exito!',
         text: 'Se ha podido cambiar el rol con exito!',
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Logo henrys',
@@ -165,7 +165,7 @@ function AdminUsers() {
           confirmButton: 'confirmBtnSwal',
         },
         title: 'Exito!',
-        text: 'Se ha podido desactivar el usuario!',
+        text: 'Se ha podido modificar el usuario!',
       });
     } catch (error) {
       Swal.fire({
@@ -226,13 +226,6 @@ function AdminUsers() {
               onClick={(e) => filterUsers(e)}
             >
               Usuarios
-            </Button>
-            <Button
-              className={`filter__btn ${filter === 'employee' && 'activeBtn'}`}
-              name="employee"
-              onClick={(e) => filterUsers(e)}
-            >
-              Empleados
             </Button>
           </ButtonGroup>
         </div>
@@ -300,7 +293,6 @@ function AdminUsers() {
               Selecionar
             </option>
             <option value="admin">ADMIN</option>
-            <option value="employee">EMPLEADO</option>
             <option value="customer">USUARIO</option>
           </Form.Select>
         </Modal.Body>
