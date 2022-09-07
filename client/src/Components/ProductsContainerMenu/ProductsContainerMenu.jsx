@@ -6,9 +6,9 @@ import Container from 'react-bootstrap/Container';
 import './ProductsContainerMenu.css';
 import Swal from 'sweetalert2';
 
-function ProductsContainerMenu({ currentProduct }) {
+function ProductsContainerMenu({ currentProduct, user }) {
   const dispatch = useDispatch();
-  const msg = useState('');
+  //const msg = useState('');
   let itemsToCart = useSelector((state) => state.cart);
   const [mount, setMount] = useState(true);
 
@@ -17,6 +17,20 @@ function ProductsContainerMenu({ currentProduct }) {
   useEffect(() => {
     if (!mount) {
       if (itemsToCart && itemsToCart.length) {
+        // console.log(user);
+        // let devolver = itemsToCart.filter((e) => {
+        //   return e.iduser === user.id;
+        // });
+
+        //console.log(devolver);
+        // console.log(
+        //   itemsToCart.map((e) => {
+        //     return e.iduser;
+        //   })
+        // );
+        // if (devolver.length) {
+        //   window.localStorage.setItem('carrito', JSON.stringify(devolver));
+        // }
         window.localStorage.setItem('carrito', JSON.stringify(itemsToCart));
       } else {
         window.localStorage.removeItem('carrito');
@@ -34,7 +48,19 @@ function ProductsContainerMenu({ currentProduct }) {
   }, [dispatch, isSession]);
 
   const addToCart = (id) => {
-    dispatch(addCartProduct(id));
+    let payload = {};
+    if (user === null) {
+      payload = {
+        idtelefono: id,
+      };
+    }
+    if (user != null) {
+      payload = {
+        idtelefono: id,
+        iduser: user.id,
+      };
+    }
+    dispatch(addCartProduct(payload));
     Swal.fire({
       position: 'top-end',
       imageUrl:
@@ -55,6 +81,7 @@ function ProductsContainerMenu({ currentProduct }) {
   return (
     <div>
       <Container className="products__container__menu mt-3">
+        {/* MUESTRA CELULARES */}
         {currentProduct.length ? (
           currentProduct.map((item) => (
             <CardProductMenu
