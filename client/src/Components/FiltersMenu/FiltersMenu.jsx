@@ -26,9 +26,9 @@ function FiltersMenu({ setFilter, filters }) {
     dispatch(getProduct());
   }, [dispatch]);
 
-  let size = useSelector((state) => state.products?.map((el) => el.batery));
+  let size = useSelector((state) => state.products.map((el) => el.batery));
 
-  //console.log(size);
+  console.log(size);
 
   const handleOrder = (e) => {
     console.log(e.target.value);

@@ -3,7 +3,6 @@ import {
   GET_PRODUCT_BY_ID,
   GET_USER_ORDER,
   ADD_TO_CART,
-  ADD_TO_CART2,
   CLEAR_CART,
   DELETE_ONE_PRODUCT_CART,
   DELETE_PRODUCT_CART,
@@ -29,19 +28,9 @@ import {
   FILTER_BY_CAMERA,
   FILTER_MEMORY_RAM,
   FILTER_BATTERY,
-  CLEAR_CART_UNDEFINED,
-
 } from '../actions/actions';
 
-import {
-  addFav,
-  addItem,
-  addItem2,
-  deleteAllItem,
-  deleteItem,
-  subsFav,
-  deleteCarritoUser,
-} from './utils';
+import { addFav, addItem, deleteAllItem, deleteItem, subsFav } from './utils';
 
 const initialState = {
   products: [],
@@ -58,10 +47,11 @@ const initialState = {
   orders: [],
   filteredProducts: [],
   cartStorage: []
+
 };
 
 const rootReducer = (state = initialState, action = {}) => {
-  //console.log(action.payload);
+  console.log(action.payload);
   switch (action.type) {
     case GET_USERS:
       return {
@@ -193,11 +183,10 @@ const rootReducer = (state = initialState, action = {}) => {
         cart: addItem(action.payload, state.products, state.cart),
         cartStorage: addItem(action.payload, state.products, state.cart)
       };
-
     case DELETE_ONE_PRODUCT_CART:
       return {
         ...state,
-        cart: deleteItem(action.payload, state.cart),
+        cart: deleteItem(state.cart, action.payload),
       };
     case DELETE_PRODUCT_CART:
       return {
@@ -206,13 +195,8 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case CLEAR_CART:
       return {
-        // ...state,
-        cart: deleteCarritoUser(state.cart, state.loginState),
-      };
-    case CLEAR_CART_UNDEFINED:
-      return {
-        // ...state,
-        cart: action.payload,
+        ...state,
+        cart: [],
       };
     case LOCAL_STORAGE:
       return {
