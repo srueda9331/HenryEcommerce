@@ -34,15 +34,6 @@
   flex-direction: column;
 }
 
-.createBurger__btn {
-  gap: 5px;
-  border-color: var(--brand-color);
-  background: var(--brand-color);
-  box-shadow: unset;
-  border-radius: var(--br-btn);
-  margin: 10px;
-}
-
 .btn-group,
 .btn-group-vertical {
   flex-wrap: wrap;
@@ -58,4 +49,14 @@
 
 .filter__tittle {
   margin-top: 10px;
+
+  font-size: 1.5rem;
 }
+select {
+  border: none;
+  padding: 0.3rem;
+}
+
+/* .filter h4 {
+  margin-top: 0.2rem;
+} */

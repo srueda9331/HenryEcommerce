@@ -31,7 +31,7 @@ function FiltersMenu({ setFilter, filters }) {
   //console.log(size);
 
   const handleOrder = (e) => {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     dispatch(orderPrice(e.target.value));
   };
 
@@ -59,7 +59,7 @@ function FiltersMenu({ setFilter, filters }) {
     <Container>
       <div className="m-3 order__container">
         <div className="filter">
-          <h4>Ordenar:</h4>
+          <h4 className="filter__tittle">Ordenar:</h4>
           <select
             name="order"
             onChange={handleOnChange}
@@ -142,85 +142,7 @@ function FiltersMenu({ setFilter, filters }) {
             </select>
           </label>
         </div>
-        <div className="filters__btn__container">
-          {/* <ButtonGroup
-          aria-label="Filter Buttons"
-          className="me-2 filter__btn"
-          size="sm"
-        >
-          <Button
-            name="category"
-            value=""
-            onClick={handleOnChange}
-            className={
-              filters.category === '' ? 'filter__btn activeBtn' : 'filter__btn'
-            }
-          >
-            Todo
-          </Button>
-          <Button
-            name="category"
-            value="burgers"
-            onClick={handleOnChange}
-            className={
-              filters.category === 'burgers'
-                ? 'filter__btn activeBtn'
-                : 'filter__btn'
-            }
-          >
-            Hamburguesas
-          </Button>
-          <Button
-            name="category"
-            value="combos"
-            onClick={handleOnChange}
-            className={
-              filters.category === 'combos'
-                ? 'filter__btn activeBtn'
-                : 'filter__btn'
-            }
-          >
-            Combos
-          </Button>
-          <Button
-            name="category"
-            value="beverages"
-            onClick={handleOnChange}
-            className={
-              filters.category === 'beverages'
-                ? 'filter__btn activeBtn'
-                : 'filter__btn'
-            }
-          >
-            Bebidas
-          </Button>
-          <Button
-            name="category"
-            value="fries"
-            onClick={handleOnChange}
-            className={
-              filters.category === 'fries'
-                ? 'filter__btn activeBtn'
-                : 'filter__btn'
-            }
-          >
-            Papas
-          </Button>
-
-          <Button
-            name="isVeggie"
-            value="true"
-            onClick={handleOnChange}
-            className={
-              filters.isVeggie === 'true'
-                ? 'filter__btn activeBtn'
-                : 'filter__btn'
-            }
-          >
-            Veggie
-          </Button>
-        </ButtonGroup> */}
-        </div>
+        <div className="filters__btn__container"></div>
       </div>
     </Container>
   );

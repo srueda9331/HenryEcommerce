@@ -76,7 +76,7 @@ function ProductsContainerMenu({ currentProduct, user }) {
     });
   };
 
-  console.log(currentProduct);
+  // console.log(currentProduct);
 
   return (
     <div>

@@ -33,7 +33,7 @@ function UserFavoritesCard({ id, favoritosId }) {
     navigate(`/detalle/${id}`);
   };
 
-  console.log(product);
+  //console.log(product);
 
   if (product)
     return (

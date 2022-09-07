@@ -3,12 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { CaretLeftFill, CaretRightFill } from 'react-bootstrap-icons';
 import '../Menu/Menu.css';
 
-function Pagination({
-  phonesPerPage,
-  allProducts,
-  currentPage,
-  setCurrentPage,
-}) {
+function Pagination({ phonesPerPage, allProducts, currentPage, paginate }) {
   const pages = [];
   for (let i = 1; i <= Math.ceil(allProducts / phonesPerPage); i++) {
     pages.push(i);
@@ -18,22 +13,22 @@ function Pagination({
     window.scrollTo(0, 0);
   };
 
-  const changePaginate = (page) => {
-    setCurrentPage(Number(page));
+  const changePaginate = (e, page) => {
+    paginate(e, Number(page));
     scrollToTop();
   };
 
-  function prevPage() {
+  function prevPage(e) {
     const back = currentPage - 1;
     if (back >= pages[0]) {
-      changePaginate(back);
+      changePaginate(e, back);
     }
   }
 
-  function nextPage() {
+  function nextPage(e) {
     const next = currentPage + 1;
     if (next <= pages[pages.length - 1]) {
-      changePaginate(next);
+      changePaginate(e, next);
     }
   }
 
@@ -78,7 +73,8 @@ function Pagination({
             id={page}
             value={page}
             key={page}
-            onClick={(e) => changePaginate(e.target.id)}
+            // onClick={(e) => changePaginate(e.target.id)}
+            onClick={(e) => paginate(e, page)}
             className={
               isItemSelect(page)
                 ? 'btn__round__effect currentPag'
@@ -98,7 +94,8 @@ function Pagination({
                 : 'btn__round__effect disablePag'
             }
             type="button"
-            onClick={nextPage}
+            // onClick={nextPage}
+            onClick={(e) => nextPage(e)}
           >
             <CaretRightFill />
           </Button>

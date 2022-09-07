@@ -15,7 +15,7 @@ function UserBuyHistory() {
     dispatch(getUserOrder(token));
   }, [dispatch, token]);
 
-  console.log(userorders);
+  //console.log(userorders);
 
   return (
     <div>

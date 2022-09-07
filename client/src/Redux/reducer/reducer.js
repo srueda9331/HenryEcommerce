@@ -30,7 +30,7 @@ import {
   FILTER_MEMORY_RAM,
   FILTER_BATTERY,
   CLEAR_CART_UNDEFINED,
-
+  CHANGE_PAGINA,
 } from '../actions/actions';
 
 import {
@@ -57,7 +57,8 @@ const initialState = {
   purchaseInfo: undefined,
   orders: [],
   filteredProducts: [],
-  cartStorage: []
+  cartStorage: [],
+  pagina: 1,
 };
 
 const rootReducer = (state = initialState, action = {}) => {
@@ -104,8 +105,11 @@ const rootReducer = (state = initialState, action = {}) => {
         products: action.payload === 'All' ? state.products : [...sortPrices],
       };
     case FILTER_BRAND:
-      const allPhones = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
-      console.log(allPhones);
+      const allPhones =
+        state.filteredProducts === 0
+          ? state.filteredProducts
+          : state.allProducts;
+      //console.log(allPhones);
       const filteredBrands =
         action.payload === 'All'
           ? allPhones
@@ -117,7 +121,7 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case FILTER_DISPLAY:
       let display = state.filteredProducts;
-      console.log(display);
+      //console.log(display);
       let size =
         action.payload === 'All'
           ? state.allProducts
@@ -133,7 +137,7 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case FILTER_MEMORY_RAM:
       const memoryRam = state.filteredProducts;
-      console.log(memoryRam);
+      //(memoryRam);
 
       const filteredRam =
         action.payload === 'All'
@@ -170,7 +174,7 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case FILTER_BATTERY:
       const batteries = state.filteredProducts;
-      console.log(batteries);
+      //console.log(batteries);
       const filteredBatteries =
         action.payload === 'All'
           ? state.allProducts
@@ -191,7 +195,7 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cart: addItem(action.payload, state.products, state.cart),
-        cartStorage: addItem(action.payload, state.products, state.cart)
+        cartStorage: addItem(action.payload, state.products, state.cart),
       };
 
     case DELETE_ONE_PRODUCT_CART:
@@ -218,7 +222,7 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cart: action.payload,
-        cartStorage: action.payload
+        cartStorage: action.payload,
       };
     case GET_FAVORITES:
       return {
@@ -289,6 +293,12 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         orders: action.payload,
+      };
+    case CHANGE_PAGINA:
+      // console.log(action.payload);
+      return {
+        ...state,
+        pagina: action.payload,
       };
     default:
       return state;

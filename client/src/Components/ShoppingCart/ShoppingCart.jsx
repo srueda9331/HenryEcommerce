@@ -36,10 +36,10 @@ function ShoppingCart() {
   const isSession = useSelector((state) => state.loginState);
   const user = useSelector((state) => state.loginState);
 
-  useEffect(() => {
-    //console.log(filterCarrito);
-    console.log(itemsToCart);
-  }, [itemsToCart]);
+  // useEffect(() => {
+  //   //console.log(filterCarrito);
+  //   console.log(itemsToCart);
+  // }, [itemsToCart]);
 
   useEffect(() => {
     if (!mount) {

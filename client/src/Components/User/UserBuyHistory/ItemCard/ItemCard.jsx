@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './ItemCard.css';
 
 function ItemCard({ order }) {
-  console.log(order);
+  //console.log(order);
   return (
     <div>
       {order.data.additional_info.items.map((item) => {

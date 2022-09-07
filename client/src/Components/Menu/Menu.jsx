@@ -8,19 +8,20 @@ import SearchBar from '../SearchBar/SearchBar';
 import Pagination from '../Pagination/Pagination';
 import ErrorNoResults from '../ErrorNoResults/ErrorNoResults';
 
-import { getProduct } from '../../Redux/actions/actions';
+import { changePagina, getProduct } from '../../Redux/actions/actions';
 import './Menu.css';
 
 function Menu() {
   const dispatch = useDispatch();
   /* paginas */
-  const [currentPage, setCurrentPage] = useState(1);
+  const pag = useSelector((state) => state.pagina);
+  // const [currentPage, setCurrentPage] = useState(1);
   const [phonesPerPage, setPhonesPerPage] = useState(8);
-  const lastPhoneIndex = currentPage * phonesPerPage;
+  const lastPhoneIndex = pag * phonesPerPage;
   const firstPhoneIndex = lastPhoneIndex - phonesPerPage;
   const allProducts = useSelector((state) => state.products);
   const category = useSelector((state) => state.category);
-  const currentProduct = allProducts?.slice(firstBurgerIndex, lastBurgerIndex);
+  const currentProduct = allProducts?.slice(firstPhoneIndex, lastPhoneIndex);
   const user = useSelector((state) => state.loginState);
   const carrito = useSelector((state) => state.cart);
 
@@ -40,37 +41,40 @@ function Menu() {
     setFilters({ ...filters, [name]: value });
   }
 
-  const setPage = (page) => {
-    setCurrentPage(page);
-  };
+  // const setPage = (page) => {
+  //   setCurrentPage(page);
+  // };
 
-  // useEffect(() => {
-  //   console.log(user);
-  // }, [user]);
+  function paginate(e, num) {
+    e.preventDefault();
+    // console.log(num);
+    //console.log(num);
+    dispatch(changePagina(num));
+    // setPage(pag);
+  }
 
   useEffect(() => {
     if (!mount.current) {
       dispatch(getProduct(filters.search));
       mount.current = true;
     } else if (filters) {
-      setPage(1);
+      //setPage(1);
+      dispatch(changePagina(1));
       dispatch(getProduct(filters.search));
     }
   }, [dispatch, filters]);
 
   return (
     <div className="menu__container">
-      <SearchBar setFilter={setFilter} setCurrentPage={setCurrentPage} />
+      {/* <SearchBar setFilter={page} setCurrentPage={setCurrentPage} /> */}
       <div className="menu_filter_container">
         <div className="block-filters-products">
           <div className="filter-container col-2">
             <FiltersMenu />
           </div>
 
-
           {/* {!currentProduct.length && <ErrorNoResults />} */}
           {currentProduct?.length > 0 && (
-
             <div className="products-container-menu col-xl-10 col-12">
               <ProductsContainerMenu
                 currentProduct={currentProduct}
@@ -83,11 +87,11 @@ function Menu() {
 
       <div className="menu__pagination__container mb-3 mt-3">
         <Pagination
-          burgersPerPage={burgersPerPage}
+          phonesPerPage={phonesPerPage}
           allProducts={allProducts?.length}
-
-          currentPage={currentPage}
-          setCurrentPage={setPage}
+          currentPage={pag}
+          paginate={paginate}
+          //  setCurrentPage={setPage}
         />
       </div>
     </div>

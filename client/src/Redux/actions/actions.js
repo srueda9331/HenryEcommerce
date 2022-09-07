@@ -33,6 +33,7 @@ export const FILTER_MEMORY_RAM = 'FILTER_MEMORY_RAM';
 export const FILTER_BY_CAMERA = 'FILTER_BY_CAMERA';
 export const FILTER_BATTERY = 'FILTER_BATTERY';
 export const CLEAR_CART_UNDEFINED = 'CLEAR_CART_UNDEFINED';
+export const CHANGE_PAGINA = 'CHANGE_PAGINA';
 
 export function getUser(token, query = '/') {
   return async function (dispatch) {
@@ -449,3 +450,12 @@ export function setOrders() {
     }
   };
 }
+
+export const changePagina = (num) => {
+  return (dispatch) => {
+    dispatch({
+      type: 'CHANGE_PAGINA',
+      payload: num,
+    });
+  };
+};
