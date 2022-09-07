@@ -2,9 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-
 import './ItemCard.css';
-
 
 function ItemCard({ order }) {
   console.log(order);
@@ -24,7 +22,7 @@ function ItemCard({ order }) {
               <p>
                 <strong>Precio:</strong>
               </p>
-              <p>{item.unit_price}0</p>
+              <p>{Number(item.unit_price).toFixed(2)}</p>
             </div>
             <div className="container__itemcard_item ">
               <p>

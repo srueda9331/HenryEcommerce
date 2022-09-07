@@ -8,14 +8,12 @@ function OrderCard({ id, status, date, order }) {
   const mm = date.slice(5, 7);
   const day = date.slice(8, 10);
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Body>
-        <Card.Title>{id}</Card.Title>
-        <Card.Title>{date}</Card.Title>
-        <Card.Title>{status}</Card.Title>
-        <ItemCard order={order} />
-      </Card.Body>
-    </Card>
+
+    <div className="order_container col-12">
+      <Card>
+        <Card.Body>
+          <div>
+            <Card.Title>
               <p>
                 <strong>Número de Compra:</strong> {id}
               </p>
