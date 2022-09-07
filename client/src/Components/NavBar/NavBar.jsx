@@ -15,6 +15,7 @@ import {
   deleteCart,
   setLocalStorage,
   setLoginState,
+  deleteCartUndefined,
 } from '../../Redux/actions/actions';
 
 import './NavBar.css';
@@ -71,6 +72,12 @@ function NavBar() {
       window.localStorage.removeItem('user');
     }
 
+    //CORREGIR
+    // const deleteitemsuserdeslogeado = itemsToCart.filter((e) => {
+    //   return e.iduser !== undefined;
+    // });
+    //dispatch(deleteCartUndefined(deleteitemsuserdeslogeado));
+
     // if (window.localStorage.getItem('carrito')) {
     //   dispatch(deleteCart());
     //   window.localStorage.removeItem('carrito');
@@ -94,17 +101,17 @@ function NavBar() {
   }
 
   useEffect(() => {
-    //console.log(isSession);
-    if (isSession) {
+    //console.log(itemsToCart);
+    if (isSession && itemsToCart) {
       let setear = itemsToCart.filter((e) => {
-        return e.iduser === isSession.id;
+        return e.iduser === isSession.id || e.iduser === undefined;
       });
       setFilterCarrito(setear);
     } else {
       let setear = itemsToCart.filter((e) => {
         return e.iduser === undefined;
       });
-      console.log(setear);
+      // console.log(setear);
       setFilterCarrito(setear);
     }
 

@@ -2,6 +2,7 @@ import {
   GET_PRODUCT,
   GET_PRODUCT_BY_ID,
   ADD_TO_CART,
+  ADD_TO_CART2,
   CLEAR_CART,
   DELETE_ONE_PRODUCT_CART,
   DELETE_PRODUCT_CART,
@@ -27,9 +28,18 @@ import {
   FILTER_BY_CAMERA,
   FILTER_MEMORY_RAM,
   FILTER_BATTERY,
+  CLEAR_CART_UNDEFINED,
 } from '../actions/actions';
 
-import { addFav, addItem, deleteAllItem, deleteItem, subsFav } from './utils';
+import {
+  addFav,
+  addItem,
+  addItem2,
+  deleteAllItem,
+  deleteItem,
+  subsFav,
+  deleteCarritoUser,
+} from './utils';
 
 const initialState = {
   products: [],
@@ -181,10 +191,11 @@ const rootReducer = (state = initialState, action = {}) => {
         ...state,
         cart: addItem(action.payload, state.products, state.cart),
       };
+
     case DELETE_ONE_PRODUCT_CART:
       return {
         ...state,
-        cart: deleteItem(state.cart, action.payload),
+        cart: deleteItem(action.payload, state.cart),
       };
     case DELETE_PRODUCT_CART:
       return {
@@ -193,8 +204,13 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case CLEAR_CART:
       return {
-        ...state,
-        cart: [],
+        // ...state,
+        cart: deleteCarritoUser(state.cart, state.loginState),
+      };
+    case CLEAR_CART_UNDEFINED:
+      return {
+        // ...state,
+        cart: action.payload,
       };
     case LOCAL_STORAGE:
       return {
