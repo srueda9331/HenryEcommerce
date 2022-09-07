@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -15,7 +15,6 @@ import {
   deleteCart,
   setLocalStorage,
   setLoginState,
-  deleteCartUndefined,
 } from '../../Redux/actions/actions';
 
 import './NavBar.css';
@@ -31,7 +30,6 @@ function NavBar() {
   const path = useLocation().pathname;
   const isAdmin = path.includes('admin');
   const isEmployee = path.includes('employee');
-  const [filterCarrito, setFilterCarrito] = useState();
 
   useEffect(() => {
     if (mount.current) {
@@ -72,16 +70,10 @@ function NavBar() {
       window.localStorage.removeItem('user');
     }
 
-    //CORREGIR
-    // const deleteitemsuserdeslogeado = itemsToCart.filter((e) => {
-    //   return e.iduser !== undefined;
-    // });
-    //dispatch(deleteCartUndefined(deleteitemsuserdeslogeado));
-
-    // if (window.localStorage.getItem('carrito')) {
-    //   dispatch(deleteCart());
-    //   window.localStorage.removeItem('carrito');
-    // }
+    if (window.localStorage.getItem('carrito')) {
+      dispatch(deleteCart(false));
+      window.localStorage.removeItem('carrito');
+    }
 
     if (window.localStorage.getItem('favoritos')) {
       window.localStorage.removeItem('favoritos');
@@ -99,24 +91,6 @@ function NavBar() {
   function setScrollToTop() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }
-
-  useEffect(() => {
-    //console.log(itemsToCart);
-    if (isSession && itemsToCart) {
-      let setear = itemsToCart.filter((e) => {
-        return e.iduser === isSession.id || e.iduser === undefined;
-      });
-      setFilterCarrito(setear);
-    } else {
-      let setear = itemsToCart.filter((e) => {
-        return e.iduser === undefined;
-      });
-      // console.log(setear);
-      setFilterCarrito(setear);
-    }
-
-    // console.log(filterCarrito);
-  }, [isSession, itemsToCart]);
 
   return (
     <>
@@ -168,7 +142,6 @@ function NavBar() {
                 >
                   Nosotros
                 </Nav.Link>
-
                 {/* <Nav.Link
                   className={
                     path === '/contacto' ? 'linkActive' : 'navBar__users__link'
@@ -179,20 +152,20 @@ function NavBar() {
                 >
                   Contacto
                 </Nav.Link> */}
+
                 <Nav.Link
                   className="ms-5 me-5"
                   as={Link}
                   to="/cart"
                   onClick={setScrollToTop}
                 >
-                  {filterCarrito && filterCarrito?.length === 0 ? (
+                  {itemsToCart && itemsToCart?.length === 0 ? (
                     <CartFill />
                   ) : (
                     <>
                       <CartCheckFill className="CartCheckFill" />
                       <span className="cart__fill__items">
-                        {filterCarrito?.length}
-                        {/* {2} */}
+                        {itemsToCart.length}
                       </span>
                     </>
                   )}
