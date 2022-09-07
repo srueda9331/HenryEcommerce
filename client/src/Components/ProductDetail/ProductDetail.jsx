@@ -22,7 +22,7 @@ function ProductDetail() {
     Swal.fire({
       position: 'top-end',
       imageUrl:
-        'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+        'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
       imageWidth: 80,
       imageHeight: 80,
       text: 'Producto agregado exitosamente',

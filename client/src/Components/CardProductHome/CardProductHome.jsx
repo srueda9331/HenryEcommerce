@@ -1,5 +1,5 @@
 import { React } from 'react';
-import hamburguesasMini from '../../Assets/Images/logofinal.png';
+
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -20,7 +20,7 @@ function CardProductHome() {
   return (
     <Container>
       <Row className="sectionproduct mb-5 mt-5">
-        <Col lg={3}>
+        <Col col={4} sm={6} md={5} lg={4} xl={3}>
           <div className="cardProductHome">
             <div className="cardProductHome__img__container__todos">
               <img

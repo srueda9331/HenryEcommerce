@@ -67,7 +67,7 @@ function AdminUsers() {
         title: 'Exito!',
         text: 'Se ha podido cambiar el rol con exito!',
         imageUrl:
-          'https://res.cloudinary.com/henrysburgers/image/upload/v1659301858/success-henrys_nlrgo0.png',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Logo henrys',

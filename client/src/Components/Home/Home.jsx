@@ -30,7 +30,7 @@ function Home() {
             title: 'Opss...',
             text: 'Error al intentar logearse con google!',
             imageUrl:
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-3gMZwXA2kl_k6Dw5SMN5eIySTs05Q4g7kQ&usqp=CAU',
+              'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/denied_anoxya.png',
             imageWidth: 150,
             imageHeight: 150,
             imageAlt: 'Logo',

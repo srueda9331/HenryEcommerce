@@ -202,3 +202,31 @@ div .row {
     transform: none;
   }
 }
+
+@media (max-width: 992px) {
+  .card-width {
+    width: 75%;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 992px) {
+  .card-width {
+    width: 50%;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 762px) {
+  .card-width {
+    width: 50%;
+    margin: 10px;
+  }
+  .container-cards-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+}
