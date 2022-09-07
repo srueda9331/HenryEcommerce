@@ -20,7 +20,9 @@ function Menu() {
   const firstPhoneIndex = lastPhoneIndex - phonesPerPage;
   const allProducts = useSelector((state) => state.products);
   const category = useSelector((state) => state.category);
+
   const currentProduct = allProducts?.slice(firstPhoneIndex, lastPhoneIndex);
+
   const user = useSelector((state) => state.loginState);
   const carrito = useSelector((state) => state.cart);
 
@@ -69,6 +71,7 @@ function Menu() {
 
           {/* {!currentProduct.length && <ErrorNoResults />} */}
           {currentProduct?.length > 0 && (
+
             <div className="products-container-menu col-xl-10 col-12">
               <ProductsContainerMenu
                 currentProduct={currentProduct}
