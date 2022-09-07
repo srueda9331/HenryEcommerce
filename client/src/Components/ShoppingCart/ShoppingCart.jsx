@@ -30,7 +30,8 @@ function ShoppingCart() {
   const couponsState = useSelector((state) => state.coupons);
   const [discount, setDiscount] = useState(0);
   const [note, setNote] = useState('');
-
+  const [filterCarrito, setFilterCarrito] = useState();
+  const isSession = useSelector((state) => state.loginState);
   useEffect(() => {
     if (!mount) {
       if (itemsToCart && itemsToCart.length) {
@@ -65,7 +66,22 @@ function ShoppingCart() {
     0
   );
 
-  console.log(total);
+  useEffect(() => {
+    //console.log(isSession);
+    if (isSession) {
+      let setear = itemsToCart.filter((e) => {
+        return e.iduser === isSession.id;
+      });
+      setFilterCarrito(setear);
+    } else {
+      let setear = itemsToCart.filter((e) => {
+        return e.iduser === undefined;
+      });
+      setFilterCarrito(setear);
+    }
+
+    // console.log(filterCarrito);
+  }, [isSession, itemsToCart]);
 
   const handleMPago = async () => {
     try {
@@ -188,7 +204,7 @@ function ShoppingCart() {
       return null;
     });
 
-    console.log(itemsToCart);
+    //console.log(itemsToCart);
 
     setDiscount(discount);
   }, [itemsToCart, coupons]);
@@ -234,7 +250,7 @@ function ShoppingCart() {
           <hr />
           <div className="shoppinCart__container">
             <div className="productsCard__container">
-              {itemsToCart.map((item) => (
+              {filterCarrito?.map((item) => (
                 <div key={item.name}>
                   {
                     <CardProductCart
@@ -250,7 +266,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => addToCart(item.id)}
-                      disabled={item.cantidad === item.quantity? true : false}
+                      disabled={item.cantidad === item.quantity ? true : false}
                     >
                       <PlusLg />
                     </Button>
@@ -258,7 +274,7 @@ function ShoppingCart() {
                       className="productCart__btn"
                       type="button"
                       onClick={() => handleDelete(item.id)}
-                      disabled={item.cantidad === 1 ? true  : false}
+                      disabled={item.cantidad === 1 ? true : false}
                     >
                       <DashLg />
                     </Button>
@@ -269,9 +285,13 @@ function ShoppingCart() {
                     >
                       Quitar Producto
                     </Button>
-                    <span id='existencias-carrito'>Stock: {item.cantidad === item.quantity? 
-                        <span id='sin-existencias'>Sin existencias</span> : 
-                        <span id='disponible'>Disponible</span> }
+                    <span id="existencias-carrito">
+                      Stock:{' '}
+                      {item.cantidad === item.quantity ? (
+                        <span id="sin-existencias">Sin existencias</span>
+                      ) : (
+                        <span id="disponible">Disponible</span>
+                      )}
                     </span>
                   </div>
                   <hr />

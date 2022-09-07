@@ -51,7 +51,7 @@ export function getUser(token, query = '/') {
 export function getProduct(name = '', isDeleted = '') {
   return async function (dispatch) {
     const json = await axios(`/products?name=${name}&isDeleted=${isDeleted}`);
-    console.log(json);
+    //console.log(json);
     try {
       return dispatch({
         type: GET_PRODUCT,

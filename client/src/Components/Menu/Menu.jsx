@@ -22,6 +22,7 @@ function Menu() {
   const category = useSelector((state) => state.category);
   const currentProduct = allProducts.slice(firstBurgerIndex, lastBurgerIndex);
   const user = useSelector((state) => state.loginState);
+  const carrito = useSelector((state) => state.cart);
   const mount = useRef(false);
 
   const [filters, setFilters] = useState({
@@ -41,6 +42,10 @@ function Menu() {
   const setPage = (page) => {
     setCurrentPage(page);
   };
+
+  // useEffect(() => {
+  //   console.log(carrito);
+  // }, [carrito]);
 
   useEffect(() => {
     if (!mount.current) {

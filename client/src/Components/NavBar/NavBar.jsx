@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -30,6 +30,7 @@ function NavBar() {
   const path = useLocation().pathname;
   const isAdmin = path.includes('admin');
   const isEmployee = path.includes('employee');
+  const [filterCarrito, setFilterCarrito] = useState();
 
   useEffect(() => {
     if (mount.current) {
@@ -70,10 +71,10 @@ function NavBar() {
       window.localStorage.removeItem('user');
     }
 
-    if (window.localStorage.getItem('carrito')) {
-      dispatch(deleteCart());
-      window.localStorage.removeItem('carrito');
-    }
+    // if (window.localStorage.getItem('carrito')) {
+    //   dispatch(deleteCart());
+    //   window.localStorage.removeItem('carrito');
+    // }
 
     if (window.localStorage.getItem('favoritos')) {
       window.localStorage.removeItem('favoritos');
@@ -91,6 +92,24 @@ function NavBar() {
   function setScrollToTop() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }
+
+  useEffect(() => {
+    //console.log(isSession);
+    if (isSession) {
+      let setear = itemsToCart.filter((e) => {
+        return e.iduser === isSession.id;
+      });
+      setFilterCarrito(setear);
+    } else {
+      let setear = itemsToCart.filter((e) => {
+        return e.iduser === undefined;
+      });
+      console.log(setear);
+      setFilterCarrito(setear);
+    }
+
+    // console.log(filterCarrito);
+  }, [isSession, itemsToCart]);
 
   return (
     <>
@@ -143,16 +162,6 @@ function NavBar() {
                   Nosotros
                 </Nav.Link>
 
-                {/* <Nav.Link
-                  className={
-                    path === '/contacto' ? 'linkActive' : 'navBar__users__link'
-                  }
-                  as={Link}
-                  to="/contacto"
-                  onClick={setScrollToTop}
-                >
-                  Contacto
-                </Nav.Link> */}
                 <Nav.Link
                   className={
                     path === '/quedicendenosotros'
@@ -171,13 +180,14 @@ function NavBar() {
                   to="/cart"
                   onClick={setScrollToTop}
                 >
-                  {itemsToCart && itemsToCart?.length === 0 ? (
+                  {filterCarrito && filterCarrito?.length === 0 ? (
                     <CartFill />
                   ) : (
                     <>
                       <CartCheckFill className="CartCheckFill" />
                       <span className="cart__fill__items">
-                        {itemsToCart.length}
+                        {filterCarrito?.length}
+                        {/* {2} */}
                       </span>
                     </>
                   )}

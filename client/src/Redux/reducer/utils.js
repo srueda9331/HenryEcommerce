@@ -16,17 +16,20 @@ export const addItem = (id, allProducts, cart) => {
   if (!newProduct) {
     return [...cart];
   }
-  console.log(newProduct);
+  //console.log(newProduct);
   const productExist = cart.find((item) => item.id === newProduct.id);
-
+  // console.log(newProduct);
+  //console.log(cart);
   if (!productExist) {
     //si no hay un elemento igual en el carrito
     return [...cart, { ...newProduct, cantidad: 1 }];
   } else {
     //si ya hay un elemento en el carrito igual se suma + cantidad
-    return cart.map((e) =>
-      e.id === newProduct.id ? { ...e, cantidad: e.cantidad + 1 } : e
-    );
+
+    return [...cart, { ...newProduct, cantidad: 1 }];
+    // return cart.map((e) =>
+    //   e.id === newProduct.id ? { ...e, cantidad: e.cantidad + 1 } : e
+    // );
   }
 };
 
