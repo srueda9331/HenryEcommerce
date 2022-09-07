@@ -218,10 +218,10 @@ function CouponUpdate({ couponToEdit, setIsEditing }) {
             title: `${coupon.title}`,
             text: 'Actualizada con exito',
             imageUrl:
-              'https://res.cloudinary.com/henrysburgers/image/upload/v1659288361/logo-henrys-20x20_ftnamq.png',
+              'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
             imageWidth: 150,
             imageHeight: 150,
-            imageAlt: 'Logo henrys',
+            imageAlt: 'Logo',
           });
         } else {
           Swal.fire({
@@ -231,10 +231,10 @@ function CouponUpdate({ couponToEdit, setIsEditing }) {
             title: `${coupon.title}`,
             text: 'Error al actualizar',
             imageUrl:
-              'https://res.cloudinary.com/henrysburgers/image/upload/v1659288361/logo-henrys-20x20_ftnamq.png',
+              'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/denied_anoxya.png',
             imageWidth: 150,
             imageHeight: 150,
-            imageAlt: 'Logo henrys',
+            imageAlt: 'Logo',
           });
         }
       });

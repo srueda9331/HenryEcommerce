@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserOrder } from '../../../Redux/actions/actions';
+import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import OrderCard from './OrderCard/OrderCard';
+import './UserBuyHistory.css';
 
 function UserBuyHistory() {
   const dispatch = useDispatch();
@@ -16,27 +19,36 @@ function UserBuyHistory() {
 
   return (
     <div>
-      <div>Mis compras </div>
+      <h1 className="order_tittlecard">Mis compras </h1>
       {userorders && userorders?.length > 0 ? (
         userorders.map((order) => {
           return (
             <div className="parentContainer">
               <OrderCard
+                order={order}
                 id={order.purchaseId}
                 status={order.status}
                 date={order.createdAt}
-                title={order.data.additional_info.items[0].title}
-                price={order.data.additional_info.items[0].unit_price}
-                quantity={order.data.additional_info.items[0].quantity}
-                image={order.data.additional_info.items[0].picture_url}
-                productid={order.data.additional_info.items[0].id}
               />
             </div>
           );
         })
       ) : (
-        <h2>Aún no tienes compras realizadas</h2>
+        <div className="nobuy-container">
+          <h2>Aún no tienes compras realizadas</h2>
+          <div className="noboy-button">
+            <Link to="/menu">
+              <Button>Realizar una compra</Button>
+            </Link>
+          </div>
+        </div>
       )}
+
+      <div className="ordercard__button">
+        <Link to="/userprofiledashboard">
+          <Button>Volver</Button>
+        </Link>
+      </div>
     </div>
   );
 }

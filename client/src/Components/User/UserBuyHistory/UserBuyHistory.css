@@ -1,0 +1,29 @@
+.nobuy-container {
+  background-color: rgb(222, 224, 226);
+  width: auto;
+  height: 51.5vh;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 4%;
+  border-radius: 20px;
+  flex-direction: column;
+}
+
+.noboy-button {
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.parentContainer {
+  width: auto;
+  margin: 3%;
+}
+.order_tittlecard {
+  margin-top: 2%;
+}
+.ordercard__button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

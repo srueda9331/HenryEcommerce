@@ -22,7 +22,7 @@ function ContactoForm() {
       title: 'Mensaje enviado con éxito',
       text: 'Muchas gracias por contactarnos, en breve estaremos comunicandonos.',
       imageUrl:
-        'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+        'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
       imageWidth: 200,
       imageHeight: 200,
       imageAlt: 'Logo henrys',

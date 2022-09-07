@@ -50,20 +50,22 @@ function CardProductMenu({ id, name, price, imgUri, addToCart, brands }) {
     <div className="container__prduct-detail">
       <div className="page-wrapper">
         <div className="page-inner">
+          <div className="favorite__button">
+            <Button
+              variant="outline"
+              onClick={() => ClickFav(id)}
+              className="cardMenu__favorite__link"
+            >
+              {!favorites.includes(id) ? (
+                <Heart className="cardMenu__favorite__Svg " />
+              ) : (
+                <HeartFill className="cardMenu__favorite__Svg " />
+              )}
+            </Button>
+          </div>
           <div className="row">
             <div className="el-wrapper">
               <div className="box-up">
-                <Button
-                  variant="outline"
-                  onClick={() => ClickFav(id)}
-                  className="cardMenu__favorite__link"
-                >
-                  {!favorites.includes(id) ? (
-                    <Heart className="cardMenu__favorite__Svg " />
-                  ) : (
-                    <HeartFill className="cardMenu__favorite__Svg " />
-                  )}
-                </Button>
                 <img className="img-card" src={imgUri} alt="" />
                 <Link to={`/detalle/${id}`}>
                   <div className="img-info">
