@@ -7,8 +7,7 @@ import newsletterImg from '../../../Assets/Images/Admin/newsletter.png';
 import usersImg from '../../../Assets/Images/Admin/users.jpeg';
 import productsImg from '../../../Assets/Images/Admin/products.jpeg';
 import discountImg from '../../../Assets/Images/Admin/discounts.jpeg';
-import sellImg from '../../../Assets/Images/Admin/sells.jpeg'
-
+import sellImg from '../../../Assets/Images/Admin/sells.jpeg';
 
 import './AdminDashboard.css';
 
@@ -84,7 +83,7 @@ function AdminDashboard() {
               className="adminHome__card__img"
             />
             <Card.Body className="adminHome__card__body">
-              <Card.Title>Enviar Novedades</Card.Title>
+              <Card.Title>Novedades</Card.Title>
               <Card.Text>Envia novedades a tus clientes.</Card.Text>
               <Button as={Link} to="/adminnewsletter" variant="secondary">
                 Ingresar

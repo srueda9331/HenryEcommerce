@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import NavBar from './Components/NavBar/NavBar';
-// import ContactoForm from './Components/ContactForm/ContactoForm';
+import ContactoForm from './Components/ContactForm/ContactoForm';
 import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home';
 import Menu from './Components/Menu/Menu';
@@ -58,7 +58,7 @@ function App() {
         {/* APP ROUTES */}
         <Route path="*" exact element={<NotFound />} />
         <Route path="/" element={<Home />} />
-        {/* <Route path="/contacto" element={<ContactoForm />} /> */}
+        <Route path="/contacto" element={<ContactoForm />} />
         <Route path="/menu" element={<Menu />} />
         {/* <Route path="/nosotros" element={<AboutUs />} /> */}
         <Route path="/detalle/:id" element={<ProductDetail />} />
