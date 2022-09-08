@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import './FiltersMenu.css';
 
 function FiltersMenu({ setFilter, filters }) {
-  let products = useSelector((state) => state.products);
+  let products = useSelector((state) => state?.products);
   console.log(products?.map((el) => el.camera) + 'll');
 
   const handleOnChange = (e) => {
