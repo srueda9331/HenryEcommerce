@@ -90,7 +90,7 @@ function AdminNavBar() {
                   to={'/adminnewsletter'}
                   className="adminNavBar__link"
                 >
-                  <EnvelopePaperFill /> Novedades
+                  <EnvelopePaperFill /> Newsletter
                 </Nav.Link>
                 <Nav.Link as={Link} to={'/'} className="adminNavBar__link">
                   <BoxArrowLeft />
