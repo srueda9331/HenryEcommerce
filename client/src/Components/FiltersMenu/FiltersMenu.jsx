@@ -16,6 +16,10 @@ import { Link } from 'react-router-dom';
 import './FiltersMenu.css';
 
 function FiltersMenu({ setFilter, filters }) {
+
+  let products = useSelector(state => state.products)
+  console.log(products.map(el => el.camera) + 'll');
+
   const handleOnChange = (e) => {
     setFilter(e.target.name, e.target.value);
   };
@@ -24,36 +28,64 @@ function FiltersMenu({ setFilter, filters }) {
 
   useEffect(() => {
     dispatch(getProduct());
+    getStorage()
+    
   }, [dispatch]);
+  
 
-  let size = useSelector((state) => state.products?.map((el) => el.batery));
+  const persist = () => {
+    return window.localStorage.setItem('filter', JSON.stringify(products))
+  }
+  
 
-  //console.log(size);
+  const getStorage = () => {
+    return JSON.parse(window.localStorage.getItem('filter'))
 
+  }
   const handleOrder = (e) => {
-    console.log(e.target.value);
+    persist();
     dispatch(orderPrice(e.target.value));
+  
+    getStorage()
   };
 
   const handleFilter = (e) => {
+    persist()
     dispatch(filterBrand(e.target.value));
+    getStorage()
+    
   };
 
   const handleDisplay = (e) => {
+    persist()
     dispatch(filterDisplay(e.target.value));
+    getStorage()
+
   };
 
   const handleRam = (e) => {
+    persist()
     dispatch(filterRam(e.target.value));
+    getStorage()
+    
+
   };
 
   const handleCamera = (e) => {
     dispatch(filterByCamera(e.target.value));
+    persist()
+    getStorage()
+
   };
 
   const handleBattery = (e) => {
     dispatch(filterBattery(e.target.value));
   };
+
+    
+  
+
+
 
   return (
     <Container>
@@ -78,7 +110,7 @@ function FiltersMenu({ setFilter, filters }) {
             Por marca:
             <br />
             <select onClick={(e) => handleFilter(e)} className="filter">
-              <option value="All">All</option>
+              <option value="All">Todos</option>
               <option value="Samsung">Samsung</option>
               <option value="Huawei">Huawei</option>
               <option value="Apple">Apple</option>
@@ -93,7 +125,7 @@ function FiltersMenu({ setFilter, filters }) {
             Tamaño de pantalla:
             <br />
             <select onClick={(e) => handleDisplay(e)} className="filter">
-              <option value="All">All</option>
+              <option value="All">Todos</option>
               <option value="menor-display">Menor a 6.3 ''</option>
               <option value="entre-display">Entre 6.3 y 6.5 ''</option>
               <option value="mayor-display">Mayor a 6.5 ''</option>
@@ -106,7 +138,7 @@ function FiltersMenu({ setFilter, filters }) {
             Memoria RAM:
             <br />
             <select onClick={(e) => handleRam(e)} className="filter">
-              <option value="All">All</option>
+              <option value="All">Todos</option>
               <option value="4">Menor a 3.99 GB</option>
               <option value="6">Entre 4 y 6.99 GB</option>
               <option value="8">Entre 7 y 9 GB</option>
@@ -120,7 +152,7 @@ function FiltersMenu({ setFilter, filters }) {
             Por Camara:
             <br />
             <select onClick={(e) => handleCamera(e)} className="filter">
-              <option value="All">All</option>
+              <option value="All">Todos</option>
               <option value="12">Menor a 12.99 Mpx</option>
               <option value="13">Entre 13 Mpx y 24.99 Mpx</option>
               <option value="25">Entre 25 Mpx y 49 Mpx</option>
@@ -134,7 +166,7 @@ function FiltersMenu({ setFilter, filters }) {
             Por Batería:
             <br />
             <select onClick={(e) => handleBattery(e)} className="filter">
-              <option value="All">All</option>
+              <option value="All">Todos</option>
               <option value="3750">Menor a 3750 mAh</option>
               <option value="4100">Entre 3750 y 4100 mAh</option>
               <option value="4600">Entre 4101 y 4600 mAh</option>
