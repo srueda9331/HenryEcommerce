@@ -1,0 +1,12 @@
+.MainDash{
+    /* padding-top: 1rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+h4{
+    font-size: medium;
+    margin-left: 1rem;
+    text-align: start;
+}

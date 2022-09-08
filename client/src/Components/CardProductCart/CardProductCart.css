@@ -1,0 +1,53 @@
+.cardProductCart__Container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.CardProductCart__img {
+  margin-top: 10px;
+  width: 250px;
+  height: 300px;
+  border-color: var(--main-color-light);
+}
+
+.cardProductCart__price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brand-color);
+}
+
+@media (max-width: 1200px) {
+  .CardProductCart__img {
+    width: 250px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 992px) {
+  .CardProductCart__img {
+    width: 250px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .CardProductCart__img {
+    width: 250px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  .CardProductCart__img {
+    width: 100px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 250px) {
+  .CardProductCart__img {
+    width: 100px;
+    height: 150px;
+  }
+}

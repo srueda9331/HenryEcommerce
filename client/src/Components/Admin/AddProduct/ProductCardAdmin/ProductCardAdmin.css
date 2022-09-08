@@ -1,0 +1,34 @@
+.adminProductHome__card {
+  background-color: var(--main-color-light);
+  margin: 1rem;
+  border-radius: 15px;
+  box-shadow: var(--bs-card);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.adminProductHome__card__img {
+  display: flex;
+  border-radius: 20px 20px 0 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminProductHome__cardBody {
+  background-color: var(--main-color-dark);
+  color: var(--main-color-light);
+  border-radius: 15px;
+  width: 100%;
+  height: 25%;
+}
+
+.adminProductHome__cardTittle {
+  font-size: 0.9rem;
+}
+
+.productCard__buttons {
+  display: flex;
+  justify-content: space-evenly;
+}

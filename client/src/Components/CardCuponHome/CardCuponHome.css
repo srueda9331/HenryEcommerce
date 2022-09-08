@@ -1,0 +1,231 @@
+.couponsHome__disabled {
+  filter: grayscale(100%);
+}
+
+.sectionCupponsHome {
+  display: none;
+  margin: 4rem auto 4rem;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.cardCuponHome__containerImg {
+  margin-right: 20px;
+  border: 2px solid var(--brand-color);
+  border-radius: 20px;
+}
+.cardCuponHome__img {
+  max-width: 130px;
+  height: 130px;
+}
+.cardCuponHome__cupon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+  max-height: 200px;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: var(--main-color-dark);
+  color: var(--main-color-light);
+}
+.cardCuponHome__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  min-width: 10rem;
+}
+
+.disCursor:hover {
+  cursor: default;
+}
+
+/* otra seccion  */
+
+.card-section {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+  margin: 20px;
+}
+
+/* A container to hold the flip card and the inside page */
+.cardfront {
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: -0.1rem 1.7rem 6.6rem -3.2rem rgba(0, 0, 0, 0.5);
+  height: 15rem;
+  position: relative;
+  transition: all 1s ease;
+  width: 15rem;
+}
+
+.flip-card {
+  height: 15rem;
+  perspective: 100rem;
+  position: absolute;
+  right: 0;
+  transition: all 1s ease;
+  visibility: hidden;
+  width: 15rem;
+  z-index: 100;
+}
+
+.flip-card > * {
+  visibility: visible;
+}
+
+.flip-card__container {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: all 1s ease;
+  width: 100%;
+}
+
+.card-front,
+.card-back {
+  backface-visibility: hidden;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.card-front {
+  background-color: #fafbfa;
+  height: 15rem;
+  width: 15rem;
+}
+
+/* Front side's top section */
+.card-front__tp {
+  align-items: center;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 57% 90%, 50% 100%, 43% 90%, 0 90%);
+  display: flex;
+  flex-direction: column;
+  height: 12rem;
+  justify-content: center;
+  padding: 0.75rem;
+}
+
+.card-front__heading {
+  color: #cdffff;
+}
+
+.card-front__text-price {
+  color: #cdffff;
+}
+
+.card-front__tp--city {
+  background: linear-gradient(
+    to bottom,
+    var(--main-color-dark),
+    var(--brand-color)
+  );
+}
+
+.card-front__tp--ski {
+  background: linear-gradient(to bottom, #47c2d7, #279eb2);
+}
+
+.card-front__bt {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.card-back {
+  background-color: #fafbfa;
+  transform: rotateY(180deg);
+}
+
+.video__container {
+  height: 95%;
+  min-height: 95%;
+  object-fit: cover;
+  width: 95%;
+}
+
+/* Inside page */
+
+.inside-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #dff6ff;
+  box-shadow: inset 20rem 0px 5rem -2.5rem rgba(0, 0, 0, 0.25);
+  height: 100%;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  transition: all 1s ease;
+  width: 15rem;
+  z-index: 1;
+}
+
+.inside-page__container {
+  display: flex;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8%;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+/* Functionality ====================================*/
+
+.cardfront:hover {
+  box-shadow: -0.1rem 1.7rem 6.6rem -3.2rem rgba(0, 0, 0, 0.75);
+  width: 30rem;
+}
+
+.cardfront:hover .flip-card__container {
+  transform: rotateY(-180deg);
+}
+
+.cardfront:hover .inside-page {
+  box-shadow: inset 1rem 0px 5rem -2.5rem rgba(0, 0, 0, 0.1);
+}
+
+/* Footer ====================================*/
+
+.footer {
+  background-color: #333;
+  margin-top: 3rem;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.footer-text {
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media (max-width: 769px) {
+  .sectionCupponsHome {
+    display: flex;
+    margin: 4rem auto 4rem;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+  }
+
+  .card-section {
+    align-items: center;
+    display: none;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    margin: 20px;
+  }
+}

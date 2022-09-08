@@ -1,0 +1,26 @@
+.adminDashboard__container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+}
+
+.adminHome__cards__container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: nowrap;
+  gap: 40px;
+}
+
+.adminHome__card__img {
+  height: 200px;
+}
+
+.adminHome__card__body {
+  background-color: var(--main-color-dark);
+  color: var(--main-color-light);
+}
+
+.adminHome__card {
+  margin-bottom: 2rem;
+  border: solid 3px black;
+}
