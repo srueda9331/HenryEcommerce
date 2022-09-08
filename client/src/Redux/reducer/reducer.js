@@ -30,7 +30,7 @@ import {
   FILTER_MEMORY_RAM,
   FILTER_BATTERY,
   CLEAR_CART_UNDEFINED,
-
+  CHANGE_PAGINA,
 } from '../actions/actions';
 
 import {
@@ -57,7 +57,13 @@ const initialState = {
   purchaseInfo: undefined,
   orders: [],
   filteredProducts: [],
-  cartStorage: []
+  cartStorage: [],
+  pagina: 1,
+  pages: [],
+  filteredProductsOne: [],
+  filteredProductsTwo: [],
+  filteredProductsThree: [],
+  filteredProductsFour: [],
 };
 
 const rootReducer = (state = initialState, action = {}) => {
@@ -104,23 +110,35 @@ const rootReducer = (state = initialState, action = {}) => {
         products: action.payload === 'All' ? state.products : [...sortPrices],
       };
     case FILTER_BRAND:
-      const allPhones = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
+      const allPhones =
+        state.filteredProducts === 0
+          ? state.filteredProducts
+          : state.allProducts;
       console.log(allPhones);
       const filteredBrands =
         action.payload === 'All'
-          ? allPhones
+          ? state.allProducts
           : allPhones.filter((p) => p.brands === action.payload);
       return {
         ...state,
         products: filteredBrands,
         filteredProducts: filteredBrands,
+        filteredProducts: filteredBrands,
+        filteredProductsOne: filteredBrands,
+        filteredProductsTwo: filteredBrands,
+        filteredProductsThree: filteredBrands,
+        filteredProductsFour: filteredBrands,
       };
     case FILTER_DISPLAY:
-      let display = state.filteredProducts;
+      const display = state.filteredProducts[0]
+        ? state.filteredProducts
+        : state.filteredProducts === 0
+        ? state.filteredProducts
+        : filteredBrands;
       console.log(display);
       let size =
         action.payload === 'All'
-          ? state.allProducts
+          ? state.filteredProductsOne
           : action.payload === 'menor-display'
           ? display.filter((p) => p.display < 6.3)
           : action.payload === 'entre-display'
@@ -130,14 +148,21 @@ const rootReducer = (state = initialState, action = {}) => {
         ...state,
         products: size,
         filteredProducts: size,
+        filteredProductsTwo: size,
+        filteredProductsThree: size,
+        filteredProductsFour: size,
       };
     case FILTER_MEMORY_RAM:
-      const memoryRam = state.filteredProducts;
+      const memoryRam = state.filteredProducts[0]
+        ? state.filteredProducts
+        : state.filteredProducts === 0
+        ? state.filteredProducts
+        : state.filteredProducts;
       console.log(memoryRam);
 
       const filteredRam =
         action.payload === 'All'
-          ? state.allProducts
+          ? state.filteredProductsTwo
           : action.payload === '4'
           ? memoryRam.filter((p) => p.ram < 4)
           : action.payload === '6'
@@ -149,13 +174,20 @@ const rootReducer = (state = initialState, action = {}) => {
         ...state,
         products: filteredRam,
         filteredProducts: filteredRam,
+        filteredProducts: filteredRam,
+        filteredProductsThree: filteredRam,
+        filteredProductsFour: filteredRam,
       };
     case FILTER_BY_CAMERA:
-      const cameras = state.filteredProducts;
+      const cameras = state.filteredProducts[0]
+        ? state.filteredProducts
+        : state.filteredProducts === 0
+        ? state.filteredProducts
+        : state.filteredProducts;
       console.log(cameras);
       const filteredCameras =
         action.payload === 'All'
-          ? state.allProducts
+          ? state.filteredProductsThree
           : action.payload === '12'
           ? cameras.filter((p) => p.camera < 13)
           : action.payload === '13'
@@ -167,13 +199,21 @@ const rootReducer = (state = initialState, action = {}) => {
         ...state,
         products: filteredCameras,
         filteredProducts: filteredCameras,
+        filteredProductsFour: filteredCameras,
       };
     case FILTER_BATTERY:
-      const batteries = state.filteredProducts;
+      // const batteries = state.filteredProducts;
+      // const batteries = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
+      const copyFive = [...state.filteredProducts];
+      const batteries = state.filteredProducts[0]
+        ? state.filteredProducts
+        : state.filteredProducts === 0
+        ? state.filteredProducts
+        : state.filteredProducts;
       console.log(batteries);
       const filteredBatteries =
         action.payload === 'All'
-          ? state.allProducts
+          ? state.filteredProductsFour
           : action.payload === '3750'
           ? batteries.filter((p) => p.batery < 3750)
           : action.payload === '4100'
@@ -191,7 +231,7 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cart: addItem(action.payload, state.products, state.cart),
-        cartStorage: addItem(action.payload, state.products, state.cart)
+        cartStorage: addItem(action.payload, state.products, state.cart),
       };
 
     case DELETE_ONE_PRODUCT_CART:
@@ -218,7 +258,7 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         cart: action.payload,
-        cartStorage: action.payload
+        cartStorage: action.payload,
       };
     case GET_FAVORITES:
       return {
@@ -289,6 +329,12 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         orders: action.payload,
+      };
+    case CHANGE_PAGINA:
+      // console.log(action.payload);
+      return {
+        ...state,
+        pagina: action.payload,
       };
     default:
       return state;
