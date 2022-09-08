@@ -18,6 +18,10 @@ function ProductDetail() {
   const producto = useSelector((state) => state.productDetail);
   const user = useSelector((state) => state.loginState);
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
   const addToCart = (id) => {
     let payload = {};
     if (user === null) {
@@ -53,6 +57,7 @@ function ProductDetail() {
 
   useEffect(() => {
     dispatch(getProductById(id));
+    scrollToTop();
     return () => {
       dispatch(clearState());
     };

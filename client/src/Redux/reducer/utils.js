@@ -14,7 +14,7 @@ export const addItem = (id, allProducts, cart) => {
   // if (id.user !== undefined) {
   //   newProduct['iduser'] = id.iduser;
   // }
-  newProduct['iduser'] = id.iduser;
+  newProduct['iduser'] = id?.iduser;
   //console.log(typeof newProduct);
   if (!newProduct) {
     return [...cart];

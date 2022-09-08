@@ -10,7 +10,7 @@
   margin-right: 5px;
   gap: 5px;
   border-color: transparent;
-  background: #999999;
+  background: var(--brand-color);
   box-shadow: var(--bs-btn);
   border-radius: 10px;
 }
