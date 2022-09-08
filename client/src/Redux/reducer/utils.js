@@ -75,18 +75,14 @@ export const deleteAllItem = (cart, id) => {
 };
 
 export const deleteCarritoUser = (cart, loginState) => {
-  // console.log(cart);
   //console.log(loginState);
   if (loginState === null) {
     return cart.filter((e) => e.iduser !== undefined);
   } else {
     return cart.filter(
-      (e) => e.iduser !== loginState.id && e.iduser !== undefined
+      (e) => e.iduser !== loginState?.id && e.iduser !== undefined
     );
   }
-
-  // return cart.filter((item) => item.id !== id);
-  // return cart.filter((item) => item.id !== id);
 };
 
 export const addItemCustom = (cart, burgerCustom) => {
