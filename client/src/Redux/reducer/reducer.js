@@ -29,12 +29,6 @@ import {
   FILTER_BY_CAMERA,
   FILTER_MEMORY_RAM,
   FILTER_BATTERY,
-
-  SET_FILTER,
-  PAGIN,
-  CHANGE_PAGINA,
-  
-
   CLEAR_CART_UNDEFINED,
 
 } from '../actions/actions';
@@ -63,14 +57,7 @@ const initialState = {
   purchaseInfo: undefined,
   orders: [],
   filteredProducts: [],
-  cartStorage: [],
-  pagina: 1,
-  pages: [],
-  filteredProductsOne: [],
-  filteredProductsTwo: [],
-  filteredProductsThree: [],
-  filteredProductsFour: [],
-
+  cartStorage: []
 };
 
 const rootReducer = (state = initialState, action = {}) => {
@@ -116,104 +103,89 @@ const rootReducer = (state = initialState, action = {}) => {
         ...state,
         products: action.payload === 'All' ? state.products : [...sortPrices],
       };
-       case FILTER_BRAND:
-      const allPhones = state.filteredProducts === 0? state.filteredProducts :  state.allProducts;
+    case FILTER_BRAND:
+      const allPhones = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
       console.log(allPhones);
       const filteredBrands =
         action.payload === 'All'
-          ? state.allProducts
+          ? allPhones
           : allPhones.filter((p) => p.brands === action.payload);
       return {
         ...state,
         products: filteredBrands,
-        filteredProducts : filteredBrands,
-        filteredProductsOne: filteredBrands,
-        filteredProductsTwo: filteredBrands,
-        filteredProductsThree: filteredBrands,
-        filteredProductsFour: filteredBrands,
+        filteredProducts: filteredBrands,
       };
     case FILTER_DISPLAY:
-      // let display = state.filteredProducts;
-      const display = state.filteredProducts[0]? state.filteredProducts : state.filteredProducts === 0? state.filteredProducts : filteredBrands;
+      let display = state.filteredProducts;
       console.log(display);
-      let size = action.payload === 'All'?
-      state.filteredProductsOne:
-      action.payload === 'menor-display'? 
-      display.filter(p => p.display < 6.3 ) : 
-      action.payload === 'entre-display'?
-      display.filter(p => p.display > 6.2 && p.display < 6.6) :
-      display.filter(p => p.display > 6.5)
+      let size =
+        action.payload === 'All'
+          ? state.allProducts
+          : action.payload === 'menor-display'
+          ? display.filter((p) => p.display < 6.3)
+          : action.payload === 'entre-display'
+          ? display.filter((p) => p.display > 6.2 && p.display < 6.6)
+          : display.filter((p) => p.display > 6.5);
       return {
         ...state,
         products: size,
         filteredProducts: size,
-        filteredProductsTwo: size,
-        filteredProductsThree: size,
-        filteredProductsFour: size, 
       };
     case FILTER_MEMORY_RAM:
-      // const memoryRam = state.filteredProducts; 
-      // const memoryRam = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
-      const memoryRam = state.filteredProducts[0]? state.filteredProducts : state.filteredProducts === 0? state.filteredProducts : state.filteredProducts;
+      const memoryRam = state.filteredProducts;
       console.log(memoryRam);
 
-      const filteredRam = action.payload === 'All'? 
-      state.filteredProductsTwo: 
-      action.payload === '4'?
-      memoryRam.filter(p => p.ram < 4) :
-      action.payload === '6'?
-      memoryRam.filter(p => p.ram >= 4 && p.ram < 7 ) :
-      action.payload === '8'?
-      memoryRam.filter(p => p.ram >= 7 && p.ram <= 9 ) :
-      memoryRam.filter(p => p.ram > 9)
+      const filteredRam =
+        action.payload === 'All'
+          ? state.allProducts
+          : action.payload === '4'
+          ? memoryRam.filter((p) => p.ram < 4)
+          : action.payload === '6'
+          ? memoryRam.filter((p) => p.ram >= 4 && p.ram < 7)
+          : action.payload === '8'
+          ? memoryRam.filter((p) => p.ram >= 7 && p.ram <= 9)
+          : memoryRam.filter((p) => p.ram > 9);
       return {
         ...state,
         products: filteredRam,
-        filteredProducts:  filteredRam,
-        filteredProductsThree: filteredRam,
-        filteredProductsFour: filteredRam, 
+        filteredProducts: filteredRam,
       };
     case FILTER_BY_CAMERA:
-      // const cameras = state.filteredProducts 
-      // const cameras = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
-      const cameras = state.filteredProducts[0]? state.filteredProducts : state.filteredProducts === 0? state.filteredProducts : state.filteredProducts;
+      const cameras = state.filteredProducts;
       console.log(cameras);
-      const filteredCameras = action.payload === 'All'? 
-      state.filteredProductsThree :  
-      action.payload === '12'?
-      cameras.filter(p => p.camera < 13) :
-      action.payload === '13'?
-      cameras.filter(p => p.camera >= 13 && p.camera < 25 ) :
-      action.payload === '25'?
-      cameras.filter(p => p.camera >= 25 && p.camera <= 49 ) :
-      cameras.filter(p => p.camera > 49)
+      const filteredCameras =
+        action.payload === 'All'
+          ? state.allProducts
+          : action.payload === '12'
+          ? cameras.filter((p) => p.camera < 13)
+          : action.payload === '13'
+          ? cameras.filter((p) => p.camera >= 13 && p.camera < 25)
+          : action.payload === '25'
+          ? cameras.filter((p) => p.camera >= 25 && p.camera <= 49)
+          : cameras.filter((p) => p.camera > 49);
       return {
         ...state,
         products: filteredCameras,
         filteredProducts: filteredCameras,
-        filteredProductsFour: filteredCameras, 
-        
       };
     case FILTER_BATTERY:
-        // const batteries = state.filteredProducts;
-        // const batteries = state.filteredProducts === 0? state.filteredProducts : state.allProducts;
-        const copyFive =  [...state.filteredProducts]
-        const batteries = state.filteredProducts[0]? state.filteredProducts : state.filteredProducts === 0? state.filteredProducts : state.filteredProducts;
-        console.log(batteries);
-        const filteredBatteries = action.payload === 'All'? 
-        state.filteredProductsFour : 
-        action.payload === '3750'?
-        batteries.filter(p => p.batery < 3750) :
-        action.payload === '4100'?
-        batteries.filter(p => p.batery >= 3750 && p.batery <= 4100 ) :
-        action.payload === '4600'?
-        batteries.filter(p => p.batery > 4100 && p.batery <= 4600 ) :
-        batteries.filter(p => p.batery > 4600)
-        return {
-          ...state,
-          products: filteredBatteries, 
-          filteredProducts: filteredBatteries,
-        }; 
+      const batteries = state.filteredProducts;
+      console.log(batteries);
+      const filteredBatteries =
+        action.payload === 'All'
+          ? state.allProducts
+          : action.payload === '3750'
+          ? batteries.filter((p) => p.batery < 3750)
+          : action.payload === '4100'
+          ? batteries.filter((p) => p.batery >= 3750 && p.batery <= 4100)
+          : action.payload === '4600'
+          ? batteries.filter((p) => p.batery > 4100 && p.batery <= 4600)
+          : batteries.filter((p) => p.batery > 4600);
+      return {
+        ...state,
+        products: filteredBatteries,
+        filteredProducts: filteredBatteries,
+      };
     case ADD_TO_CART:
       /* payload es el id, array de products, y el array de carrito */
       return {
@@ -242,23 +214,12 @@ const rootReducer = (state = initialState, action = {}) => {
         // ...state,
         cart: action.payload,
       };
-    case PAGIN:
-      return {
-        ...state,
-        pages : action.payload
-      }  
     case LOCAL_STORAGE:
-      console.log(action.payload + 'local');
       return {
         ...state,
         cart: action.payload,
         cartStorage: action.payload
       };
-    case SET_FILTER:
-      return {
-        ...state,
-        products: action.payload
-      }  
     case GET_FAVORITES:
       return {
         ...state,
@@ -319,12 +280,6 @@ const rootReducer = (state = initialState, action = {}) => {
         ...state,
         products: state.products.filter((item) => item.id !== action.payload),
       };
-      case CHANGE_PAGINA:
-        // console.log(action.payload);
-        return {
-          ...state,
-          pagina: action.payload,
-        };
     case RESTORE_PRODUCT:
       return {
         ...state,
@@ -339,6 +294,5 @@ const rootReducer = (state = initialState, action = {}) => {
       return state;
   }
 };
-
 
 export default rootReducer;
