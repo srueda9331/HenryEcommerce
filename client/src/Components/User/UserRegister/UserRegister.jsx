@@ -145,7 +145,7 @@ function UserRegister() {
         <Row className="userRegister__container m-3">
           <Col lg={6} sm={12}>
             <h1 className="userRegister__tittle">Crear tu cuenta</h1>
-            <p>Regístrate para poder empezar a disfrutar de Henry´s</p>
+            <p>Regístrate para poder empezar a comprar.</p>
 
             <p className="userRegister__divider">────────────────────</p>
             <Form
