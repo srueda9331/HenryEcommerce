@@ -71,7 +71,6 @@ function Menu() {
 
           {/* {!currentProduct.length && <ErrorNoResults />} */}
           {currentProduct?.length > 0 && (
-
             <div className="products-container-menu col-xl-10 col-12">
               <ProductsContainerMenu
                 currentProduct={currentProduct}
