@@ -20,7 +20,7 @@ function SearchBar({ setFilter, setCurrentPage }) {
       <input
         className="search__input ps-2"
         type="text"
-        placeholder="Search"
+        placeholder="Buscar"
         value={input}
         onChange={handleInput}
         onKeyDown={(e) => {
