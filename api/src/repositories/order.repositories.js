@@ -974,7 +974,7 @@ async function changeStatus(id, status, employee) {
                                 line-height: 24px;
                               "
                             >
-                      <h5>Domicilio</h5>
+                      <h5>Compra:</h5>
                       ${receipt.additional_info.items
                         .map(
                           (e) => `

@@ -239,7 +239,7 @@ function AdminUsers() {
             </tr>
           </thead>
           <tbody>
-            {users.rows &&
+            {users?.rows &&
               users.rows.map((user) => (
                 <tr key={user.id}>
                   <td>
