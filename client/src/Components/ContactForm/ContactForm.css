@@ -30,5 +30,4 @@ fieldset:disabled .btn {
   color: gray;
   border: var(--btn-hover);
   cursor: default;
-  margin-top: 15px;
 }
