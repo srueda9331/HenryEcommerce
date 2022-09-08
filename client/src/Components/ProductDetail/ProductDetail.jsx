@@ -70,7 +70,7 @@ function ProductDetail() {
                     className="mt-3 mb-5 button--cart"
                     onClick={() => addToCart(id)}
                   >
-                    Añadir al carrito
+                    Add To Cart
                   </Button>
                 </div>
                 <div className="container--description">

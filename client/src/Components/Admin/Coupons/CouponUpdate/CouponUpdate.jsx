@@ -392,14 +392,14 @@ function CouponUpdate({ couponToEdit, setIsEditing }) {
         </Button>
       </div>
       <div className="couponUpdate__CardCupponHome">
-        {/* <CardCupponHome
+        <CardCupponHome
           key={coupon.code}
           code={coupon.code}
           title={coupon.title}
           expirationDate={coupon.expirationDate}
           imgUri={coupon.imgUri}
           discountPorcentage={coupon.discountPorcentage}
-        /> */}
+        />
       </div>
     </div>
   );

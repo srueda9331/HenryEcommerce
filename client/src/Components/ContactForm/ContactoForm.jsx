@@ -20,12 +20,12 @@ function ContactoForm() {
   function handleSubmit() {
     Swal.fire({
       title: 'Mensaje enviado con éxito',
-      text: 'Responderemos a la brevedad.',
+      text: 'Muchas gracias por contactarnos, en breve estaremos comunicandonos.',
       imageUrl:
         'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
       imageWidth: 200,
       imageHeight: 200,
-      imageAlt: 'Logo ',
+      imageAlt: 'Logo henrys',
       showConfirmButton: false,
       timer: 2500,
     });
@@ -36,10 +36,10 @@ function ContactoForm() {
     // eslint-disable-next-line import/no-named-as-default-member
     emailjs
       .sendForm(
-        'service_ewivly5',
-        'template_alcp74v',
+        'service_xu5vfs3',
+        'template_as17onx',
         form.current,
-        '9tIpizfacrty7tvkN'
+        '-zW9oJ2EERInnxlyT'
       )
       .then((result) => {
         setDone(true);
@@ -102,12 +102,12 @@ function ContactoForm() {
   return (
     <div>
       <Container>
-        <h2 className="pt-3">¿Tenes alguna duda?</h2>
+        <h2 className="pt-3">¡Nos encanta saber de vos!</h2>
         <Row className="contact__form__container">
           <Col lg={6} sm={12} className="p-5">
             <p className="contact__text__left">
               Compartí tus consultas, comentarios ó sugerencias a través del
-              formulario y te responderemos a la brevedad.
+              formulario y te responderemos a la brevedad
             </p>
             <form
               ref={form}
@@ -182,9 +182,9 @@ function ContactoForm() {
                   <option value="default" hidden>
                     Tipo de consulta*
                   </option>
-                  <option value="1">Pagos</option>
+                  <option value="1">Franquicias</option>
                   <option value="2">Consulta General</option>
-                  <option value="3">Envios</option>
+                  <option value="3">Felicitaciones</option>
                   <option value="4">Reclamos</option>
                 </select>
                 <div className="contactForm__errContainer">
@@ -219,7 +219,11 @@ function ContactoForm() {
             </form>
           </Col>
           <Col sm={12} lg={5}>
-            <img src={contactImg} alt="Logo" className="img-fluid" />
+            <img
+              src={contactImg}
+              alt="Imagen de una hamburguesa triple con bacon"
+              className="img-fluid"
+            />
           </Col>
         </Row>
       </Container>

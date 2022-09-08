@@ -89,7 +89,7 @@ function CardProductMenu({ id, name, price, imgUri, addToCart, brands }) {
                   <span className="add-to-cart">
                     <Link to="/cart">
                       <span className="txt" onClick={() => addToCart(id)}>
-                        Añadir al carrito
+                        Add in cart
                       </span>
                     </Link>
                   </span>
