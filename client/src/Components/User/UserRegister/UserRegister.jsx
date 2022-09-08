@@ -112,7 +112,7 @@ function UserRegister() {
           title: 'Usuario creado exitosamente!',
           text: 'Revise su correo para activar la cuenta',
           imageUrl:
-            'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
+            'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
           imageWidth: 150,
           imageHeight: 150,
           imageAlt: 'Logo',
@@ -129,7 +129,7 @@ function UserRegister() {
             ? 'Error al registrarse!'
             : error.response.data.error,
         imageUrl:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxnvPIJL73oS-sZ4ZYA2Fw9DyS0vRp5RJGvQ&usqp=CAU',
+          'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/denied_anoxya.png',
         imageWidth: 150,
         imageHeight: 150,
         imageAlt: 'Logo',
@@ -145,7 +145,7 @@ function UserRegister() {
         <Row className="userRegister__container m-3">
           <Col lg={6} sm={12}>
             <h1 className="userRegister__tittle">Crear tu cuenta</h1>
-            <p>Regístrate para poder empezar a disfrutar de Henry´s</p>
+            <p>Regístrate para poder empezar a comprar.</p>
 
             <p className="userRegister__divider">────────────────────</p>
             <Form

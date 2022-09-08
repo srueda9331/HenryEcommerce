@@ -1,0 +1,12 @@
+.order_container {
+  width: 100%;
+}
+
+.pending {
+  color: rgb(255, 149, 0);
+  font-size: 20px;
+}
+.ready {
+  color: green;
+  font-size: 20px;
+}

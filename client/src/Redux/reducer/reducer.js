@@ -1,7 +1,9 @@
 import {
   GET_PRODUCT,
   GET_PRODUCT_BY_ID,
+  GET_USER_ORDER,
   ADD_TO_CART,
+  ADD_TO_CART2,
   CLEAR_CART,
   DELETE_ONE_PRODUCT_CART,
   DELETE_PRODUCT_CART,
@@ -27,13 +29,25 @@ import {
   FILTER_BY_CAMERA,
   FILTER_MEMORY_RAM,
   FILTER_BATTERY,
+
   SET_FILTER,
   PAGIN,
   CHANGE_PAGINA,
   
+
+  CLEAR_CART_UNDEFINED,
+
 } from '../actions/actions';
 
-import { addFav, addItem, deleteAllItem, deleteItem, subsFav } from './utils';
+import {
+  addFav,
+  addItem,
+  addItem2,
+  deleteAllItem,
+  deleteItem,
+  subsFav,
+  deleteCarritoUser,
+} from './utils';
 
 const initialState = {
   products: [],
@@ -60,7 +74,7 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action = {}) => {
-  console.log(action.payload);
+  //console.log(action.payload);
   switch (action.type) {
     case GET_USERS:
       return {
@@ -86,7 +100,8 @@ const rootReducer = (state = initialState, action = {}) => {
     case ORDER_PRICE:
       // const productsAgain = state.allProducts
       // console.log(productsAgain.map(e => e.price));
-      const sortPrices = action.payload === 'Max'
+      const sortPrices =
+        action.payload === 'Max'
           ? state.products.sort((a, b) => {
               if (a.price > b.price) return -1;
               if (b.price > a.price) return 1;
@@ -101,7 +116,7 @@ const rootReducer = (state = initialState, action = {}) => {
         ...state,
         products: action.payload === 'All' ? state.products : [...sortPrices],
       };
-    case FILTER_BRAND:
+       case FILTER_BRAND:
       const allPhones = state.filteredProducts === 0? state.filteredProducts :  state.allProducts;
       console.log(allPhones);
       const filteredBrands =
@@ -198,7 +213,7 @@ const rootReducer = (state = initialState, action = {}) => {
           ...state,
           products: filteredBatteries, 
           filteredProducts: filteredBatteries,
-        };  
+        }; 
     case ADD_TO_CART:
       /* payload es el id, array de products, y el array de carrito */
       return {
@@ -206,10 +221,11 @@ const rootReducer = (state = initialState, action = {}) => {
         cart: addItem(action.payload, state.products, state.cart),
         cartStorage: addItem(action.payload, state.products, state.cart)
       };
+
     case DELETE_ONE_PRODUCT_CART:
       return {
         ...state,
-        cart: deleteItem(state.cart, action.payload),
+        cart: deleteItem(action.payload, state.cart),
       };
     case DELETE_PRODUCT_CART:
       return {
@@ -218,8 +234,13 @@ const rootReducer = (state = initialState, action = {}) => {
       };
     case CLEAR_CART:
       return {
-        ...state,
-        cart: [],
+        // ...state,
+        cart: deleteCarritoUser(state.cart, state.loginState),
+      };
+    case CLEAR_CART_UNDEFINED:
+      return {
+        // ...state,
+        cart: action.payload,
       };
     case PAGIN:
       return {
@@ -286,6 +307,11 @@ const rootReducer = (state = initialState, action = {}) => {
       return {
         ...state,
         purchaseInfo: action.payload,
+      };
+    case GET_USER_ORDER:
+      return {
+        ...state,
+        userorders: action.payload,
       };
 
     case DELETE_PRODUCT:

@@ -33,6 +33,7 @@ function FiltersMenu({ setFilter, filters }) {
   }, [dispatch]);
   
 
+
   const persist = () => {
     return window.localStorage.setItem('filter', JSON.stringify(products))
   }
@@ -40,6 +41,7 @@ function FiltersMenu({ setFilter, filters }) {
 
   const getStorage = () => {
     return JSON.parse(window.localStorage.getItem('filter'))
+
 
   }
   const handleOrder = (e) => {

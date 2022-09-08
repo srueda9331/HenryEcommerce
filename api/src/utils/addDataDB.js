@@ -3,7 +3,7 @@ function addDataDB() {
     {
       id: "36a87d0a-e68e-46cd-9fee-e6d364116076",
       brands: "Samsung",
-      name: "SAMSUNG GALAXY A03 SM-A032M AZUL AZUL",
+      name: "Samsung Galaxy A03",
       price: 30499,
       weight: 211,
       height: 16.42,
@@ -22,7 +22,7 @@ function addDataDB() {
     {
       id: "560dea18-3455-49fe-b43e-e584ecfde517",
       brands: "Samsung",
-      name: "SAMSUNG SM-F926B Z FOLD3 NEGRO",
+      name: "Samsung Z Fold3 Negro",
       price: 399999,
       weight: 271,
       height: 16.64,
@@ -41,7 +41,7 @@ function addDataDB() {
     {
       id: "0d737b80-9547-4a15-ba6f-8128e55b6dfa",
       brands: "Samsung",
-      name: "SAMSUNG SM-F926B Z FOLD3 PLATA",
+      name: "Samsung Z Fold3 Plata",
       price: 399999,
       weight: 271,
       height: 16.64,
@@ -60,7 +60,7 @@ function addDataDB() {
     {
       id: "8c18fb1e-fc98-4194-9abb-010fcbe7e853",
       brands: "Samsung",
-      name: "SAMSUNG GALAXY Z FLIP 3 5G NEW CHIP BEIGE",
+      name: "Samsung Galaxy Z Flip 3 5g",
       price: 399999,
       weight: 271,
       height: 16.64,
@@ -79,7 +79,7 @@ function addDataDB() {
     {
       id: "c858b340-667a-4821-a93e-312930c607cf",
       brands: "Samsung",
-      name: "SAMSUNG GALAXY A13 SM-A135M CELESTE",
+      name: "Samsung Galaxy A13",
       price: 53999,
       weight: 195,
       height: 16.51,
@@ -98,7 +98,7 @@ function addDataDB() {
     {
       id: "008547f4-4aed-4044-9309-5b92b2c6ce90",
       brands: "Samsung",
-      name: "SAMSUNG GALAXY A13 SM-A135M NEGRO",
+      name: "Samsung Galaxy A13 Negro",
       price: 53999,
       weight: 195,
       height: 16.51,
@@ -117,7 +117,7 @@ function addDataDB() {
     {
       id: "0a9ec315-24ef-43de-a37d-c66fcf4ccdba",
       brands: "Samsung",
-      name: "SAMSUNG S22 ULTRA SM-S908E VERDE",
+      name: "Samsung S22 Ultra",
       price: 331999,
       weight: 228,
       height: 16.89,
@@ -136,7 +136,7 @@ function addDataDB() {
     {
       id: "221984ae-7e71-470c-984a-3fa90dc883fe",
       brands: "Samsung",
-      name: "SAMSUNG S22+ / SM-S906EZKMARO VERDE",
+      name: "Samsung S22+",
       price: 272999,
       weight: 195,
       height: 16.76,
@@ -155,7 +155,7 @@ function addDataDB() {
     {
       id: "96ac50b6-183f-4308-b831-384131358234",
       brands: "Samsung",
-      name: "SAMSUNG S22 / SM-S901E VERDE",
+      name: "Samsung S22",
       price: 215999,
       weight: 195,
       height: 16.76,
@@ -174,7 +174,7 @@ function addDataDB() {
     {
       id: "54a0b07f-8e59-4c99-871f-024c96b55c97",
       brands: "Samsung",
-      name: "SAMSUNG S22+ / SM-S906EZKMARO NEGRO",
+      name: "Samsung S22+ Negro",
       price: 272999,
       weight: 195,
       height: 16.76,
@@ -193,7 +193,7 @@ function addDataDB() {
     {
       id: "ef16758d-1462-4b62-8f8b-6626a6746625",
       brands: "Samsung",
-      name: "SAMSUNG S22 / SM-S901E ROSA",
+      name: "Samsung S22 Rosa",
       price: 215999,
       weight: 195,
       height: 16.76,
@@ -212,7 +212,7 @@ function addDataDB() {
     {
       id: "af3a447e-bc74-482c-9500-82550e18473b",
       brands: "Samsung",
-      name: "SAMSUNG M23 - SM-M236B VERDE",
+      name: "Samsung M23 Verde",
       price: 85999,
       weight: 198,
       height: 16.55,
@@ -231,7 +231,7 @@ function addDataDB() {
     {
       id: "4de6bf42-f1be-4ac6-8925-30e2dc546c64",
       brands: "Samsung",
-      name: "SAMSUNG GALAXY S20 FE / SM-G781B ROJO",
+      name: "Samsung Galaxy S20 Fe Rojo",
       price: 119999,
       weight: 190,
       height: 15.98,
@@ -250,7 +250,7 @@ function addDataDB() {
     {
       id: "78b49182-965d-46f0-9fd4-8426732583b1",
       brands: "Samsung",
-      name: "SAMSUNG SM-A528B NEGRO",
+      name: "Samsung A52 Negro",
       price: 118999,
       weight: 189,
       height: 15.99,
@@ -269,7 +269,7 @@ function addDataDB() {
     {
       id: "e108502e-3865-4cf2-8842-d1d96a8be043",
       brands: "Samsung",
-      name: "SAMSUNG SM-G990E S21 FE LAVANDA",
+      name: "Samsung S21 Fe Lavanda",
       price: 174999,
       weight: 177,
       height: 15.45,
@@ -288,7 +288,7 @@ function addDataDB() {
     {
       id: "ef8c158b-7a4a-4959-9a7a-dcd08d12d289",
       brands: "Samsung",
-      name: "SAMSUNG SM-G990E S21 FE LAVANDA LAVANDA",
+      name: "Samsung S21",
       price: 174999,
       weight: 177,
       height: 15.45,
@@ -307,7 +307,7 @@ function addDataDB() {
     {
       id: "9381c78d-202d-4795-849d-3be5722d4c6a",
       brands: "Samsung",
-      name: "SAMSUNG S22 ULTRA / SM-S908E BLANCO",
+      name: "Samsung S22 Ultra Blanco",
       price: 331999,
       weight: 228,
       height: 16.89,
@@ -326,7 +326,7 @@ function addDataDB() {
     {
       id: "bbb09500-7c42-45b7-b4fc-7a5d5e5457c6",
       brands: "Samsung",
-      name: "SAMSUNG S22+ / SM-S906EZKMARO BLANCO",
+      name: "Samsung S22+ Blanco",
       price: 272999,
       weight: 195,
       height: 16.76,
@@ -345,7 +345,7 @@ function addDataDB() {
     {
       id: "186ff008-8972-4f3b-9d93-d61536b9c471",
       brands: "Samsung",
-      name: "SAMSUNG S20 FE AZUL",
+      name: "Samsung S20 Fe Azul",
       price: 134999,
       weight: 190,
       height: 15.98,
@@ -364,7 +364,7 @@ function addDataDB() {
     {
       id: "124e5ee6-799c-49ca-9d51-ed14cabee33b",
       brands: "Samsung",
-      name: "SAMSUNG S20 FE VERDE",
+      name: "Samsung S20 Fe Verde",
       price: 134999,
       weight: 190,
       height: 15.98,

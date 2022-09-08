@@ -2,8 +2,8 @@
   filter: grayscale(100%);
 }
 
-.sectionCupponsHome {
-  display: none;
+.sectionCupponsHome1 {
+  display: flex;
   margin: 4rem auto 4rem;
   justify-content: space-evenly;
   flex-wrap: wrap;

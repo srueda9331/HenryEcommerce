@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Cards from '../CardsDashboard/Cards';
 import Table from '../Table/Table';
@@ -16,7 +15,7 @@ const MainDash = () => {
     <Container className="mt-5">
       <h1>Gestioná tus ordenes</h1>
       <hr />
-      <Cards />
+      {/* <Cards /> */}
       <div className="employeeHome__container">
         <div className="employee__cards__container">
           <Card style={{ width: '18rem' }} className="employee__card">
@@ -29,7 +28,7 @@ const MainDash = () => {
               <Card.Title>
                 <h3>Pedidos Pendientes</h3>
               </Card.Title>
-              <Button variant="secondary" as={Link} to="/employeependingorders">
+              <Button variant="secondary" as={Link} to="/adminpendingorders">
                 Ingresar
               </Button>
             </Card.Body>
@@ -45,7 +44,7 @@ const MainDash = () => {
               <Card.Title>
                 <h3>Pedidos Listos</h3>
               </Card.Title>
-              <Button variant="secondary" as={Link} to="/employeeordersready">
+              <Button variant="secondary" as={Link} to="/adminordersready">
                 Ingresar
               </Button>
             </Card.Body>

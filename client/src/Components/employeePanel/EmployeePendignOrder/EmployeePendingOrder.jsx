@@ -14,10 +14,10 @@ import './EmployeePendingOrder.css';
 function EmployeePendingOrder() {
   const dispatch = useDispatch();
   const [isSubmited, setSubmited] = useState(false);
-  const session = useSelector((state) => state.loginState);
   const orders = useSelector((state) =>
     state.orders.filter((ord) => ord.status === 'Pendiente')
   );
+  const session = useSelector((state) => state.loginState);
   const [show, setShow] = useState(false);
   const [orderId, setOrderId] = useState('');
   const handleClose = () => setShow(false);
@@ -59,7 +59,7 @@ function EmployeePendingOrder() {
       <hr />
       <Container>
         <Table bordered hover responsive>
-          <thead className="employee__thead">
+          <thead>
             <tr>
               <th>Fecha y Hora</th>
               <th>Cliente</th>
@@ -72,10 +72,6 @@ function EmployeePendingOrder() {
             {!orders.length && (
               <tr>
                 <td colSpan={6} className="pt-5 pb-5">
-                  <h2>
-                    <GiPartyPopper className="giPartyPopper" /> ¡Felicitaciones!
-                    <GiPartyPopper className="giPartyPopper" />
-                  </h2>
                   <p>No hay órdenes pendientes para preparar.</p>
                 </td>
               </tr>
@@ -109,7 +105,6 @@ function EmployeePendingOrder() {
                         ))}
                     </ul>
                   </td>
-
                   <td>$ {ord.data.transaction_amount}</td>
                   <td>
                     <Button

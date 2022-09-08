@@ -1,8 +1,11 @@
+import { KingBed } from '@mui/icons-material';
 import axios from 'axios';
 
 export const GET_PRODUCT = 'GET_PRODUCT';
 export const GET_PRODUCT_BY_ID = 'GET_PRODUCT_BY_ID';
+export const GET_USER_ORDER = 'GET_USER_ORDER';
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const ADD_TO_CART2 = 'ADD_TO_CART2';
 export const CLEAR_CART = 'CLEAR_CART';
 export const CLEAR_STATE = 'CLEAR_STATE';
 export const DELETE_ONE_PRODUCT_CART = 'DELETE_ONE_PRODUCT_CART';
@@ -29,6 +32,7 @@ export const FILTER_DISPLAY = 'FILTER_DISPLAY';
 export const FILTER_MEMORY_RAM = 'FILTER_MEMORY_RAM';
 export const FILTER_BY_CAMERA = 'FILTER_BY_CAMERA';
 export const FILTER_BATTERY = 'FILTER_BATTERY';
+export const CLEAR_CART_UNDEFINED = 'CLEAR_CART_UNDEFINED';
 
 export function getUser(token, query = '/') {
   return async function (dispatch) {
@@ -51,7 +55,7 @@ export function getUser(token, query = '/') {
 export function getProduct(name = '', isDeleted = '') {
   return async function (dispatch) {
     const json = await axios(`/products?name=${name}&isDeleted=${isDeleted}`);
-    console.log(json);
+    //console.log(json);
     try {
       return dispatch({
         type: GET_PRODUCT,
@@ -63,10 +67,33 @@ export function getProduct(name = '', isDeleted = '') {
   };
 }
 
-export function addCartProduct(id) {
+export function getUserOrder(token) {
+  return async function (dispatch) {
+    const json = await axios.get(`/orders/user`, {
+      headers: { 'auth-token': token },
+    });
+    console.log(json);
+    try {
+      return dispatch({
+        type: GET_USER_ORDER,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function addCartProduct(payload) {
   return {
     type: ADD_TO_CART,
-    payload: id,
+    payload: payload,
+  };
+}
+export function addCartProduct2(payload) {
+  return {
+    type: ADD_TO_CART2,
+    payload: payload,
   };
 }
 
@@ -119,16 +146,35 @@ export function clearState(payload) {
   };
 }
 
-export function deleteCart() {
+export function deleteCart(payload) {
   return {
     type: CLEAR_CART,
+    payload: payload,
+  };
+}
+export function deleteCartUndefined(payload) {
+  return {
+    type: CLEAR_CART_UNDEFINED,
+    payload: payload,
   };
 }
 
-export function productDelete(id) {
+export function productDelete(id, user) {
+  let payload = {};
+  if (user === null) {
+    payload = {
+      idtelefono: id,
+    };
+  }
+  if (user !== null) {
+    payload = {
+      idtelefono: id,
+      iduser: user.id,
+    };
+  }
   return {
     type: DELETE_ONE_PRODUCT_CART,
-    payload: id,
+    payload: payload,
   };
 }
 

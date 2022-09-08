@@ -21,7 +21,7 @@ function EmployeeOrderReady() {
       <hr />
       <Container>
         <Table bordered hover responsive>
-          <thead className="employee__thead">
+          <thead>
             <tr>
               <th>Fecha y Hora</th>
               <th>Cliente</th>
@@ -34,11 +34,7 @@ function EmployeeOrderReady() {
             {!orders.length && (
               <tr>
                 <td colSpan={6} className="pt-5 pb-5">
-                  <h2>
-                    <GiPartyPopper className="giPartyPopper" /> ¡Felicitaciones!
-                    <GiPartyPopper className="giPartyPopper" />
-                  </h2>
-                  <p>Todos los pedidos fueron entregados exitosamente.</p>
+                  <p>Todos los pedidos fueron entregados.</p>
                 </td>
               </tr>
             )}

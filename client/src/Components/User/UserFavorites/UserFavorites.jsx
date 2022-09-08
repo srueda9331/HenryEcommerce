@@ -28,7 +28,7 @@ function UserFavorites() {
   function setScrollToTop() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }
-  
+
   return (
     <Container>
       <div className="userFav__container mb-5">
@@ -38,9 +38,7 @@ function UserFavorites() {
           <>
             <div>
               <p className="emptyFav__text">
-                Todavia no tenés ningún producto en favoritos, date una vuelta
-                por menú, dejate tentar y guardalo si te gustó así está lo mejor
-                siempre cerca.
+                Todavia no tenés ningún producto en favoritos.
               </p>
             </div>
             <Link to="/menu" className="mt-4">
