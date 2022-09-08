@@ -9,6 +9,7 @@ import {
   deleteCart,
   productDelete,
   getCoupons,
+  changePagina,
 } from '../../Redux/actions/actions';
 import CardProductCart from '../CardProductCart/CardProductCart';
 import Container from 'react-bootstrap/Container';
@@ -284,6 +285,11 @@ function ShoppingCart() {
     }
   }
 
+  function setScrollToTop() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    dispatch(changePagina(1));
+  }
+
   return (
     <Container className="py-4 ">
       {itemsToCart && itemsToCart?.length === 0 ? (
@@ -291,7 +297,7 @@ function ShoppingCart() {
           <div className="cartEmpty__text">
             <h2>El carrito se encuentra vacío</h2>
             <p>Sigue en nuestro menu para ver más opciones</p>
-            <Link to="/menu">
+            <Link to="/menu" onClick={setScrollToTop()}>
               <Button>Ir al Menú</Button>
             </Link>
           </div>

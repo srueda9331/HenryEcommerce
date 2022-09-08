@@ -49,6 +49,11 @@ function ProductsContainerMenu({ currentProduct, user }) {
 
   const addToCart = (id) => {
     let payload = {};
+    if (user === undefined) {
+      payload = {
+        idtelefono: id,
+      };
+    }
     if (user === null) {
       payload = {
         idtelefono: id,

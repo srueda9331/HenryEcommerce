@@ -24,6 +24,11 @@ function ProductDetail() {
 
   const addToCart = (id) => {
     let payload = {};
+    if (user === undefined) {
+      payload = {
+        idtelefono: id,
+      };
+    }
     if (user === null) {
       payload = {
         idtelefono: id,
@@ -38,22 +43,23 @@ function ProductDetail() {
     dispatch(addCartProduct(payload));
     Swal.fire({
       position: 'top-end',
-      target: '#custom-target',
-      // imageUrl:
-      //   'https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png',
-      icon: 'success',
+      imageUrl:
+        'https://res.cloudinary.com/dc8w6pspj/image/upload/v1662498810/sucess_otelvh.png',
       imageWidth: 80,
       imageHeight: 80,
       text: 'Producto agregado exitosamente',
       showConfirmButton: false,
-      timer: 900,
-      width: '18rem',
+      timer: 800,
+      width: '12rem',
       height: '5rem',
       padding: '0.5rem',
-      toast: true,
-      customClass: {},
     });
   };
+
+  // function setScrollToTop() {
+  //   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  //   dispatch(changePagina(1));
+  // }
 
   useEffect(() => {
     dispatch(getProductById(id));
