@@ -4,6 +4,7 @@
 <br />
 <a href='https://tresjota-ecommerce.vercel.app/'>Link a la App</a>
 <br />
+<br />
 <p>Technologies</p>
 <ul>
 <li>React</li>
