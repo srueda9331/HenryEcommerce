@@ -3,11 +3,33 @@
 # Proyecto Final - Henry E-commerce
 <br />
 <a href='https://tresjota-ecommerce.vercel.app/'>Link a la App</a>
-
-<p>Tachnologies</p>
+<br />
+<p>Technologies</p>
 <ul>
 <li>React</li>
-
-
-
+<li>Redux</li>
+<li>NodeJS</li>
+<li>Express</li>
+<li>Sequelize</li>
+<li>PostgreSQL</li>
+<li>MercadoPago</li>
+<li>Firebase</li>
+<li>Bcrypt</li>
+<li>Auth0</li>
+<li>Cloudinary</li>
+<li>JWT</li>
+<li>Nodemailer</li>
 </ul>
+<br />
+<p>SCRUM Team</p>
+<ul>
+<li>Facundo Juarez</li>
+<li>Nicolas Lagoria</li>
+<li>Santiago Rueda</li>
+<li>Axel Melnik</li>
+<li>Gino Borgogno</li>
+<li>Andrés Guerrero</li>
+</ul>
+
+
+
